@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "dlXirUxhxpZZNB2lWmGAETCSaHCO6pfj03XiwhksdlLljX29mbiz9eOhBBKxg9sq5vCR6O3dNhaCUy/1bxPKkw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\thiago.cruz\\Documents\\Proj\\Pessoal\\Gym\\GymApi.UseCases\\GymApi.UseCases.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\thiago.cruz\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.20\\microsoft.netcore.app.ref.6.0.20.nupkg.sha512",
+    "C:\\Users\\thiago.cruz\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.20\\microsoft.windowsdesktop.app.ref.6.0.20.nupkg.sha512",
+    "C:\\Users\\thiago.cruz\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.20\\microsoft.aspnetcore.app.ref.6.0.20.nupkg.sha512"
+  ],
+  "logs": []
+}

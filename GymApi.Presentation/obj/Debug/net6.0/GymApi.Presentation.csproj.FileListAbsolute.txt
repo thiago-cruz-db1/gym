@@ -1,0 +1,17 @@
+C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.Presentation\bin\Debug\net6.0\GymApi.Presentation.deps.json
+C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.Presentation\bin\Debug\net6.0\GymApi.Presentation.dll
+C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.Presentation\bin\Debug\net6.0\GymApi.Presentation.pdb
+C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.Presentation\bin\Debug\net6.0\GymApi.Data.dll
+C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.Presentation\bin\Debug\net6.0\GymApi.Domain.dll
+C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.Presentation\bin\Debug\net6.0\GymApi.Data.pdb
+C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.Presentation\bin\Debug\net6.0\GymApi.Domain.pdb
+C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.Presentation\obj\Debug\net6.0\GymApi.Presentation.csproj.AssemblyReference.cache
+C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.Presentation\obj\Debug\net6.0\GymApi.Presentation.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.Presentation\obj\Debug\net6.0\GymApi.Presentation.AssemblyInfoInputs.cache
+C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.Presentation\obj\Debug\net6.0\GymApi.Presentation.AssemblyInfo.cs
+C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.Presentation\obj\Debug\net6.0\GymApi.Presentation.csproj.CoreCompileInputs.cache
+C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.Presentation\obj\Debug\net6.0\GymApi.Presentation.csproj.CopyComplete
+C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.Presentation\obj\Debug\net6.0\GymApi.Presentation.dll
+C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.Presentation\obj\Debug\net6.0\refint\GymApi.Presentation.dll
+C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.Presentation\obj\Debug\net6.0\GymApi.Presentation.pdb
+C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.Presentation\obj\Debug\net6.0\ref\GymApi.Presentation.dll
