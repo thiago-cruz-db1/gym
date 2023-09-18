@@ -4,7 +4,7 @@ using GymApi.Domain;
 using GymApi.Domain.Dto.Request;
 using Microsoft.AspNetCore.Mvc;
 
-namespace GymApi.Presentation.Controllers
+namespace GymUserApi.Controllers
 {
     [ApiController]
     [Route("[controller]")]

@@ -1,13 +1,13 @@
 using GymApi.Data.Data;
 using GymApi.Domain;
 using GymApi.UseCases;
-using GymApi.UseCases.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using CreateUserUseCase = GymApi.UseCases.CreateUserUseCase;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var conn = builder.Configuration.GetConnectionString("MsqlConn");
+var conn = builder.Configuration.GetConnectionString("MysqlConn");
 // Add services to the container.
 builder.Services.AddDbContext<GymDbContext>(opts =>
 {
@@ -21,11 +21,14 @@ builder.Services.AddIdentity<User, IdentityRole>()
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-builder.Services.AddScoped<CreateUserService>();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddScoped<LoginUserUseCase>();
+builder.Services.AddScoped<CreateUserUseCase>();
+builder.Services.AddScoped<GenerateTokenUseCase>();
 
 var app = builder.Build();
 

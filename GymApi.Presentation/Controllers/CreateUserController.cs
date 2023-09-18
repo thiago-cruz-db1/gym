@@ -1,28 +1,29 @@
-﻿using AutoMapper;
-using GymApi.Domain;
-using GymApi.Domain.Dto.Request;
+﻿using GymApi.Domain.Dto.Request;
 using GymApi.UseCases;
-using GymApi.UseCases.Services;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using CreateUserUseCase = GymApi.UseCases.CreateUserUseCase;
 
-namespace GymApi.Presentation.Controllers;
-
-[ApiController]
-[Route("[Controller]")]
-public class CreateUserController : ControllerBase
+namespace GymUserApi.Controllers
 {
-    private CreateUserService _createUserService;
+    [ApiController]
+    [Route("[Controller]")]
+    public class CreateUserController : ControllerBase
+    {
+        private readonly CreateUserUseCase _createUserUseCase;
 
-    public CreateUserController(CreateUserService useCaseService)
-    {
-        _createUserService = useCaseService;
-    }
+
+        public CreateUserController(CreateUserUseCase useCaseUseCase, GenerateTokenUseCase generateTokenUseCase)
+        {
+            _createUserUseCase = useCaseUseCase;
+
+        }
     
-    [HttpPost]
-    public async Task<IActionResult> CreateLogin(CreateLoginUserRequest createLoginDto)
-    {
-        await _createUserService.Create(createLoginDto);
-        return Ok("user created");
+        [HttpPost]
+        public async Task<IActionResult> CreateLogin(CreateLoginUserRequest createLoginDto)
+        {
+            await _createUserUseCase.Create(createLoginDto);
+
+            return Ok("user created");
+        }
     }
 }

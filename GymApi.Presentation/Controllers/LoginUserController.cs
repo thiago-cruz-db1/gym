@@ -1,24 +1,25 @@
-﻿using GymApi.Domain.Dto.Request;
-using GymApi.UseCases.Services;
+﻿using GymApi.Domain;
+using GymApi.Domain.Dto.Request;
+using GymApi.UseCases;
 using Microsoft.AspNetCore.Mvc;
 
-namespace GymApi.Presentation.Controllers;
+namespace GymUserApi.Controllers;
 
 [ApiController]
 [Route("[controller]")]
 public class LoginUserController : ControllerBase
 {
-    private LoginService _loginService;
+    private readonly LoginUserUseCase _loginUserUseCase;
     
-    public LoginUserController(LoginService loginService)
+    public LoginUserController(LoginUserUseCase loginUserUseCase)
     {
-        _loginService = loginService;
+        _loginUserUseCase = loginUserUseCase;
     }
     
     [HttpPost]
     public async Task<IActionResult> Login(LoginUserRequest loginDto)
     {
-        await _loginService.Login(loginDto);
-        return Ok("User auth!");
+        var token = await _loginUserUseCase.Login(loginDto);
+        return Ok(token);
     }
 }
