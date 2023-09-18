@@ -9,3 +9,8 @@ C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.UseCases\obj\Debug\net6.0
 C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.UseCases\obj\Debug\net6.0\refint\GymApi.UseCases.dll
 C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.UseCases\obj\Debug\net6.0\GymApi.UseCases.pdb
 C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.UseCases\obj\Debug\net6.0\ref\GymApi.UseCases.dll
+C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.UseCases\obj\Debug\net6.0\GymApi.UseCases.csproj.AssemblyReference.cache
+C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.UseCases\obj\Debug\net6.0\GymApi.UseCases.sourcelink.json
+C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.UseCases\bin\Debug\net6.0\GymApi.Domain.dll
+C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.UseCases\bin\Debug\net6.0\GymApi.Domain.pdb
+C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.UseCases\obj\Debug\net6.0\GymApi.UseCases.csproj.CopyComplete

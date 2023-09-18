@@ -15,3 +15,4 @@ C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.Data\obj\Debug\net6.0\ref
 C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.Data\obj\Debug\net6.0\GymApi.Data.pdb
 C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.Data\obj\Debug\net6.0\GymApi.Data.genruntimeconfig.cache
 C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.Data\obj\Debug\net6.0\ref\GymApi.Data.dll
+C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.Data\obj\Debug\net6.0\GymApi.Data.sourcelink.json
