@@ -1481,7 +1481,8 @@
           "Microsoft.EntityFrameworkCore": "6.0.22",
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.22",
           "Microsoft.Extensions.DependencyInjection": "6.0.1",
-          "Microsoft.Extensions.Logging": "6.0.0"
+          "Microsoft.Extensions.Logging": "6.0.0",
+          "Pomelo.EntityFrameworkCore.MySql": "6.0.2"
         },
         "compile": {
           "bin/placeholder/GymApi.Data.dll": {}

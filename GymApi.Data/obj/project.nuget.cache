@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "GX1VNFO0V3AnmCTHbRlU9d9ikc6toGbs7ZFsPoTOGflS5g2dMKzt24BczayUpQxivIoJuVkOicl98YLZ2RRAmQ==",
+  "dgSpecHash": "ZeYpZJzk0fxTty2mw+Ul3nav0Xhkxk+qt5pGfY+xQmOU8nSSHbtE3/8pFfjNOJsxBqu3WgO5dUTgPSQBcHrB8A==",
   "success": true,
   "projectFilePath": "C:\\Users\\thiago.cruz\\Documents\\Proj\\Pessoal\\Gym\\GymApi.Data\\GymApi.Data.csproj",
   "expectedPackageFiles": [
@@ -39,6 +39,8 @@
     "C:\\Users\\thiago.cruz\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\thiago.cruz\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\thiago.cruz\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
+    "C:\\Users\\thiago.cruz\\.nuget\\packages\\mysqlconnector\\2.1.2\\mysqlconnector.2.1.2.nupkg.sha512",
+    "C:\\Users\\thiago.cruz\\.nuget\\packages\\pomelo.entityframeworkcore.mysql\\6.0.2\\pomelo.entityframeworkcore.mysql.6.0.2.nupkg.sha512",
     "C:\\Users\\thiago.cruz\\.nuget\\packages\\system.collections.immutable\\6.0.0\\system.collections.immutable.6.0.0.nupkg.sha512",
     "C:\\Users\\thiago.cruz\\.nuget\\packages\\system.configuration.configurationmanager\\4.7.0\\system.configuration.configurationmanager.4.7.0.nupkg.sha512",
     "C:\\Users\\thiago.cruz\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.1\\system.diagnostics.diagnosticsource.6.0.1.nupkg.sha512",

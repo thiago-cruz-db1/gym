@@ -82,3 +82,4 @@ C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.Presentation\obj\Debug\ne
 C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.Presentation\obj\Debug\net6.0\GymApi.Presentation.pdb
 C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.Presentation\obj\Debug\net6.0\GymApi.Presentation.genruntimeconfig.cache
 C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.Presentation\obj\Debug\net6.0\ref\GymApi.Presentation.dll
+C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.Presentation\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
