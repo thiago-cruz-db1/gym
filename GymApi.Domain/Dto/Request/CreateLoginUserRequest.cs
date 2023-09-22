@@ -15,7 +15,7 @@ public class CreateLoginUserRequest
     public string PasswordConfirmation { get; set; }
     public DateTime? CreateAt { get; set; } = DateTime.Now;
     [Required]
-    public string DateBirth { get; set; }
+    public DateTime DateBirth { get; set; }
     [Required]
     public string Address { get; set; }
     [Required]

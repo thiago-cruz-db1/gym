@@ -7,9 +7,12 @@ public class AgeAuth : AuthorizationHandler<MinAge>
 {
     protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, MinAge requirement)
     {
-        var dateBirthClaim = context.User.FindFirst(claim => claim.Type == ClaimTypes.DateOfBirth);
-        if (dateBirthClaim is null) return Task.CompletedTask;
+        var dateBirthClaim = context
+            .User.FindFirst(claim =>
+                claim.Type == ClaimTypes.DateOfBirth);
 
+        if (dateBirthClaim is null) return Task.CompletedTask;
+        
         var dateBirth = Convert.ToDateTime(dateBirthClaim.Value);
 
         var ageUser = DateTime.Today.Year - dateBirth.Year;

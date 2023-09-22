@@ -1,11 +1,14 @@
+using System.Text;
 using GymApi.Data.Data;
 using GymApi.Domain;
 using GymApi.UseCases;
 using GymApi.UseCases.AuthorizationPolicyUseCase;
 using GymApi.UseCases.UserUseCase;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using CreateUserUseCase = GymApi.UseCases.CreateUserUseCase;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -32,6 +35,22 @@ builder.Services.AddAuthorization(opt =>
     });
 });
 
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey =
+            new SymmetricSecurityKey(Encoding.UTF8.GetBytes("ahldhakhskajgbskabksjbas5461674651")),
+        ValidateAudience = false,
+        ValidateIssuer = false,
+        ClockSkew = TimeSpan.Zero
+    };
+});
+
 builder.Services.AddSingleton<IAuthorizationHandler, AgeAuth>();
 
 builder.Services.AddControllers();
@@ -54,6 +73,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

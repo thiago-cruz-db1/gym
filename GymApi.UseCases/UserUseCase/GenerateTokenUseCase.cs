@@ -12,15 +12,16 @@ public class GenerateTokenUseCase
     {
         Claim[] claims = new Claim[]
         {
+            new Claim("username", user.UserName),
             new Claim("id", user.Id),
+            new Claim(ClaimTypes.DateOfBirth, user.DateBirth.ToString()),
             new Claim(ClaimTypes.Email, user.Email),
-            new Claim(ClaimTypes.DateOfBirth, user.DateBirth),
             new Claim("loginTimeStamp", DateTime.UtcNow.ToString())
         };
-        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("bjklsbjlf84165jbsjkfbksbj!@#$FFAEA|ERW"));
+        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("ahldhakhskajgbskabksjbas5461674651"));
         var signingCredentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
         
-        var token = new JwtSecurityToken(expires: DateTime.Now.AddMinutes(5), claims: claims, signingCredentials: signingCredentials);
+        var token = new JwtSecurityToken(expires: DateTime.Now.AddMinutes(10), claims: claims, signingCredentials: signingCredentials);
         return new JwtSecurityTokenHandler().WriteToken(token);
     }
 }
