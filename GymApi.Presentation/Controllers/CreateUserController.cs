@@ -1,5 +1,6 @@
 ﻿using GymApi.Domain.Dto.Request;
 using GymApi.UseCases;
+using GymApi.UseCases.UserUseCase;
 using Microsoft.AspNetCore.Mvc;
 using CreateUserUseCase = GymApi.UseCases.CreateUserUseCase;
 

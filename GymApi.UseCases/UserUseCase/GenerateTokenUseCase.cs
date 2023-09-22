@@ -4,7 +4,7 @@ using System.Text;
 using GymApi.Domain;
 using Microsoft.IdentityModel.Tokens;
 
-namespace GymApi.UseCases;
+namespace GymApi.UseCases.UserUseCase;
 
 public class GenerateTokenUseCase
 {

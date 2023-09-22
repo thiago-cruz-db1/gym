@@ -1,7 +1,8 @@
 using GymApi.Data.Data;
 using GymApi.Domain;
 using GymApi.UseCases;
-using GymUserApi.AuthirizationPolicy;
+using GymApi.UseCases.AuthorizationPolicyUseCase;
+using GymApi.UseCases.UserUseCase;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using CreateUserUseCase = GymApi.UseCases.CreateUserUseCase;
@@ -12,7 +13,7 @@ var conn = builder.Configuration.GetConnectionString("MysqlConn");
 // Add services to the container.
 builder.Services.AddDbContext<GymDbContext>(opts =>
 {
-    opts.UseMySql(builder.Configuration.GetConnectionString(conn), ServerVersion.AutoDetect(conn));
+    opts.UseMySql(conn, ServerVersion.AutoDetect(conn));
 });
 
 //config identity

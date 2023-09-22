@@ -10,16 +10,13 @@ namespace GymApi.Data.Data
         public GymDbContext(DbContextOptions options) : base (options) { }
         public DbSet<Plan> Plans { get; set; }
         public DbSet<User> Users { get; set; }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            base.OnConfiguring(optionsBuilder);
-        }
-
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new PlanConfig());
             modelBuilder.ApplyConfiguration(new UserConfig());
+            
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

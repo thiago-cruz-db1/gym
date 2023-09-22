@@ -1,5 +1,6 @@
 ﻿using GymApi.Domain;
 using GymApi.Domain.Dto.Request;
+using GymApi.UseCases.UserUseCase;
 using Microsoft.AspNetCore.Identity;
 
 namespace GymApi.UseCases;
