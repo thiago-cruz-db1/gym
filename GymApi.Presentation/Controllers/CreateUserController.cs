@@ -11,12 +11,10 @@ namespace GymUserApi.Controllers
     public class CreateUserController : ControllerBase
     {
         private readonly CreateUserUseCase _createUserUseCase;
-
-
+        
         public CreateUserController(CreateUserUseCase useCaseUseCase, GenerateTokenUseCase generateTokenUseCase)
         {
             _createUserUseCase = useCaseUseCase;
-
         }
     
         [HttpPost]

@@ -4,6 +4,7 @@ namespace GymApi.Domain;
 
 public class User : IdentityUser
 {
-    public DateTime DetailCompleted { get; set; }
+    public string DateBirth { get; set; }
+    public string Address { get; set; }
     public User() : base() {}
 }

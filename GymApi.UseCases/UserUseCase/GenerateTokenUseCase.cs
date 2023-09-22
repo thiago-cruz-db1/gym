@@ -14,6 +14,7 @@ public class GenerateTokenUseCase
         {
             new Claim("id", user.Id),
             new Claim(ClaimTypes.Email, user.Email),
+            new Claim(ClaimTypes.DateOfBirth, user.DateBirth),
             new Claim("loginTimeStamp", DateTime.UtcNow.ToString())
         };
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("bjklsbjlf84165jbsjkfbksbj!@#$FFAEA|ERW"));

@@ -3,6 +3,7 @@ using GymApi.Domain;
 using GymApi.UseCases;
 using GymApi.UseCases.AuthorizationPolicyUseCase;
 using GymApi.UseCases.UserUseCase;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using CreateUserUseCase = GymApi.UseCases.CreateUserUseCase;
@@ -27,9 +28,11 @@ builder.Services.AddAuthorization(opt =>
 {
     opt.AddPolicy("MinAge", policy =>
     {
-        policy.AddRequirements(new MinAge(18));
+        policy.AddRequirements(new MinAge(12));
     });
 });
+
+builder.Services.AddSingleton<IAuthorizationHandler, AgeAuth>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

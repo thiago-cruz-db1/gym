@@ -8,7 +8,7 @@ namespace GymUserApi.Controllers;
 public class AccessUserController : ControllerBase
 {
     [HttpGet]
-    [Authorize(Policy = "MinAge")] //preciso definir minha policy de acesso
+    [Authorize(Policy = "MinAge")]
     public IActionResult IsValid()
     {
         return Ok("user valid!");
