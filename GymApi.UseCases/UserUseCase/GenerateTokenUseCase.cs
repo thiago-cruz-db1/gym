@@ -13,7 +13,8 @@ public class GenerateTokenUseCase
         Claim[] claims = new Claim[]
         {
             new Claim("id", user.Id),
-            new Claim("email", user.Email),
+            new Claim(ClaimTypes.Email, user.Email),
+            new Claim("loginTimeStamp", DateTime.UtcNow.ToString())
         };
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("bjklsbjlf84165jbsjkfbksbj!@#$FFAEA|ERW"));
         var signingCredentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);

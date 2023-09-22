@@ -17,9 +17,9 @@ public class LoginUserUseCase
     }
     public async Task<string> Login(LoginUserRequest loginDto)
     {
-        var result = await _signInManager.PasswordSignInAsync(loginDto.Email, loginDto.Password, false, false);
+        var result = await _signInManager.PasswordSignInAsync(loginDto.UserName, loginDto.Password, false, false);
         if (!result.Succeeded) throw new ApplicationException("User not auth");
-        var user = _signInManager.UserManager.Users.FirstOrDefault(user => user.NormalizedUserName == loginDto.Email);
+        var user = _signInManager.UserManager.Users.FirstOrDefault(user => user.NormalizedUserName == loginDto.UserName);
         if (user != null)
         {
             var token = _generateTokenUseCase.Create(user);
