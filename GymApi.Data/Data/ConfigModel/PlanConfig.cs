@@ -30,12 +30,13 @@ namespace GymApi.Data.Data.ConfigModel
             builder
                 .Property<DateTime>("create_at")
                 .HasColumnType("datetime")
+                .HasDefaultValueSql("CURRENT_TIMESTAMP")
                 .IsRequired();
 
             builder
                 .Property(a => a.TotalMonths)
                 .HasColumnName("plan_duration")
-                .HasColumnType("double")
+                .HasColumnType("integer")
                 .IsRequired();
         }
     }

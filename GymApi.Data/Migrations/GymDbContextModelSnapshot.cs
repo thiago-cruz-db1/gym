@@ -19,6 +19,31 @@ namespace GymApi.Data.Migrations
                 .HasAnnotation("ProductVersion", "6.0.22")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
+            modelBuilder.Entity("GymApi.Domain.PersonalTrainer", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)")
+                        .HasColumnName("personal_trainer_id");
+
+                    b.Property<int>("Age")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("longtext")
+                        .HasColumnName("personal_trainer_name");
+
+                    b.Property<DateTime>("create_at")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime")
+                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("personal_trainer", (string)null);
+                });
+
             modelBuilder.Entity("GymApi.Domain.Plan", b =>
                 {
                     b.Property<Guid>("Id")
@@ -35,16 +60,44 @@ namespace GymApi.Data.Migrations
                         .HasColumnType("varchar(45)")
                         .HasColumnName("category");
 
-                    b.Property<double>("TotalMonths")
-                        .HasColumnType("double")
+                    b.Property<int>("TotalMonths")
+                        .HasColumnType("integer")
                         .HasColumnName("plan_duration");
 
                     b.Property<DateTime>("create_at")
-                        .HasColumnType("datetime");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime")
+                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
                     b.HasKey("Id");
 
                     b.ToTable("plans", (string)null);
+                });
+
+            modelBuilder.Entity("GymApi.Domain.Product", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)")
+                        .HasColumnName("product_id");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("longtext")
+                        .HasColumnName("product_name");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("double")
+                        .HasColumnName("product_price");
+
+                    b.Property<DateTime>("create_at")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime")
+                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("products", (string)null);
                 });
 
             modelBuilder.Entity("GymApi.Domain.User", b =>
@@ -90,11 +143,17 @@ namespace GymApi.Data.Migrations
                     b.Property<string>("PasswordHash")
                         .HasColumnType("longtext");
 
+                    b.Property<Guid>("PersonalTrainerId")
+                        .HasColumnType("char(36)");
+
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("longtext");
 
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("tinyint(1)");
+
+                    b.Property<Guid>("PlanId")
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("longtext");
@@ -114,6 +173,10 @@ namespace GymApi.Data.Migrations
                     b.HasIndex("NormalizedUserName")
                         .IsUnique()
                         .HasDatabaseName("UserNameIndex");
+
+                    b.HasIndex("PersonalTrainerId");
+
+                    b.HasIndex("PlanId");
 
                     b.ToTable("AspNetUsers", (string)null);
                 });
@@ -246,6 +309,25 @@ namespace GymApi.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("GymApi.Domain.User", b =>
+                {
+                    b.HasOne("GymApi.Domain.PersonalTrainer", "PersonalTrainer")
+                        .WithMany("Users")
+                        .HasForeignKey("PersonalTrainerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("GymApi.Domain.Plan", "Plan")
+                        .WithMany("Users")
+                        .HasForeignKey("PlanId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("PersonalTrainer");
+
+                    b.Navigation("Plan");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -295,6 +377,16 @@ namespace GymApi.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("GymApi.Domain.PersonalTrainer", b =>
+                {
+                    b.Navigation("Users");
+                });
+
+            modelBuilder.Entity("GymApi.Domain.Plan", b =>
+                {
+                    b.Navigation("Users");
                 });
 #pragma warning restore 612, 618
         }

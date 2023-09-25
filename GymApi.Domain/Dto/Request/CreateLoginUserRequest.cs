@@ -20,4 +20,7 @@ public class CreateLoginUserRequest
     public string Address { get; set; }
     [Required]
     public string PhoneNumber { get; set; }
+
+    public Guid PlanId { get; set; }
+    public Guid PersonalTrainerId { get; set; }
 }
