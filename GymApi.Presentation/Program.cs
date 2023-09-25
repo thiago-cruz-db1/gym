@@ -3,22 +3,28 @@ using GymApi.Data.Data;
 using GymApi.Domain;
 using GymApi.UseCases;
 using GymApi.UseCases.AuthorizationPolicyUseCase;
+using GymApi.UseCases.Services;
 using GymApi.UseCases.UserUseCase;
+using GymUserApi.Controllers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using MongoDB.Driver;
 using CreateUserUseCase = GymApi.UseCases.CreateUserUseCase;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var conn = builder.Configuration.GetConnectionString("MysqlConn");
+var connectioMySql = builder.Configuration.GetConnectionString("MysqlConn");
 // Add services to the container.
 builder.Services.AddDbContext<GymDbContext>(opts =>
 {
-    opts.UseMySql(conn, ServerVersion.AutoDetect(conn));
+    opts.UseMySql(connectioMySql, ServerVersion.AutoDetect(connectioMySql));
 });
+
+builder.Services.Configure<GymDatabaseSettings>(
+    builder.Configuration.GetSection("GymDatabase"));
 
 //config identity
 builder.Services.AddIdentity<User, IdentityRole>()
@@ -61,6 +67,10 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<LoginUserUseCase>();
 builder.Services.AddScoped<CreateUserUseCase>();
 builder.Services.AddScoped<GenerateTokenUseCase>();
+
+builder.Services.AddScoped<ContractGymService>();
+builder.Services.AddScoped<PlanService>();
+builder.Services.AddScoped<PersonalTrainerService>();
 
 var app = builder.Build();
 

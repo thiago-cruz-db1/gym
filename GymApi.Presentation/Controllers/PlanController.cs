@@ -2,6 +2,7 @@
 using GymApi.Data.Data;
 using GymApi.Domain;
 using GymApi.Domain.Dto.Request;
+using GymApi.UseCases.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GymUserApi.Controllers
@@ -10,46 +11,40 @@ namespace GymUserApi.Controllers
     [Route("[controller]")]
     public class PlanController : ControllerBase
     {
-        private GymDbContext _context;
-        private IMapper _mapper;
+        private readonly PlanService _planService;
 
-        public PlanController(GymDbContext context, IMapper mapper)
+        public PlanController(PlanService planService)
         {
-            _context = context;
-            _mapper = mapper;
+            _planService = planService;
         }
 
         [HttpPost]
         public IActionResult AddPlan([FromBody] AddPlanRequest planDto)
         {
-            Plan plan = _mapper.Map<Plan>(planDto);
-            _context.Plans.Add(plan);
-            _context.SaveChanges();
+            var plan = _planService.AddPlan(planDto);
             return Ok(plan);
         }
 
         [HttpGet]
         public IActionResult GetPlans()
         {
-            return Ok(_context.Plans.ToList());
+            var plans = _planService.GetPlans();
+            return Ok(plans);
         }
 
         [HttpGet("{id}")]
         public IActionResult GetPlanById(Guid id)
         {
-            var plan = _context.Plans.FirstOrDefault(plan => plan.Id == id);
-            if(plan == null) return NotFound();
+            var plan = _planService.GetPlanById(id);
+            if (plan == null!) return NotFound();
             return Ok(plan);
         }
 
         [HttpDelete("{id}")]
         public IActionResult DeletePlanById(Guid id)
         {
-            var plan = _context.Plans.FirstOrDefault(plan => plan.Id == id);
-            if (plan == null) return NotFound();
-
-            _context.Remove(plan);
-            _context.SaveChanges();
+            var plan = _planService.DeletePlanById(id);
+            if (plan == null!) return NotFound();
             return Ok(plan);
         }
     }

@@ -87,3 +87,17 @@ C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.Presentation\bin\Debug\ne
 C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.Presentation\bin\Debug\net6.0\Microsoft.AspNetCore.Metadata.dll
 C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.Presentation\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
 C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.Presentation\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.Presentation\bin\Debug\net6.0\AWSSDK.Core.dll
+C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.Presentation\bin\Debug\net6.0\AWSSDK.SecurityToken.dll
+C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.Presentation\bin\Debug\net6.0\DnsClient.dll
+C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.Presentation\bin\Debug\net6.0\MongoDB.Bson.dll
+C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.Presentation\bin\Debug\net6.0\MongoDB.Driver.dll
+C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.Presentation\bin\Debug\net6.0\MongoDB.Driver.Core.dll
+C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.Presentation\bin\Debug\net6.0\MongoDB.Entities.dll
+C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.Presentation\bin\Debug\net6.0\MongoDB.Libmongocrypt.dll
+C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.Presentation\bin\Debug\net6.0\SharpCompress.dll
+C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.Presentation\bin\Debug\net6.0\Snappier.dll
+C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.Presentation\bin\Debug\net6.0\ZstdSharp.dll
+C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.Presentation\bin\Debug\net6.0\runtimes\linux\native\libmongocrypt.so
+C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.Presentation\bin\Debug\net6.0\runtimes\osx\native\libmongocrypt.dylib
+C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.Presentation\bin\Debug\net6.0\runtimes\win\native\mongocrypt.dll

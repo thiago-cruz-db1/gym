@@ -78,6 +78,14 @@
               "target": "Package",
               "version": "[6.0.0, )"
             },
+            "MongoDB.Driver": {
+              "target": "Package",
+              "version": "[2.21.0, )"
+            },
+            "MongoDB.Entities": {
+              "target": "Package",
+              "version": "[22.1.0, )"
+            },
             "Pomelo.EntityFrameworkCore.MySql": {
               "target": "Package",
               "version": "[6.0.2, )"
@@ -168,6 +176,10 @@
             "Microsoft.Extensions.Identity.Stores": {
               "target": "Package",
               "version": "[6.0.22, )"
+            },
+            "MongoDB.Bson": {
+              "target": "Package",
+              "version": "[2.21.0, )"
             }
           },
           "imports": [
@@ -283,6 +295,10 @@
               "target": "Package",
               "version": "[6.0.22, )"
             },
+            "MongoDB.Bson": {
+              "target": "Package",
+              "version": "[2.21.0, )"
+            },
             "Pomelo.EntityFrameworkCore.MySql": {
               "target": "Package",
               "version": "[6.0.2, )"
@@ -362,6 +378,9 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
+              "C:\\Users\\thiago.cruz\\Documents\\Proj\\Pessoal\\Gym\\GymApi.Data\\GymApi.Data.csproj": {
+                "projectPath": "C:\\Users\\thiago.cruz\\Documents\\Proj\\Pessoal\\Gym\\GymApi.Data\\GymApi.Data.csproj"
+              },
               "C:\\Users\\thiago.cruz\\Documents\\Proj\\Pessoal\\Gym\\GymApi.Domain\\GymApi.Domain.csproj": {
                 "projectPath": "C:\\Users\\thiago.cruz\\Documents\\Proj\\Pessoal\\Gym\\GymApi.Domain\\GymApi.Domain.csproj"
               }
@@ -392,6 +411,10 @@
             "Microsoft.AspNetCore.Identity": {
               "target": "Package",
               "version": "[2.2.0, )"
+            },
+            "MongoDB.Driver": {
+              "target": "Package",
+              "version": "[2.21.0, )"
             },
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",

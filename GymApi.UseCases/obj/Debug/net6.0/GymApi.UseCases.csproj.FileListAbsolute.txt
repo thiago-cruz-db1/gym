@@ -14,3 +14,5 @@ C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.UseCases\obj\Debug\net6.0
 C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.UseCases\bin\Debug\net6.0\GymApi.Domain.dll
 C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.UseCases\bin\Debug\net6.0\GymApi.Domain.pdb
 C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.UseCases\obj\Debug\net6.0\GymApi.UseCases.csproj.CopyComplete
+C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.UseCases\bin\Debug\net6.0\GymApi.Data.dll
+C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.UseCases\bin\Debug\net6.0\GymApi.Data.pdb

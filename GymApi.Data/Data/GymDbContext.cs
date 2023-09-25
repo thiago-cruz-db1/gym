@@ -10,7 +10,7 @@ namespace GymApi.Data.Data
         public GymDbContext(DbContextOptions options) : base (options) { }
         public DbSet<Plan> Plans { get; set; }
         public DbSet<User> Users { get; set; }
-        public DbSet<PersonalTrainer> PesonalTrainers { get; set; }
+        public DbSet<PersonalTrainer> PersonalTrainers { get; set; }
         public DbSet<Product> Products { get; set; }
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
