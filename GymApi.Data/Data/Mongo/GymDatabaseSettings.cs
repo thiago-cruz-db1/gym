@@ -1,4 +1,4 @@
-﻿namespace GymApi.Data.Data;
+﻿namespace GymApi.Data.Data.Mongo;
 
 public class GymDatabaseSettings
 {

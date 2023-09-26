@@ -1,4 +1,5 @@
 ﻿using GymApi.Data.Data;
+using GymApi.Data.Data.Mongo;
 using GymApi.Domain;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;

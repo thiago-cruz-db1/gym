@@ -3,7 +3,7 @@ using GymApi.Domain;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace GymApi.Data.Data
+namespace GymApi.Data.Data.MySql
 {
     public class GymDbContext : IdentityDbContext<User>
     {

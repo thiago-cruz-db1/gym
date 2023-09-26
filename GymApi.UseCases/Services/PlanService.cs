@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
-using GymApi.Data.Data;
+using GymApi.Data;
+using GymApi.Data.Data.Interfaces;
+using GymApi.Data.Data.MySql;
 using GymApi.Domain;
 using GymApi.Domain.Dto.Request;
 
@@ -7,40 +9,35 @@ namespace GymApi.UseCases.Services;
 
 public class PlanService
 {
-    private readonly GymDbContext _context;
     private readonly IMapper _mapper;
+    private readonly IPlanRepository _contextPlan;
 
-    public PlanService(GymDbContext context, IMapper mapper)
+    public PlanService(IPlanRepository contextPlan, IMapper mapper)
     {
-        _context = context;
+        _contextPlan = contextPlan;
         _mapper = mapper;
     }
 
     public Plan AddPlan(AddPlanRequest planDto)
     {
         var plan = _mapper.Map<Plan>(planDto);
-        _context.Plans.Add(plan);
-        _context.SaveChanges();
+        _contextPlan.Save(plan);
         return plan;
     }
 
-    public List<Plan> GetPlans()
+    public async Task<ICollection<Plan>> GetPlans()
     {
-        return _context.Plans.ToList();
+        return await _contextPlan.FindAll();
     }
 
-    public Plan GetPlanById(Guid id)
+    public async Task<Plan> GetPlanById(Guid id)
     {
-        return _context.Plans.FirstOrDefault(plan => plan.Id == id);
+        return await _contextPlan.FindById(id);
     }
 
-    public Plan DeletePlanById(Guid id)
+    public async void DeletePlanById(Guid id)
     {
-        var plan = _context.Plans.FirstOrDefault(plan => plan.Id == id);
-        if (plan == null) return null;
-
-        _context.Remove(plan);
-        _context.SaveChanges();
-        return plan;
+        var plan = await _contextPlan.FindById(id);
+        _contextPlan.Delete(plan);
     }
 }

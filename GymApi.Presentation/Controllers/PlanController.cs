@@ -1,7 +1,4 @@
-﻿using AutoMapper;
-using GymApi.Data.Data;
-using GymApi.Domain;
-using GymApi.Domain.Dto.Request;
+﻿using GymApi.Domain.Dto.Request;
 using GymApi.UseCases.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -43,9 +40,8 @@ namespace GymUserApi.Controllers
         [HttpDelete("{id}")]
         public IActionResult DeletePlanById(Guid id)
         {
-            var plan = _planService.DeletePlanById(id);
-            if (plan == null!) return NotFound();
-            return Ok(plan);
+            _planService.DeletePlanById(id);
+            return NoContent();
         }
     }
 }

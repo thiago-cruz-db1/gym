@@ -1,7 +1,5 @@
-﻿using AutoMapper;
-using GymApi.Data.Data;
-using GymApi.Domain;
-using GymApi.Domain.Dto.Request;
+﻿using GymApi.Domain.Dto.Request;
+using GymApi.UseCases.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GymUserApi.Controllers;
@@ -10,46 +8,36 @@ namespace GymUserApi.Controllers;
 [Route("[controller]")]
 public class ProductsController : ControllerBase
 {
-    private readonly GymDbContext _context;
-    private readonly IMapper _mapper;
-
-    public ProductsController(GymDbContext context, IMapper mapper)
+    private readonly ProductsService _productsService;
+    public ProductsController(ProductsService productsService)
     {
-        _context = context;
-        _mapper = mapper;
+        _productsService = productsService;
     }
 
     [HttpPost]
     public IActionResult AddProduct([FromBody] AddProductRequest productDto)
     {
-        Product product = _mapper.Map<Product>(productDto);
-        _context.Products.Add(product);
-        _context.SaveChanges();
+        var product = _productsService.AddProduct(productDto);
         return Ok(product);
     }
 
     [HttpGet]
     public IActionResult GetProducts()
     {
-        return Ok(_context.Products.ToList());
+        return Ok(_productsService.GetProducts());
     }
 
     [HttpGet("{id}")]
     public IActionResult GetProductById(Guid id)
     {
-        var product = _context.Products.FirstOrDefault(product => product.Id == id);
-        if(product == null) return NotFound();
+        var product = _productsService.GetProductById(id);
         return Ok(product);
     }
 
     [HttpDelete("{id}")]
     public IActionResult DeleteProductById(Guid id)
     {
-        var product = _context.Products.FirstOrDefault(product => product.Id == id);
-        if (product == null) return NotFound();
-
-        _context.Remove(product);
-        _context.SaveChanges();
-        return Ok(product);
+        _productsService.DeleteProductById(id);
+        return NoContent();
     }
 }

@@ -1,5 +1,9 @@
 using System.Text;
 using GymApi.Data.Data;
+using GymApi.Data.Data.Interfaces;
+using GymApi.Data.Data.Mongo;
+using GymApi.Data.Data.MySql;
+using GymApi.Data.Data.PlanRepository;
 using GymApi.Domain;
 using GymApi.UseCases;
 using GymApi.UseCases.AuthorizationPolicyUseCase;
@@ -70,6 +74,10 @@ builder.Services.AddScoped<GenerateTokenUseCase>();
 builder.Services.AddScoped<ContractGymService>();
 builder.Services.AddScoped<PlanService>();
 builder.Services.AddScoped<PersonalTrainerService>();
+
+builder.Services.AddScoped<IPlanRepository, PlanRepository>();
+builder.Services.AddScoped<IProductsRepository, ProductsRepository>();
+builder.Services.AddScoped<IPersonalTrainerRepository, PersonalTrainerRepository>();
 
 var app = builder.Build();
 

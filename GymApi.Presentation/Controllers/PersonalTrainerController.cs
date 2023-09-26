@@ -42,9 +42,8 @@ public class PersonalTrainerController : ControllerBase
 
     [HttpDelete("{id}")]
     public IActionResult DeletePersonalTrainerById(Guid id)
-    {
-        var personalTrainer = _personalTrainerService.DeletePersonalTrainerById(id);
-        if (personalTrainer == null!) return NotFound();
-        return Ok(personalTrainer);
+    { 
+        _personalTrainerService.DeletePersonalTrainerById(id);
+        return NoContent();
     }
 }
