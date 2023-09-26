@@ -12,7 +12,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using MongoDB.Driver;
-using CreateUserUseCase = GymApi.UseCases.CreateUserUseCase;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -65,7 +64,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<LoginUserUseCase>();
-builder.Services.AddScoped<CreateUserUseCase>();
+builder.Services.AddScoped<CreateUserService>();
 builder.Services.AddScoped<GenerateTokenUseCase>();
 
 builder.Services.AddScoped<ContractGymService>();
