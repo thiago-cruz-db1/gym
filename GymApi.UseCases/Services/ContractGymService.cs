@@ -1,4 +1,4 @@
-﻿using GymApi.Data.Data;
+﻿using GymApi.Data.Data.Interfaces;
 using GymApi.Data.Data.Mongo;
 using GymApi.Domain;
 using Microsoft.Extensions.Options;
@@ -8,33 +8,28 @@ namespace GymApi.UseCases.Services;
 
 public class ContractGymService
 {
-    private readonly IMongoCollection<Contract> _gymsCollection;
+    private readonly IContractRepositorySql _contractRepositorySql;
 
     public ContractGymService(
-        IOptions<GymDatabaseSettings> gymDatabaseSettings)
+        IContractRepositorySql contractRepositorySql)
     {
-        var mongoClient = new MongoClient(
-            gymDatabaseSettings.Value.ConnectionString);
-
-        var mongoDatabase = mongoClient.GetDatabase(
-            gymDatabaseSettings.Value.DatabaseName);
-
-        _gymsCollection = mongoDatabase.GetCollection<Contract>(
-            gymDatabaseSettings.Value.GymCollectionName);
+        _contractRepositorySql = contractRepositorySql;
     }
 
     public async Task<List<Contract>> GetAsync() =>
-        await _gymsCollection.Find(_ => true).ToListAsync();
+        await _contractRepositorySql.FindAll();
 
     public async Task<Contract?> GetAsync(string id) =>
-        await _gymsCollection.Find(x => x.ContractId == id).FirstOrDefaultAsync();
+        await _contractRepositorySql.FindById(id);
 
     public async Task CreateAsync(Contract newContract) =>
-        await _gymsCollection.InsertOneAsync(newContract);
+        await _contractRepositorySql.Save(newContract);
 
     public async Task UpdateAsync(string id, Contract updatedContract) =>
-        await _gymsCollection.ReplaceOneAsync(x => x.ContractId == id, updatedContract);
+        await _contractRepositorySql.Update(id, updatedContract);
 
-    public async Task RemoveAsync(string id) =>
-        await _gymsCollection.DeleteOneAsync(x => x.ContractId == id);
+    public async Task RemoveAsync(string id) {
+        var contract = await _contractRepositorySql.FindById(id);
+        _contractRepositorySql.Delete(id, contract);
+    }
 }

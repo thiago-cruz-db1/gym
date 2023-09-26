@@ -10,9 +10,9 @@ namespace GymApi.UseCases.Services;
 public class PlanService
 {
     private readonly IMapper _mapper;
-    private readonly IPlanRepository _contextPlan;
+    private readonly IPlanRepositorySql _contextPlan;
 
-    public PlanService(IPlanRepository contextPlan, IMapper mapper)
+    public PlanService(IPlanRepositorySql contextPlan, IMapper mapper)
     {
         _contextPlan = contextPlan;
         _mapper = mapper;

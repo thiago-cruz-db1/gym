@@ -10,9 +10,9 @@ namespace GymApi.UseCases.Services;
 public class PersonalTrainerService
 {
     private readonly IMapper _mapper;
-    private readonly IPersonalTrainerRepository _personalTrainerContext;
+    private readonly IPersonalTrainerRepositorySql _personalTrainerContext;
 
-    public PersonalTrainerService(IPersonalTrainerRepository personalTrainerContext, IMapper mapper)
+    public PersonalTrainerService(IPersonalTrainerRepositorySql personalTrainerContext, IMapper mapper)
     {
         _personalTrainerContext = personalTrainerContext;
         _mapper = mapper;
@@ -25,9 +25,9 @@ public class PersonalTrainerService
         return personalTrainer;
     }
 
-    public Task<ICollection<PersonalTrainer>> GetPersonalTrainers()
+    public async  Task<ICollection<PersonalTrainer>> GetPersonalTrainers()
     {
-        return _personalTrainerContext.FindAll();
+        return await _personalTrainerContext.FindAll();
     }
 
     public Task<PersonalTrainer> GetPersonalTrainerById(Guid id)

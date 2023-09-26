@@ -75,9 +75,10 @@ builder.Services.AddScoped<ContractGymService>();
 builder.Services.AddScoped<PlanService>();
 builder.Services.AddScoped<PersonalTrainerService>();
 
-builder.Services.AddScoped<IPlanRepository, PlanRepository>();
-builder.Services.AddScoped<IProductsRepository, ProductsRepository>();
-builder.Services.AddScoped<IPersonalTrainerRepository, PersonalTrainerRepository>();
+builder.Services.AddScoped<IPlanRepositorySql, PlanRepositorySql>();
+builder.Services.AddScoped<IProductsRepositorySql, ProductsRepositorySql>();
+builder.Services.AddScoped<IPersonalTrainerRepositorySql, PersonalTrainerRepositorySql>();
+builder.Services.AddScoped<IContractRepositorySql, ContractRepositorySql>();
 
 var app = builder.Build();
 

@@ -8,9 +8,9 @@ namespace GymApi.UseCases.Services;
 public class ProductsService
 {
     private readonly IMapper _mapper;
-    public readonly IProductsRepository _contextProducts;
+    public readonly IProductsRepositorySql _contextProducts;
 
-    public ProductsService(IProductsRepository contextProducts,IMapper mapper)
+    public ProductsService(IProductsRepositorySql contextProducts,IMapper mapper)
     {
         _contextProducts = contextProducts;
         _mapper = mapper;

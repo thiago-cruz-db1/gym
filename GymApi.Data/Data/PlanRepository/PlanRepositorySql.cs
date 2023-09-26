@@ -5,9 +5,9 @@ using GymApi.Domain;
 
 namespace GymApi.Data.Data.PlanRepository;
 
-public class PlanRepository : BaseRepositoryAbstract<Guid, Plan>, IPlanRepository
+public class PlanRepositorySql : EntityFrameworkRepositorySqlAbstract<Guid, Plan>, IPlanRepositorySql
 {
-    public PlanRepository(GymDbContext context) : base(context)
+    public PlanRepositorySql(GymDbContext context) : base(context)
     {
     }
 }

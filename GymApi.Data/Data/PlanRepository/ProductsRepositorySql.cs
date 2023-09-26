@@ -5,9 +5,9 @@ using GymApi.Domain;
 
 namespace GymApi.Data.Data.PlanRepository;
 
-public class ProductsRepository : BaseRepositoryAbstract<Guid, Product>, IProductsRepository
+public class ProductsRepositorySql : EntityFrameworkRepositorySqlAbstract<Guid, Product>, IProductsRepositorySql
 {
-    public ProductsRepository(GymDbContext context) : base(context)
+    public ProductsRepositorySql(GymDbContext context) : base(context)
     {
     }
 }
