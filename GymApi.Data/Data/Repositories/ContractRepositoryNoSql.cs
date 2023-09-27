@@ -6,9 +6,9 @@ using Microsoft.Extensions.Options;
 
 namespace GymApi.Data.Data.PlanRepository;
 
-public class ContractRepositorySql : MongoRepositorySqlAbstract<string, Contract>, IContractRepositorySql
+public class ContractRepositoryNoSql : MongoRepositorySqlAbstract<string, Contract>, IContractRepositorySql
 {
-    public ContractRepositorySql(IOptions<GymDatabaseSettings> gymDatabaseSettings) : base(gymDatabaseSettings)
+    public ContractRepositoryNoSql(IOptions<GymDatabaseSettings> gymDatabaseSettings) : base(gymDatabaseSettings)
     {
     }
 }

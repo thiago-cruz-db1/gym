@@ -34,6 +34,13 @@ public class PlanService
     {
         return await _contextPlan.FindById(id);
     }
+    
+    public async Task<Plan> UpdatePlanById(Guid id)
+    {
+        var plan = await _contextPlan.FindById(id);
+        await _contextPlan.Update(plan);
+        return plan;
+    }
 
     public async void DeletePlanById(Guid id)
     {

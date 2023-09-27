@@ -34,6 +34,13 @@ public class PersonalTrainerService
     {
         return _personalTrainerContext.FindById(id);
     }
+    
+    public async Task<PersonalTrainer> UpdatePernalById(Guid id)
+    {
+        var personal = await _personalTrainerContext.FindById(id);
+        await _personalTrainerContext.Update(personal);
+        return personal;
+    }
 
     public async void DeletePersonalTrainerById(Guid id)
     {

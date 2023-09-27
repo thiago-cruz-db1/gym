@@ -10,5 +10,7 @@ public class User : IdentityUser
     public Plan Plan { get; set; }
     public Guid PersonalTrainerId { get; set; }
     public PersonalTrainer PersonalTrainer { get; set; }
+    
+    public ICollection<UserTraining> UserTrainings { get; set; }
     public User() : base() {}
 }

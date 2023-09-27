@@ -8,7 +8,7 @@ namespace GymApi.UseCases.Services;
 public class ProductsService
 {
     private readonly IMapper _mapper;
-    public readonly IProductsRepositorySql _contextProducts;
+    private readonly IProductsRepositorySql _contextProducts;
 
     public ProductsService(IProductsRepositorySql contextProducts,IMapper mapper)
     {
@@ -31,10 +31,17 @@ public class ProductsService
     {
         return await _contextProducts.FindById(id);
     }
+    
+    public async Task<Product> UpdateProductById(Guid id)
+    {
+        var product = await _contextProducts.FindById(id);
+        await _contextProducts.Update(product);
+        return product;
+    }
 
     public async void DeleteProductById(Guid id)
     {
-        var plan = await _contextProducts.FindById(id);
-        _contextProducts.Delete(plan);
+        var product = await _contextProducts.FindById(id);
+        _contextProducts.Delete(product);
     }
 }

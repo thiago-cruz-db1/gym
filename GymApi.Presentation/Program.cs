@@ -4,6 +4,7 @@ using GymApi.Data.Data.Interfaces;
 using GymApi.Data.Data.Mongo;
 using GymApi.Data.Data.MySql;
 using GymApi.Data.Data.PlanRepository;
+using GymApi.Data.Data.Repositories;
 using GymApi.Domain;
 using GymApi.UseCases;
 using GymApi.UseCases.AuthorizationPolicyUseCase;
@@ -68,17 +69,18 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<LoginUserUseCase>();
-builder.Services.AddScoped<CreateUserService>();
 builder.Services.AddScoped<GenerateTokenUseCase>();
-
+builder.Services.AddScoped<CreateUserService>();
 builder.Services.AddScoped<ContractGymService>();
 builder.Services.AddScoped<PlanService>();
 builder.Services.AddScoped<PersonalTrainerService>();
+builder.Services.AddScoped<TrainingService>();
 
 builder.Services.AddScoped<IPlanRepositorySql, PlanRepositorySql>();
 builder.Services.AddScoped<IProductsRepositorySql, ProductsRepositorySql>();
 builder.Services.AddScoped<IPersonalTrainerRepositorySql, PersonalTrainerRepositorySql>();
-builder.Services.AddScoped<IContractRepositorySql, ContractRepositorySql>();
+builder.Services.AddScoped<IContractRepositorySql, ContractRepositoryNoSql>();
+builder.Services.AddScoped<ITrainingRepositorySql, TrainingRepositorySql>();
 
 var app = builder.Build();
 

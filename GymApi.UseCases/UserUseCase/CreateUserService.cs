@@ -19,7 +19,6 @@ public class CreateUserService
     public async Task Create(CreateLoginUserRequest createLoginDto)
     {
         User user = _mapper.Map<User>(createLoginDto);
-        //creating user
         IdentityResult created = await _userManager.CreateAsync(user, createLoginDto.Password);
         if (!created.Succeeded) throw new ApplicationException("Error on create user");
     }

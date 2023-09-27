@@ -18,30 +18,74 @@ namespace GymUserApi.Controllers
         [HttpPost]
         public IActionResult AddPlan([FromBody] AddPlanRequest planDto)
         {
-            var plan = _planService.AddPlan(planDto);
-            return Ok(plan);
+            try
+            {
+                var plan = _planService.AddPlan(planDto);
+                return Ok(plan);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("error on create plan", e);
+            }
         }
 
         [HttpGet]
         public IActionResult GetPlans()
         {
-            var plans = _planService.GetPlans();
-            return Ok(plans);
+            try
+            {
+                var plans = _planService.GetPlans();
+                return Ok(plans);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("error on get plan", e);
+            }
+
         }
 
         [HttpGet("{id}")]
         public IActionResult GetPlanById(Guid id)
         {
-            var plan = _planService.GetPlanById(id);
-            if (plan == null!) return NotFound();
-            return Ok(plan);
+            try
+            {
+                var plan = _planService.GetPlanById(id);
+                if (plan == null!) return NotFound();
+                return Ok(plan);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("error on get plan", e);
+            }
+
+        }
+        
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdatePlanById(Guid id)
+        {
+            try
+            {
+                var plan = await _planService.UpdatePlanById(id);
+                return Ok(plan);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("error on update plan", e);
+            }
         }
 
         [HttpDelete("{id}")]
         public IActionResult DeletePlanById(Guid id)
         {
-            _planService.DeletePlanById(id);
-            return NoContent();
+            try
+            {
+                _planService.DeletePlanById(id);
+                return NoContent();
+            }
+            catch (Exception e)
+            {
+                throw new Exception("error on delete plan", e);
+            }
         }
     }
 }
