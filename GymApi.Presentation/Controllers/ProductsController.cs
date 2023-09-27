@@ -15,7 +15,7 @@ public class ProductsController : ControllerBase
     }
 
     [HttpPost]
-    public IActionResult AddProduct([FromBody] AddProductRequest productDto)
+    public IActionResult AddProduct([FromBody] CreateProductRequest productDto)
     {
         try
         {

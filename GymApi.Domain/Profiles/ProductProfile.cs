@@ -7,6 +7,6 @@ public class ProductProfile : Profile
 {
     public ProductProfile()
     {
-        CreateMap<AddPersonalTrainerRequest, PersonalTrainer>();
+        CreateMap<CreatePersonalTrainerRequest, PersonalTrainer>();
     }
 }

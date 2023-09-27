@@ -1,6 +1,6 @@
 ﻿namespace GymApi.Domain;
 
-public class UserTraining
+public class TrainingUser
 {
     public Guid Id { get; set; }
     public ICollection<string> TrainingObservations { get; set; }

@@ -16,33 +16,8 @@ public class TrainingConfig : IEntityTypeConfiguration<Training>
             .HasColumnName("training_id");
 
         builder
-            .Property(a => a.Machine)
-            .HasColumnName("machine")
-            .HasColumnType("varchar(45)")
-            .IsRequired();
-
-        builder
-            .Property(a => a.Pause)
-            .HasColumnName("set_pause")
-            .HasColumnType("varchar(45)")
-            .IsRequired();
-        
-        builder
-            .Property(a => a.Set)
-            .HasColumnName("set_training")
-            .HasColumnType("varchar(45)")
-            .IsRequired();
-        
-        builder
-            .Property(a => a.Repetition)
-            .HasColumnName("set_repetition")
-            .HasColumnType("varchar(2)")
-            .IsRequired();
-        
-        builder
-            .Property(a => a.Technique)
-            .HasColumnName("set_techique")
-            .HasColumnType("varchar(45)")
+            .Property(a => a.Name)
+            .HasColumnType("varchar()45")
             .IsRequired();
 
         builder

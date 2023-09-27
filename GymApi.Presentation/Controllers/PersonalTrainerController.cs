@@ -19,7 +19,7 @@ public class PersonalTrainerController : ControllerBase
     }
 
     [HttpPost]
-    public IActionResult AddPersonalTrainer([FromBody] AddPersonalTrainerRequest personalTrainerDto)
+    public IActionResult AddPersonalTrainer([FromBody] CreatePersonalTrainerRequest personalTrainerDto)
     {
         try
         {

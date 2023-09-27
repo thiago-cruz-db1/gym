@@ -1,7 +1,7 @@
 ﻿namespace GymApi.Domain.Dto.Request;
 
-public class AddProductRequest
+public class CreatePersonalTrainerRequest
 {
     public string Name { get; set; }
-    public double Price { get; set; }
+    public int Age { get; set; }
 }

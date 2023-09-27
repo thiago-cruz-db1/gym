@@ -4,12 +4,12 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace GymApi.Data.Data.ConfigModel;
 
-public class UserTrainingConfig : IEntityTypeConfiguration<UserTraining>
+public class TrainingUserConfig : IEntityTypeConfiguration<TrainingUser>
 {
-    public void Configure(EntityTypeBuilder<UserTraining> builder)
+    public void Configure(EntityTypeBuilder<TrainingUser> builder)
     {
         builder
-            .ToTable("User_training");
+            .ToTable("user_training");
         
         builder
             .Property(a => a.TrainingObservations)

@@ -11,6 +11,6 @@ public class User : IdentityUser
     public Guid PersonalTrainerId { get; set; }
     public PersonalTrainer PersonalTrainer { get; set; }
     
-    public ICollection<UserTraining> UserTrainings { get; set; }
+    public ICollection<TrainingUser> UserTrainings { get; set; }
     public User() : base() {}
 }

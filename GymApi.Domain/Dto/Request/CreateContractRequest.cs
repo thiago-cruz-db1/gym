@@ -1,6 +1,6 @@
 ﻿namespace GymApi.Domain.Dto.Request;
 
-public class AddContractRequest
+public class CreateContractRequest
 {
     public string ContractId { get; set; }
     public User UserId { get; set; }

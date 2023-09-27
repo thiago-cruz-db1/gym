@@ -13,7 +13,9 @@ namespace GymApi.Data.Data.MySql
         public DbSet<PersonalTrainer> PersonalTrainers { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Training> Trainings { get; set; }
-        public DbSet<UserTraining> UserTrainings { get; set; }
+        public DbSet<Exercise> Exercices { get; set; }
+        public DbSet<TrainingUser> UserTrainings { get; set; }
+        public DbSet<ExerciseTraining> ExerciseTrainings { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new PlanConfig());
@@ -21,7 +23,9 @@ namespace GymApi.Data.Data.MySql
             modelBuilder.ApplyConfiguration(new PersonalTrainerConfig());
             modelBuilder.ApplyConfiguration(new ProductConfig());
             modelBuilder.ApplyConfiguration(new TrainingConfig());
-            modelBuilder.ApplyConfiguration(new UserTrainingConfig());
+            modelBuilder.ApplyConfiguration(new ExerciseConfig());
+            modelBuilder.ApplyConfiguration(new TrainingUserConfig());
+            modelBuilder.ApplyConfiguration(new ExerciseTrainingConfig());
             
             base.OnModelCreating(modelBuilder);
         }

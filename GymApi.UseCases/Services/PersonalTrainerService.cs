@@ -18,7 +18,7 @@ public class PersonalTrainerService
         _mapper = mapper;
     }
 
-    public PersonalTrainer AddPersonalTrainer(AddPersonalTrainerRequest personalTrainerDto)
+    public PersonalTrainer AddPersonalTrainer(CreatePersonalTrainerRequest personalTrainerDto)
     {
         var personalTrainer = _mapper.Map<PersonalTrainer>(personalTrainerDto);
         _personalTrainerContext.Save(personalTrainer);

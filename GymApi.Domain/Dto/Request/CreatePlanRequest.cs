@@ -1,6 +1,6 @@
 ﻿namespace GymApi.Domain.Dto.Request
 {
-    public class AddPlanRequest
+    public class CreatePlanRequest
     {
         public double Amount { get; set; }
         public string Category { get; set; }

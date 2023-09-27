@@ -8,7 +8,7 @@ namespace GymApi.Domain.Profiles
     {
         public PlanProfile()
         {
-            CreateMap<AddPlanRequest, Plan>();
+            CreateMap<CreatePlanRequest, Plan>();
             CreateMap<GetPlanResponse, Plan>();
         }
     }

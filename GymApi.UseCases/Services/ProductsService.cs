@@ -15,7 +15,7 @@ public class ProductsService
         _contextProducts = contextProducts;
         _mapper = mapper;
     }
-    public Product AddProduct(AddProductRequest productDto)
+    public Product AddProduct(CreateProductRequest productDto)
     {
         var product = _mapper.Map<Product>(productDto);
         _contextProducts.Save(product);

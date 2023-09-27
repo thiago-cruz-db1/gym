@@ -16,7 +16,7 @@ namespace GymUserApi.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddPlan([FromBody] AddPlanRequest planDto)
+        public IActionResult AddPlan([FromBody] CreatePlanRequest planDto)
         {
             try
             {

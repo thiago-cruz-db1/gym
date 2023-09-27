@@ -3,7 +3,7 @@ using GymApi.Domain;
 
 namespace GymApi.Data.Data.Interfaces;
 
-public interface ITrainingByUserRepositorySql : IBaseRepositorySql<Guid, UserTraining>
+public interface ITrainingByUserRepositorySql : IBaseRepositorySql<Guid, TrainingUser>
 {
     
 }

@@ -18,7 +18,7 @@ public class PlanService
         _mapper = mapper;
     }
 
-    public Plan AddPlan(AddPlanRequest planDto)
+    public Plan AddPlan(CreatePlanRequest planDto)
     {
         var plan = _mapper.Map<Plan>(planDto);
         _contextPlan.Save(plan);
