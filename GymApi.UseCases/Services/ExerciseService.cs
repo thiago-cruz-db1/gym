@@ -15,24 +15,24 @@ public class ExerciseService
         _contextExercise = contextExercise;
         _mapper = mapper;
     }
-    public ExerciseTraining AddExercise(CreateExerciseRequest trainingUserDto)
+    public Exercise AddExercise(CreateExerciseRequest trainingUserDto)
     {
-        var training = _mapper.Map<ExerciseTraining>(trainingUserDto);
+        var training = _mapper.Map<Exercise>(trainingUserDto);
         _contextExercise.Save(training);
         return training;
     }
 
-    public async Task<ICollection<ExerciseTraining>> GetExercise()
+    public async Task<ICollection<Exercise>> GetExercise()
     {
         return await _contextExercise.FindAll();
     }
 
-    public async Task<ExerciseTraining> GetExerciseById(Guid id)
+    public async Task<Exercise> GetExerciseById(Guid id)
     {
         return await _contextExercise.FindById(id);
     }
     
-    public async Task<ExerciseTraining> UpdateExercise(Guid id)
+    public async Task<Exercise> UpdateExercise(Guid id)
     {
         var training = await _contextExercise.FindById(id);
         await _contextExercise.Update(training);

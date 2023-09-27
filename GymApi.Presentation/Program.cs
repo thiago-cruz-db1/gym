@@ -77,6 +77,7 @@ builder.Services.AddScoped<PersonalTrainerService>();
 builder.Services.AddScoped<TrainingService>();
 builder.Services.AddScoped<TrainingByUserService>();
 builder.Services.AddScoped<ExerciseService>();
+builder.Services.AddScoped<ExerciseByTrainingService>();
 
 builder.Services.AddScoped<IPlanRepositorySql, PlanRepositorySql>();
 builder.Services.AddScoped<IProductsRepositorySql, ProductsRepositorySql>();
@@ -85,6 +86,7 @@ builder.Services.AddScoped<IContractRepositorySql, ContractRepositoryNoSql>();
 builder.Services.AddScoped<ITrainingRepositorySql, TrainingRepositorySql>();
 builder.Services.AddScoped<ITrainingByUserRepositorySql, TrainingByUserRepositorySql>();
 builder.Services.AddScoped<IExerciseRepositorySql, ExerciseRepositorySql>();
+builder.Services.AddScoped<IExerciseByTrainingRepositorySql, ExerciseByTrainingRepositorySql>();
 
 var app = builder.Build();
 

@@ -5,7 +5,7 @@ using GymApi.Domain;
 
 namespace GymApi.Data.Data.Repositories;
 
-public class ExerciseRepositorySql : EntityFrameworkRepositorySqlAbstract<Guid, ExerciseTraining>, IExerciseRepositorySql
+public class ExerciseRepositorySql : EntityFrameworkRepositorySqlAbstract<Guid, Exercise>, IExerciseRepositorySql
 {
     public ExerciseRepositorySql(GymDbContext context) : base(context)
     {

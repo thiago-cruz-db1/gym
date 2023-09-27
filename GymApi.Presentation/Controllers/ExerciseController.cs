@@ -6,9 +6,9 @@ namespace GymUserApi.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class ExerciseController
+public class ExerciseController : ControllerBase
 {
-    private ExerciseService _exerciseService;
+    private readonly ExerciseService _exerciseService;
 
     public ExerciseController(ExerciseService exerciseService)
     {
@@ -21,7 +21,7 @@ public class ExerciseController
         try
         {
             var training = _exerciseService.AddExercise(createExerciseByTrainingDto);
-            return new OkResult();
+            return Ok(training);
         }
         catch (Exception e)
         {
@@ -35,7 +35,7 @@ public class ExerciseController
         try
         {
             var training = await _exerciseService.GetExercise();
-            return new OkResult();
+            return Ok(training);
         }
         catch (Exception e)
         {
@@ -49,7 +49,7 @@ public class ExerciseController
         try
         {
             var training = await _exerciseService.GetExerciseById(id);
-            return new OkResult();
+            return Ok(training);
         }
         catch (Exception e)
         {
@@ -63,7 +63,7 @@ public class ExerciseController
         try
         {
             var training = await _exerciseService.UpdateExercise(id);
-            return new OkResult();
+            return Ok(training);
         }
         catch (Exception e)
         {
@@ -77,7 +77,7 @@ public class ExerciseController
         try
         {
             _exerciseService.DeleteExerciseById(id);
-            return new NoContentResult();
+            return NoContent();
         }
         catch (Exception e)
         {
