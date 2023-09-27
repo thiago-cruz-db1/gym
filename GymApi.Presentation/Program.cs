@@ -82,7 +82,7 @@ builder.Services.AddScoped<ExerciseByTrainingService>();
 builder.Services.AddScoped<IPlanRepositorySql, PlanRepositorySql>();
 builder.Services.AddScoped<IProductsRepositorySql, ProductsRepositorySql>();
 builder.Services.AddScoped<IPersonalTrainerRepositorySql, PersonalTrainerRepositorySql>();
-builder.Services.AddScoped<IContractRepositorySql, ContractRepositoryNoSql>();
+builder.Services.AddScoped<IContractRepositoryNoSql, ContractRepositoryNoNoSql>();
 builder.Services.AddScoped<ITrainingRepositorySql, TrainingRepositorySql>();
 builder.Services.AddScoped<ITrainingByUserRepositorySql, TrainingByUserRepositorySql>();
 builder.Services.AddScoped<IExerciseRepositorySql, ExerciseRepositorySql>();

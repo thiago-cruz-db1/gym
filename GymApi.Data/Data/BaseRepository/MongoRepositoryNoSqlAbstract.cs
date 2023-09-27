@@ -5,11 +5,11 @@ using MongoDB.Driver;
 
 namespace GymApi.Data.Data.BaseRepository;
 
-public abstract class MongoRepositorySqlAbstract<TId, TEntity> : IBaseRepositoryNoSql<TId, TEntity> where TEntity : class
+public abstract class MongoRepositoryNoSqlAbstract<TId, TEntity> : IBaseRepositoryNoSql<TId, TEntity> where TEntity : class
 {
     private IMongoCollection<TEntity> _gymsCollection;
 
-    public MongoRepositorySqlAbstract(IOptions<GymDatabaseSettings> gymDatabaseSettings)
+    public MongoRepositoryNoSqlAbstract(IOptions<GymDatabaseSettings> gymDatabaseSettings)
     {
         var mongoClient = new MongoClient(
             gymDatabaseSettings.Value.ConnectionString);

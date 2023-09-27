@@ -40,5 +40,12 @@ public class ExerciseConfig : IEntityTypeConfiguration<Exercise>
             .HasColumnName("set_techique")
             .HasColumnType("varchar(45)")
             .IsRequired();
+        
+        builder
+            .Property<DateTime>("create_at")
+            .HasColumnType("datetime")
+            .HasDefaultValueSql("CURRENT_TIMESTAMP")
+            .IsRequired();
+
     }
 }

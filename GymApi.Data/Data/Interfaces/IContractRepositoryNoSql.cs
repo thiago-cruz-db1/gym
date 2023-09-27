@@ -3,7 +3,7 @@ using GymApi.Domain;
 
 namespace GymApi.Data.Data.Interfaces;
 
-public interface IContractRepositorySql : IBaseRepositoryNoSql<string, Contract>
+public interface IContractRepositoryNoSql : IBaseRepositoryNoSql<string, Contract>
 {
     
 }

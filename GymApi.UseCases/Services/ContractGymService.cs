@@ -8,28 +8,28 @@ namespace GymApi.UseCases.Services;
 
 public class ContractGymService
 {
-    private readonly IContractRepositorySql _contractRepositorySql;
+    private readonly IContractRepositoryNoSql _contractRepositoryNoSql;
 
     public ContractGymService(
-        IContractRepositorySql contractRepositorySql)
+        IContractRepositoryNoSql contractRepositoryNoSql)
     {
-        _contractRepositorySql = contractRepositorySql;
+        _contractRepositoryNoSql = contractRepositoryNoSql;
     }
 
     public async Task<List<Contract>> GetAsync() =>
-        await _contractRepositorySql.FindAll();
+        await _contractRepositoryNoSql.FindAll();
 
     public async Task<Contract?> GetAsync(string id) =>
-        await _contractRepositorySql.FindById(id);
+        await _contractRepositoryNoSql.FindById(id);
 
     public async Task CreateAsync(Contract newContract) =>
-        await _contractRepositorySql.Save(newContract);
+        await _contractRepositoryNoSql.Save(newContract);
 
     public async Task UpdateAsync(string id, Contract updatedContract) =>
-        await _contractRepositorySql.Update(id, updatedContract);
+        await _contractRepositoryNoSql.Update(id, updatedContract);
 
     public async Task RemoveAsync(string id) {
-        var contract = await _contractRepositorySql.FindById(id);
-        _contractRepositorySql.Delete(id, contract);
+        var contract = await _contractRepositoryNoSql.FindById(id);
+        _contractRepositoryNoSql.Delete(id, contract);
     }
 }
