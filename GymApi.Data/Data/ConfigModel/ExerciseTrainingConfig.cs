@@ -12,7 +12,7 @@ public class ExerciseTrainingConfig : IEntityTypeConfiguration<ExerciseTraining>
             .ToTable("exercise_training");
 
         builder
-            .HasKey(ut => new { ut.ExerciseId, ut.TrainingId });
+            .HasKey(ut => ut.Id);
 
         builder
             .HasOne(ut => ut.Exercise)

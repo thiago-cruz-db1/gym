@@ -8,6 +8,6 @@ public class PersonalTrainerProfile : Profile
 {
     public PersonalTrainerProfile()
     {
-        CreateMap<CreateProductRequest, Product>();
+        CreateMap<CreatePersonalTrainerRequest, PersonalTrainer>();
     }
 }

@@ -1,5 +1,4 @@
 using System.Text;
-using GymApi.Data.Data;
 using GymApi.Data.Data.Interfaces;
 using GymApi.Data.Data.Mongo;
 using GymApi.Data.Data.MySql;
@@ -10,13 +9,11 @@ using GymApi.UseCases;
 using GymApi.UseCases.AuthorizationPolicyUseCase;
 using GymApi.UseCases.Services;
 using GymApi.UseCases.UserUseCase;
-using GymUserApi.Controllers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using MongoDB.Driver;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -73,6 +70,7 @@ builder.Services.AddScoped<GenerateTokenUseCase>();
 builder.Services.AddScoped<CreateUserService>();
 builder.Services.AddScoped<ContractGymService>();
 builder.Services.AddScoped<PlanService>();
+builder.Services.AddScoped<ProductsService>();
 builder.Services.AddScoped<PersonalTrainerService>();
 builder.Services.AddScoped<TrainingService>();
 builder.Services.AddScoped<TrainingByUserService>();

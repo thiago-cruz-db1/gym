@@ -203,13 +203,13 @@ namespace GymApi.Data.Migrations
                 name: "exercise_training",
                 columns: table => new
                 {
+                    Id = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
                     ExerciseId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
-                    TrainingId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
-                    Id = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci")
+                    TrainingId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci")
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_exercise_training", x => new { x.ExerciseId, x.TrainingId });
+                    table.PrimaryKey("PK_exercise_training", x => x.Id);
                     table.ForeignKey(
                         name: "FK_exercise_training_exercise_ExerciseId",
                         column: x => x.ExerciseId,
@@ -331,16 +331,16 @@ namespace GymApi.Data.Migrations
                 name: "user_training",
                 columns: table => new
                 {
+                    Id = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
+                    training_observation = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     UserId = table.Column<string>(type: "varchar(255)", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    TrainingId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
-                    Id = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
-                    training_observation = table.Column<string>(type: "varchar(45)", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                    TrainingId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci")
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_user_training", x => new { x.UserId, x.TrainingId });
+                    table.PrimaryKey("PK_user_training", x => x.Id);
                     table.ForeignKey(
                         name: "FK_user_training_AspNetUsers_UserId",
                         column: x => x.UserId,
@@ -404,6 +404,11 @@ namespace GymApi.Data.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_exercise_training_ExerciseId",
+                table: "exercise_training",
+                column: "ExerciseId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_exercise_training_TrainingId",
                 table: "exercise_training",
                 column: "TrainingId");
@@ -412,6 +417,11 @@ namespace GymApi.Data.Migrations
                 name: "IX_user_training_TrainingId",
                 table: "user_training",
                 column: "TrainingId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_user_training_UserId",
+                table: "user_training",
+                column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

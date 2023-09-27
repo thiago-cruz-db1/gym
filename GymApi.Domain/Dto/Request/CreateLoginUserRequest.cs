@@ -23,5 +23,4 @@ public class CreateLoginUserRequest
 
     public Guid PlanId { get; set; }
     public Guid PersonalTrainerId { get; set; }
-    public List<Guid> TrainingId { get; set; }
 }

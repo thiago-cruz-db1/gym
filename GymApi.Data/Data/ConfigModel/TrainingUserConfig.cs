@@ -14,11 +14,10 @@ public class TrainingUserConfig : IEntityTypeConfiguration<TrainingUser>
         builder
             .Property(a => a.TrainingObservations)
             .HasColumnName("training_observation")
-            .HasColumnType("varchar(45)")
             .IsRequired();
 
         builder
-            .HasKey(ut => new { ut.UserId, ut.TrainingId });
+            .HasKey(ut =>   ut.Id );
 
         builder
             .HasOne(ut => ut.User)

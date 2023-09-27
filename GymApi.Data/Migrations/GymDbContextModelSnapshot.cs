@@ -62,16 +62,19 @@ namespace GymApi.Data.Migrations
 
             modelBuilder.Entity("GymApi.Domain.ExerciseTraining", b =>
                 {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
                     b.Property<Guid>("ExerciseId")
                         .HasColumnType("char(36)");
 
                     b.Property<Guid>("TrainingId")
                         .HasColumnType("char(36)");
 
-                    b.Property<Guid>("Id")
-                        .HasColumnType("char(36)");
+                    b.HasKey("Id");
 
-                    b.HasKey("ExerciseId", "TrainingId");
+                    b.HasIndex("ExerciseId");
 
                     b.HasIndex("TrainingId");
 
@@ -195,23 +198,27 @@ namespace GymApi.Data.Migrations
 
             modelBuilder.Entity("GymApi.Domain.TrainingUser", b =>
                 {
-                    b.Property<string>("UserId")
-                        .HasColumnType("varchar(255)");
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
 
                     b.Property<Guid>("TrainingId")
                         .HasColumnType("char(36)");
 
-                    b.Property<Guid>("Id")
-                        .HasColumnType("char(36)");
-
                     b.Property<string>("TrainingObservations")
                         .IsRequired()
-                        .HasColumnType("varchar(45)")
+                        .HasColumnType("longtext")
                         .HasColumnName("training_observation");
 
-                    b.HasKey("UserId", "TrainingId");
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
+
+                    b.HasKey("Id");
 
                     b.HasIndex("TrainingId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("user_training", (string)null);
                 });
