@@ -16,11 +16,11 @@ public class ExerciseByTrainingController : ControllerBase
         }
 
         [HttpPost]
-        public IActionResult AddPlan([FromBody] CreateExerciseByTrainingRequest exerciseByTrainingDto)
+        public async Task<IActionResult> AddPlan([FromBody] CreateExerciseByTrainingRequest exerciseByTrainingDto)
         {
             try
             {
-                var exerciseByTraining = _exerciseByTrainingService.AddExerciseTraining(exerciseByTrainingDto);
+                var exerciseByTraining = await _exerciseByTrainingService.AddExerciseTraining(exerciseByTrainingDto);
                 return Ok(exerciseByTraining);
             }
             catch (Exception e)
@@ -30,11 +30,11 @@ public class ExerciseByTrainingController : ControllerBase
         }
 
         [HttpGet]
-        public IActionResult GetPlans()
+        public async Task<IActionResult> GetPlans()
         {
             try
             {
-                var exerciseByTraining = _exerciseByTrainingService.GetExerciseTraining();
+                var exerciseByTraining = await _exerciseByTrainingService.GetExerciseTraining();
                 return Ok(exerciseByTraining);
             }
             catch (Exception e)
@@ -45,11 +45,11 @@ public class ExerciseByTrainingController : ControllerBase
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetPlanById(Guid id)
+        public async Task<IActionResult> GetPlanById(Guid id)
         {
             try
             {
-                var exerciseByTraining = _exerciseByTrainingService.GetExerciseTrainingById(id);
+                var exerciseByTraining = await _exerciseByTrainingService.GetExerciseTrainingById(id);
                 if (exerciseByTraining == null!) return NotFound();
                 return Ok(exerciseByTraining);
             }
@@ -75,11 +75,11 @@ public class ExerciseByTrainingController : ControllerBase
         }
 
         [HttpDelete("{id}")]
-        public IActionResult DeletePlanById(Guid id)
+        public async Task<IActionResult> DeletePlanById(Guid id)
         {
             try
             {
-                _exerciseByTrainingService.DeleteExerciseTrainingById(id);
+                await _exerciseByTrainingService.DeleteExerciseTrainingById(id);
                 return NoContent();
             }
             catch (Exception e)

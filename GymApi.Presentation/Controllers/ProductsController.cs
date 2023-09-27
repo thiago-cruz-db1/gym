@@ -15,11 +15,11 @@ public class ProductsController : ControllerBase
     }
 
     [HttpPost]
-    public IActionResult AddProduct([FromBody] CreateProductRequest productDto)
+    public async Task<IActionResult> AddProduct([FromBody] CreateProductRequest productDto)
     {
         try
         {
-            var product = _productsService.AddProduct(productDto);
+            var product = await _productsService.AddProduct(productDto);
             return Ok(product);
         }
         catch (Exception e)
@@ -29,11 +29,11 @@ public class ProductsController : ControllerBase
     }
 
     [HttpGet]
-    public IActionResult GetProducts()
+    public async Task<IActionResult> GetProducts()
     {
         try
         {
-            return Ok(_productsService.GetProducts());
+            return Ok(await _productsService.GetProducts());
         }
         catch (Exception e)
         {
@@ -42,11 +42,11 @@ public class ProductsController : ControllerBase
     }
 
     [HttpGet("{id}")]
-    public IActionResult GetProductById(Guid id)
+    public async Task<IActionResult> GetProductById(Guid id)
     {
         try
         {
-            var product = _productsService.GetProductById(id);
+            var product = await _productsService.GetProductById(id);
             return Ok(product);
         }
         catch (Exception e)
@@ -70,11 +70,11 @@ public class ProductsController : ControllerBase
     }
 
     [HttpDelete("{id}")]
-    public IActionResult DeleteProductById(Guid id)
+    public async Task<IActionResult> DeleteProductById(Guid id)
     {
         try
         {
-            _productsService.DeleteProductById(id);
+            await _productsService.DeleteProductById(id);
             return NoContent();
         }
         catch (Exception e)

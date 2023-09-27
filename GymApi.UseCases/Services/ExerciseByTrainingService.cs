@@ -16,10 +16,10 @@ public class ExerciseByTrainingService
         _mapper = mapper;
     }
 
-    public ExerciseTraining AddExerciseTraining(CreateExerciseByTrainingRequest ExerciseTrainingDto)
+    public async Task<ExerciseTraining> AddExerciseTraining(CreateExerciseByTrainingRequest ExerciseTrainingDto)
     {
         var training = _mapper.Map<ExerciseTraining>(ExerciseTrainingDto);
-        _contextExerciseByTraining.Save(training);
+        await _contextExerciseByTraining.Save(training);
         return training;
     }
 
@@ -40,7 +40,7 @@ public class ExerciseByTrainingService
         return training;
     }
 
-    public async void DeleteExerciseTrainingById(Guid id)
+    public async Task DeleteExerciseTrainingById(Guid id)
     {
         var training = await _contextExerciseByTraining.FindById(id);
         _contextExerciseByTraining.Delete(training);

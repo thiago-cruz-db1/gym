@@ -18,10 +18,10 @@ public class PlanService
         _mapper = mapper;
     }
 
-    public Plan AddPlan(CreatePlanRequest planDto)
+    public async Task<Plan> AddPlan(CreatePlanRequest planDto)
     {
         var plan = _mapper.Map<Plan>(planDto);
-        _contextPlan.Save(plan);
+        await _contextPlan.Save(plan);
         return plan;
     }
 
@@ -42,7 +42,7 @@ public class PlanService
         return plan;
     }
 
-    public async void DeletePlanById(Guid id)
+    public async Task DeletePlanById(Guid id)
     {
         var plan = await _contextPlan.FindById(id);
         _contextPlan.Delete(plan);

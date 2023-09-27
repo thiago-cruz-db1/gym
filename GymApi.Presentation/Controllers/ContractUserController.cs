@@ -30,7 +30,7 @@ public class ContractUserController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<List<Contract>> Get()
+    public async Task<ICollection<Contract>> Get()
     {
         try
         {

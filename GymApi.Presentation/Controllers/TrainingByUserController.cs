@@ -17,11 +17,11 @@ public class TrainingByUserController : ControllerBase
     }
 
     [HttpPost]
-    public IActionResult CreateTraining([FromBody] CreateTrainingByUserRequest createTrainingDto)
+    public async Task<IActionResult> CreateTraining([FromBody] CreateTrainingByUserRequest createTrainingDto)
     {
         try
         {
-            var training = _trainingByUserService.AddTrainingUser(createTrainingDto);
+            var training = await _trainingByUserService.AddTrainingUser(createTrainingDto);
             return Ok(training);
         }
         catch (Exception e)
@@ -77,7 +77,7 @@ public class TrainingByUserController : ControllerBase
     {
         try
         {
-            _trainingByUserService.DeleteTrainingUserById(id);
+            await _trainingByUserService.DeleteTrainingUserById(id);
             return NoContent();
         }
         catch (Exception e)

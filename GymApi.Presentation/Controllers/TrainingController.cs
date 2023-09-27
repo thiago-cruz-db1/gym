@@ -14,11 +14,11 @@ public class TrainingController : ControllerBase
         _trainingService = trainingService;
     }
     [HttpPost]
-    public IActionResult CreateTraining([FromBody] CreateTrainingRequest createTrainingDto)
+    public async Task<IActionResult> CreateTraining([FromBody] CreateTrainingRequest createTrainingDto)
     {
         try
         {
-            var training = _trainingService.AddTraining(createTrainingDto);
+            var training = await _trainingService.AddTraining(createTrainingDto);
             return Ok(training);
         }
         catch (Exception e)
@@ -74,7 +74,7 @@ public class TrainingController : ControllerBase
     {
         try
         {
-            _trainingService.DeleteTrainingById(id);
+            await _trainingService.DeleteTrainingById(id);
             return NoContent();
         }
         catch (Exception e)

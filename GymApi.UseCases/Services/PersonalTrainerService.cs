@@ -18,21 +18,21 @@ public class PersonalTrainerService
         _mapper = mapper;
     }
 
-    public PersonalTrainer AddPersonalTrainer(CreatePersonalTrainerRequest personalTrainerDto)
+    public async Task<PersonalTrainer> AddPersonalTrainer(CreatePersonalTrainerRequest personalTrainerDto)
     {
         var personalTrainer = _mapper.Map<PersonalTrainer>(personalTrainerDto);
-        _personalTrainerContext.Save(personalTrainer);
+        await _personalTrainerContext.Save(personalTrainer);
         return personalTrainer;
     }
 
-    public async  Task<ICollection<PersonalTrainer>> GetPersonalTrainers()
+    public async Task<ICollection<PersonalTrainer>> GetPersonalTrainers()
     {
         return await _personalTrainerContext.FindAll();
     }
 
-    public Task<PersonalTrainer> GetPersonalTrainerById(Guid id)
+    public async Task<PersonalTrainer> GetPersonalTrainerById(Guid id)
     {
-        return _personalTrainerContext.FindById(id);
+        return await _personalTrainerContext.FindById(id);
     }
     
     public async Task<PersonalTrainer> UpdatePernalById(Guid id)
@@ -42,7 +42,7 @@ public class PersonalTrainerService
         return personal;
     }
 
-    public async void DeletePersonalTrainerById(Guid id)
+    public async Task DeletePersonalTrainerById(Guid id)
     {
         var personalTrainer = await _personalTrainerContext.FindById(id);
         if (personalTrainer == null) throw new Exception("Personal is null");

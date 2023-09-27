@@ -16,11 +16,11 @@ public class ExerciseController : ControllerBase
     }
 
     [HttpPost]
-    public IActionResult CreateExercise([FromBody] CreateExerciseRequest createExerciseByTrainingDto)
+    public async Task<IActionResult> CreateExercise([FromBody] CreateExerciseRequest createExerciseDto)
     {
         try
         {
-            var training = _exerciseService.AddExercise(createExerciseByTrainingDto);
+            var training = await _exerciseService.AddExercise(createExerciseDto);
             return Ok(training);
         }
         catch (Exception e)
@@ -76,7 +76,7 @@ public class ExerciseController : ControllerBase
     {
         try
         {
-            _exerciseService.DeleteExerciseById(id);
+            await _exerciseService.DeleteExerciseById(id);
             return NoContent();
         }
         catch (Exception e)

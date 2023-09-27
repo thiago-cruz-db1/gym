@@ -19,11 +19,11 @@ public class PersonalTrainerController : ControllerBase
     }
 
     [HttpPost]
-    public IActionResult AddPersonalTrainer([FromBody] CreatePersonalTrainerRequest personalTrainerDto)
+    public async Task<IActionResult> AddPersonalTrainer([FromBody] CreatePersonalTrainerRequest personalTrainerDto)
     {
         try
         {
-            var personalTrainer = _personalTrainerService.AddPersonalTrainer(personalTrainerDto);
+            var personalTrainer = await _personalTrainerService.AddPersonalTrainer(personalTrainerDto);
             return Ok(personalTrainer);
         }
         catch (Exception e)
@@ -33,11 +33,11 @@ public class PersonalTrainerController : ControllerBase
     }
 
     [HttpGet]
-    public IActionResult GetPersonalTrainers()
+    public async Task<IActionResult> GetPersonalTrainers()
     {
         try
         {
-            var personalTrainers = _personalTrainerService.GetPersonalTrainers();
+            var personalTrainers = await _personalTrainerService.GetPersonalTrainers();
             return Ok(personalTrainers);
         }
         catch (Exception e)
@@ -47,11 +47,11 @@ public class PersonalTrainerController : ControllerBase
     }
 
     [HttpGet("{id}")]
-    public IActionResult GetPersonalTrainerById(Guid id)
+    public async Task<IActionResult> GetPersonalTrainerById(Guid id)
     {
         try
         {
-            var personalTrainer = _personalTrainerService.GetPersonalTrainerById(id);
+            var personalTrainer = await _personalTrainerService.GetPersonalTrainerById(id);
             if (personalTrainer == null!) return NotFound();
             return Ok(personalTrainer);
         }
@@ -76,11 +76,11 @@ public class PersonalTrainerController : ControllerBase
     }
 
     [HttpDelete("{id}")]
-    public IActionResult DeletePersonalTrainerById(Guid id)
+    public async Task<IActionResult> DeletePersonalTrainerById(Guid id)
     {
         try
         {
-            _personalTrainerService.DeletePersonalTrainerById(id);
+            await _personalTrainerService.DeletePersonalTrainerById(id);
             return NoContent();
         }
         catch (Exception e)

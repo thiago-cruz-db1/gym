@@ -45,8 +45,6 @@ namespace GymUserApi.Controllers
             try
             {
                 var user = await _createUserService.GetUserById(userId);
-                if (user == null)
-                    return NotFound("User not found");
                 return Ok(user);
             }
             catch (Exception ex)

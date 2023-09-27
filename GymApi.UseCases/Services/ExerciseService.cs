@@ -15,11 +15,11 @@ public class ExerciseService
         _contextExercise = contextExercise;
         _mapper = mapper;
     }
-    public Exercise AddExercise(CreateExerciseRequest trainingUserDto)
+    public async Task<Exercise> AddExercise(CreateExerciseRequest exerciseDto)
     {
-        var training = _mapper.Map<Exercise>(trainingUserDto);
-        _contextExercise.Save(training);
-        return training;
+        var exercise = _mapper.Map<Exercise>(exerciseDto);
+        await _contextExercise.Save(exercise);
+        return exercise;
     }
 
     public async Task<ICollection<Exercise>> GetExercise()
@@ -39,7 +39,7 @@ public class ExerciseService
         return training;
     }
 
-    public async void DeleteExerciseById(Guid id)
+    public async Task DeleteExerciseById(Guid id)
     {
         var training = await _contextExercise.FindById(id);
         _contextExercise.Delete(training);

@@ -16,11 +16,11 @@ namespace GymUserApi.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddPlan([FromBody] CreatePlanRequest planDto)
+        public async Task<IActionResult> AddPlan([FromBody] CreatePlanRequest planDto)
         {
             try
             {
-                var plan = _planService.AddPlan(planDto);
+                var plan = await _planService.AddPlan(planDto);
                 return Ok(plan);
             }
             catch (Exception e)
@@ -30,11 +30,11 @@ namespace GymUserApi.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetPlans()
+        public async Task<IActionResult> GetPlans()
         {
             try
             {
-                var plans = _planService.GetPlans();
+                var plans = await _planService.GetPlans();
                 return Ok(plans);
             }
             catch (Exception e)
@@ -45,11 +45,11 @@ namespace GymUserApi.Controllers
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetPlanById(Guid id)
+        public async Task<IActionResult> GetPlanById(Guid id)
         {
             try
             {
-                var plan = _planService.GetPlanById(id);
+                var plan = await _planService.GetPlanById(id);
                 if (plan == null!) return NotFound();
                 return Ok(plan);
             }
@@ -75,11 +75,11 @@ namespace GymUserApi.Controllers
         }
 
         [HttpDelete("{id}")]
-        public IActionResult DeletePlanById(Guid id)
+        public async Task<IActionResult> DeletePlanById(Guid id)
         {
             try
             {
-                _planService.DeletePlanById(id);
+                await _planService.DeletePlanById(id);
                 return NoContent();
             }
             catch (Exception e)

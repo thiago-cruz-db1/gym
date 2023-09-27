@@ -15,10 +15,10 @@ public class TrainingService
         _contextTraining = contextTraining;
         _mapper = mapper;
     }
-    public Training AddTraining(CreateTrainingRequest trainingDto)
+    public async Task<Training> AddTraining(CreateTrainingRequest trainingDto)
     {
         var training = _mapper.Map<Training>(trainingDto);
-        _contextTraining.Save(training);
+        await _contextTraining.Save(training);
         return training;
     }
 
@@ -39,7 +39,7 @@ public class TrainingService
         return training;
     }
 
-    public async void DeleteTrainingById(Guid id)
+    public async Task DeleteTrainingById(Guid id)
     {
         var training = await _contextTraining.FindById(id);
         _contextTraining.Delete(training);

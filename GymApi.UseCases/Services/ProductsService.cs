@@ -15,10 +15,10 @@ public class ProductsService
         _contextProducts = contextProducts;
         _mapper = mapper;
     }
-    public Product AddProduct(CreateProductRequest productDto)
+    public async Task<Product> AddProduct(CreateProductRequest productDto)
     {
         var product = _mapper.Map<Product>(productDto);
-        _contextProducts.Save(product);
+        await _contextProducts.Save(product);
         return product;
     }
 
@@ -39,7 +39,7 @@ public class ProductsService
         return product;
     }
 
-    public async void DeleteProductById(Guid id)
+    public async Task DeleteProductById(Guid id)
     {
         var product = await _contextProducts.FindById(id);
         _contextProducts.Delete(product);
