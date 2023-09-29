@@ -2,6 +2,6 @@
 
 public class CreateDetailsUserRequest
 {
-    public CreateLoginUserRequest Login { get; set; }
+    public CreateUserRequest Login { get; set; }
 
 }

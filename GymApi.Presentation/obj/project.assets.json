@@ -1749,7 +1749,7 @@
           "bin/placeholder/GymApi.Domain.dll": {}
         }
       },
-      "GymApi.UseCases/1.0.0": {
+      "GymApi.Services/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
@@ -1762,10 +1762,10 @@
           "System.IdentityModel.Tokens.Jwt": "6.32.3"
         },
         "compile": {
-          "bin/placeholder/GymApi.UseCases.dll": {}
+          "bin/placeholder/GymApi.Services.dll": {}
         },
         "runtime": {
-          "bin/placeholder/GymApi.UseCases.dll": {}
+          "bin/placeholder/GymApi.Services.dll": {}
         }
       }
     }
@@ -4414,17 +4414,17 @@
       "path": "../GymApi.Domain/GymApi.Domain.csproj",
       "msbuildProject": "../GymApi.Domain/GymApi.Domain.csproj"
     },
-    "GymApi.UseCases/1.0.0": {
+    "GymApi.Services/1.0.0": {
       "type": "project",
-      "path": "../GymApi.UseCases/GymApi.UseCases.csproj",
-      "msbuildProject": "../GymApi.UseCases/GymApi.UseCases.csproj"
+      "path": "../GymApi.Services/GymApi.Services.csproj",
+      "msbuildProject": "../GymApi.Services/GymApi.Services.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 12.0.1",
       "GymApi.Data >= 1.0.0",
-      "GymApi.UseCases >= 1.0.0",
+      "GymApi.Services >= 1.0.0",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 6.0.22",
       "Microsoft.EntityFrameworkCore >= 6.0.22",
       "Microsoft.EntityFrameworkCore.Design >= 6.0.22",
@@ -4471,8 +4471,8 @@
             "C:\\Users\\thiago.cruz\\Documents\\Proj\\Pessoal\\Gym\\GymApi.Data\\GymApi.Data.csproj": {
               "projectPath": "C:\\Users\\thiago.cruz\\Documents\\Proj\\Pessoal\\Gym\\GymApi.Data\\GymApi.Data.csproj"
             },
-            "C:\\Users\\thiago.cruz\\Documents\\Proj\\Pessoal\\Gym\\GymApi.UseCases\\GymApi.UseCases.csproj": {
-              "projectPath": "C:\\Users\\thiago.cruz\\Documents\\Proj\\Pessoal\\Gym\\GymApi.UseCases\\GymApi.UseCases.csproj"
+            "C:\\Users\\thiago.cruz\\Documents\\Proj\\Pessoal\\Gym\\GymApi.Services\\GymApi.Services.csproj": {
+              "projectPath": "C:\\Users\\thiago.cruz\\Documents\\Proj\\Pessoal\\Gym\\GymApi.Services\\GymApi.Services.csproj"
             }
           }
         }

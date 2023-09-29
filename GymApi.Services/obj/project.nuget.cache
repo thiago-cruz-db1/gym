@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "P2eJAS5RxckkSgkYvDCWeF2OVF9hloXDnYM7KmC1Xw5kGTz1OXXVGSgur/P3tAA0MsfpBgUsbHz0VgRo5btWng==",
+  "dgSpecHash": "r8WisCddljGmIA4gUu0N1LbkSzKPFdSDXk1MHRqW6G3SVK8FOBps0Gv4tzELfDe3ww1V0U8NGpjknmmZUCMl3w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\thiago.cruz\\Documents\\Proj\\Pessoal\\Gym\\GymApi.UseCases\\GymApi.UseCases.csproj",
+  "projectFilePath": "C:\\Users\\thiago.cruz\\Documents\\Proj\\Pessoal\\Gym\\GymApi.Services\\GymApi.Services.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\thiago.cruz\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\thiago.cruz\\.nuget\\packages\\awssdk.core\\3.7.100.14\\awssdk.core.3.7.100.14.nupkg.sha512",

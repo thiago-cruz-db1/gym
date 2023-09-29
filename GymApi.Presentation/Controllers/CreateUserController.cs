@@ -1,7 +1,7 @@
 ﻿using GymApi.Domain;
 using GymApi.Domain.Dto.Request;
 using GymApi.UseCases;
-using GymApi.UseCases.UserUseCase;
+using GymApi.UseCases.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GymUserApi.Controllers
@@ -12,15 +12,15 @@ namespace GymUserApi.Controllers
     {
         private readonly CreateUserService _createUserService;
         
-        public CreateUserController(CreateUserService serviceService, GenerateTokenUseCase generateTokenUseCase)
+        public CreateUserController(CreateUserService serviceService, GenerateTokenService generateTokenService)
         {
             _createUserService = serviceService;
         }
     
         [HttpPost]
-        public async Task<IActionResult> CreateLogin(CreateLoginUserRequest createLoginDto)
+        public async Task<IActionResult> CreateLogin(CreateUserRequest createDto)
         {
-            await _createUserService.Create(createLoginDto);
+            await _createUserService.Create(createDto);
 
             return Ok("user created");
         }

@@ -28,7 +28,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\GymApi.Data\GymApi.Data.csproj" />
-    <ProjectReference Include="..\GymApi.UseCases\GymApi.UseCases.csproj" />
+    <ProjectReference Include="..\GymApi.Services\GymApi.Services.csproj" />
   </ItemGroup>
 
 

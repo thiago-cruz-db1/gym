@@ -1,6 +1,7 @@
 ﻿using GymApi.Domain;
 using GymApi.Domain.Dto.Request;
 using GymApi.UseCases;
+using GymApi.UseCases.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GymUserApi.Controllers;
@@ -9,17 +10,17 @@ namespace GymUserApi.Controllers;
 [Route("[controller]")]
 public class LoginUserController : ControllerBase
 {
-    private readonly LoginUserUseCase _loginUserUseCase;
+    private readonly LoginUserService _loginUserService;
     
-    public LoginUserController(LoginUserUseCase loginUserUseCase)
+    public LoginUserController(LoginUserService loginUserService)
     {
-        _loginUserUseCase = loginUserUseCase;
+        _loginUserService = loginUserService;
     }
     
     [HttpPost]
     public async Task<IActionResult> Login(LoginUserRequest loginDto)
     {
-        var token = await _loginUserUseCase.Login(loginDto);
+        var token = await _loginUserService.Login(loginDto);
         return Ok(token);
     }
 }

@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymApi.Data", "GymApi.Data\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymApi.Domain", "GymApi.Domain\GymApi.Domain.csproj", "{E136C5BA-14DB-4148-80B6-61500A97066C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymApi.UseCases", "GymApi.UseCases\GymApi.UseCases.csproj", "{224A87E3-0160-4A7F-B419-6293FF7513F3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymApi.Services", "GymApi.Services\GymApi.Services.csproj", "{224A87E3-0160-4A7F-B419-6293FF7513F3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

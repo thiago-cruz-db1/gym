@@ -4,6 +4,7 @@
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <RootNamespace>GymApi.UseCases</RootNamespace>
     </PropertyGroup>
 
 
@@ -19,6 +20,8 @@
       <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
       <PackageReference Include="MongoDB.Driver" Version="2.21.0" />
       <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.32.3" />
+
+
     </ItemGroup>
 
 

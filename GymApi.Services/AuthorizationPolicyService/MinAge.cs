@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 
-namespace GymApi.UseCases.AuthorizationPolicyUseCase;
+namespace GymApi.UseCases.AuthorizationPolicyService;
 
 public class MinAge : IAuthorizationRequirement
 {

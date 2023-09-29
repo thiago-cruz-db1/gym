@@ -3,7 +3,7 @@ using GymApi.Domain;
 using GymApi.Domain.Dto.Request;
 using Microsoft.AspNetCore.Identity;
 
-namespace GymApi.UseCases.UserUseCase;
+namespace GymApi.UseCases.Services;
 
 public class CreateUserService
 {
@@ -16,10 +16,10 @@ public class CreateUserService
         _userManager = userManage;
     }
 
-    public async Task Create(CreateLoginUserRequest createLoginDto)
+    public async Task Create(CreateUserRequest createDto)
     {
-        User user = _mapper.Map<User>(createLoginDto);
-        IdentityResult created = await _userManager.CreateAsync(user, createLoginDto.Password);
+        User user = _mapper.Map<User>(createDto);
+        IdentityResult created = await _userManager.CreateAsync(user, createDto.Password);
         if (!created.Succeeded) throw new ApplicationException("Error on create user");
     }
     

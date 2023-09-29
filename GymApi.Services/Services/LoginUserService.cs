@@ -1,19 +1,18 @@
 ﻿using GymApi.Domain;
 using GymApi.Domain.Dto.Request;
-using GymApi.UseCases.UserUseCase;
 using Microsoft.AspNetCore.Identity;
 
-namespace GymApi.UseCases;
+namespace GymApi.UseCases.Services;
 
-public class LoginUserUseCase
+public class LoginUserService
 {
     private readonly SignInManager<User> _signInManager;
-    private readonly GenerateTokenUseCase _generateTokenUseCase;
+    private readonly GenerateTokenService _generateTokenService;
 
-    public LoginUserUseCase(SignInManager<User> signInManager, GenerateTokenUseCase generateTokenUseCase)
+    public LoginUserService(SignInManager<User> signInManager, GenerateTokenService generateTokenService)
     {
         _signInManager = signInManager;
-        _generateTokenUseCase = generateTokenUseCase;
+        _generateTokenService = generateTokenService;
     }
     public async Task<string> Login(LoginUserRequest loginDto)
     {
@@ -22,7 +21,7 @@ public class LoginUserUseCase
         var user = _signInManager.UserManager.Users.FirstOrDefault(user => user.NormalizedUserName == loginDto.UserName);
         if (user != null)
         {
-            var token = _generateTokenUseCase.Create(user);
+            var token = _generateTokenService.Create(user);
             return token;
         }
 

@@ -1,7 +1,7 @@
 ﻿using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 
-namespace GymApi.UseCases.AuthorizationPolicyUseCase;
+namespace GymApi.UseCases.AuthorizationPolicyService;
 
 public class AgeAuth : AuthorizationHandler<MinAge>
 {

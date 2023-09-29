@@ -4,9 +4,9 @@ using System.Text;
 using GymApi.Domain;
 using Microsoft.IdentityModel.Tokens;
 
-namespace GymApi.UseCases.UserUseCase;
+namespace GymApi.UseCases.Services;
 
-public class GenerateTokenUseCase
+public class GenerateTokenService
 {
     public string Create(User user)
     {
