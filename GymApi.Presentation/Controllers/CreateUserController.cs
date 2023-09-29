@@ -20,9 +20,9 @@ namespace GymUserApi.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateLogin(CreateUserRequest createDto)
         {
-            await _createUserService.Create(createDto);
+            var user = await _createUserService.Create(createDto);
 
-            return Ok("user created");
+            return Ok(user);
         }
         
         [HttpGet]
