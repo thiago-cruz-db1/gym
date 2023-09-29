@@ -18,8 +18,13 @@ public class TrainingController : ControllerBase
     {
         try
         {
-            var training = await _trainingService.AddTraining(createTrainingDto);
-            return Ok(training);
+            var exist = _trainingService.ValidationIfExerciseExist(createTrainingDto.Exercises);
+            if (exist)
+            {
+                var training = await _trainingService.AddTraining(createTrainingDto);
+                return Ok(training);
+            }
+            throw new Exception("Exercise not exist in database, pls insert it before continue");
         }
         catch (Exception e)
         {

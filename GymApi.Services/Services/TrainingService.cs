@@ -44,4 +44,9 @@ public class TrainingService
         var training = await _contextTraining.FindById(id);
         _contextTraining.Delete(training);
     }
+
+    public bool ValidationIfExerciseExist(ICollection<Guid> ids)
+    {
+        return _contextTraining.ValidationIfExerciseExist(ids);
+    }
 }
