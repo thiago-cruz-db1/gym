@@ -1,10 +1,11 @@
 ﻿using AutoMapper;
 using GymApi.Domain;
+using GymApi.UseCases.Interfaces;
 using Microsoft.AspNetCore.Identity;
 
 namespace GymApi.UseCases.Services;
 
-public class TicketGateService
+public class TicketGateService : ITicketGate
 {
     private readonly CreateUserService _createUserService;
     private List<string> ValidUsers { get; set; }
@@ -12,6 +13,7 @@ public class TicketGateService
     public TicketGateService(CreateUserService createUserService)
     {
         _createUserService = createUserService;
+        ValidUsers = new List<string>();
     }
 
     public async Task<List<string>> UpdateTicketGate()
