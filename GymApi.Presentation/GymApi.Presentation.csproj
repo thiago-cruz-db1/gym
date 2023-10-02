@@ -35,4 +35,9 @@
 
 
 
+  <ItemGroup>
+    <Compile Remove="Controllers\TicketGateController.cs" />
+  </ItemGroup>
+
+
 </Project>

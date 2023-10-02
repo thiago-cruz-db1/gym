@@ -75,6 +75,7 @@ builder.Services.AddScoped<TrainingService>();
 builder.Services.AddScoped<TrainingByUserService>();
 builder.Services.AddScoped<ExerciseService>();
 builder.Services.AddScoped<ExerciseByTrainingService>();
+builder.Services.AddScoped<TicketGateService>();
 
 builder.Services.AddScoped<IPlanRepositorySql, PlanRepositorySql>();
 builder.Services.AddScoped<IProductsRepositorySql, ProductsRepositorySql>();
