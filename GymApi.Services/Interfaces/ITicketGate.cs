@@ -3,5 +3,5 @@
 public interface ITicketGate
 {
     Task<List<string>> UpdateTicketGate();
-    Task<bool> VerifyIfValid(string id);
+    bool VerifyIfValid(string id);
 }

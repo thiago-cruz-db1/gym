@@ -8,12 +8,11 @@ namespace GymApi.UseCases.Services;
 public class TicketGateService : ITicketGate
 {
     private readonly CreateUserService _createUserService;
-    private List<string> ValidUsers { get; set; }
+    private List<string> ValidUsers { get; set; } = new();
 
     public TicketGateService(CreateUserService createUserService)
     {
         _createUserService = createUserService;
-        ValidUsers = new List<string>();
     }
 
     public async Task<List<string>> UpdateTicketGate()
@@ -25,8 +24,8 @@ public class TicketGateService : ITicketGate
         return ValidUsers;
     }
 
-    public Task<bool> VerifyIfValid(string id)
+    public bool VerifyIfValid(string id)
     {
-        return Task.FromResult(ValidUsers.Any(e => e.Contains(id)));
+        return ValidUsers.Any(e => e.Contains(id));
     }
 }
