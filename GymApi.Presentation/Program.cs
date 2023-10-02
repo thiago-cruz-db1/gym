@@ -1,3 +1,4 @@
+using System.Configuration;
 using System.Text;
 using GymApi.Data.Data.Interfaces;
 using GymApi.Data.Data.Mongo;
@@ -5,14 +6,17 @@ using GymApi.Data.Data.MySql;
 using GymApi.Data.Data.PlanRepository;
 using GymApi.Data.Data.Repositories;
 using GymApi.Domain;
-using GymApi.UseCases;
 using GymApi.UseCases.AuthorizationPolicyService;
+using GymApi.UseCases.Jobs;
 using GymApi.UseCases.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Quartz;
+using Quartz.Impl;
+using Quartz.Spi;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -60,7 +64,6 @@ builder.Services.AddAuthentication(options =>
 builder.Services.AddSingleton<IAuthorizationHandler, AgeAuth>();
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -76,6 +79,7 @@ builder.Services.AddScoped<TrainingByUserService>();
 builder.Services.AddScoped<ExerciseService>();
 builder.Services.AddScoped<ExerciseByTrainingService>();
 builder.Services.AddScoped<TicketGateService>();
+builder.Services.AddScoped<TicketGateJob>();
 
 builder.Services.AddScoped<IPlanRepositorySql, PlanRepositorySql>();
 builder.Services.AddScoped<IProductsRepositorySql, ProductsRepositorySql>();
@@ -85,6 +89,19 @@ builder.Services.AddScoped<ITrainingRepositorySql, TrainingRepositorySql>();
 builder.Services.AddScoped<ITrainingByUserRepositorySql, TrainingByUserRepositorySql>();
 builder.Services.AddScoped<IExerciseRepositorySql, ExerciseRepositorySql>();
 builder.Services.AddScoped<IExerciseByTrainingRepositorySql, ExerciseByTrainingRepositorySql>();
+
+// Grab the Scheduler instance from the Factory
+StdSchedulerFactory factory = new StdSchedulerFactory();
+IScheduler scheduler = await factory.GetScheduler();
+
+// and start it off
+await scheduler.Start();
+
+IJobDetail job = TicketGateJobConfig.ConfigureJob();
+ITrigger trigger = TicketGateJobConfig.ConfigureTrigger();
+
+// Tell Quartz to schedule the job using our trigger
+await scheduler.ScheduleJob(job, trigger);
 
 var app = builder.Build();
 
@@ -103,3 +120,5 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+

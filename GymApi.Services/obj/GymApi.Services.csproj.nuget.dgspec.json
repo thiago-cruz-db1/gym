@@ -283,6 +283,10 @@
               "target": "Package",
               "version": "[2.21.0, )"
             },
+            "Quartz": {
+              "target": "Package",
+              "version": "[3.7.0, )"
+            },
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",
               "version": "[6.32.3, )"

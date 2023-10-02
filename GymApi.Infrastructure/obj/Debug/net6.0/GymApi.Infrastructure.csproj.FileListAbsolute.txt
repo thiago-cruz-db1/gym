@@ -1,0 +1,13 @@
+C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.Infrastructure\obj\Debug\net6.0\GymApi.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.Infrastructure\obj\Debug\net6.0\GymApi.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.Infrastructure\obj\Debug\net6.0\GymApi.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.Infrastructure\obj\Debug\net6.0\GymApi.Infrastructure.AssemblyInfo.cs
+C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.Infrastructure\obj\Debug\net6.0\GymApi.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.Infrastructure\obj\Debug\net6.0\GymApi.Infrastructure.sourcelink.json
+C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.Infrastructure\bin\Debug\net6.0\GymApi.Infrastructure.deps.json
+C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.Infrastructure\bin\Debug\net6.0\GymApi.Infrastructure.dll
+C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.Infrastructure\bin\Debug\net6.0\GymApi.Infrastructure.pdb
+C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.Infrastructure\obj\Debug\net6.0\GymApi.Infrastructure.dll
+C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.Infrastructure\obj\Debug\net6.0\refint\GymApi.Infrastructure.dll
+C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.Infrastructure\obj\Debug\net6.0\GymApi.Infrastructure.pdb
+C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.Infrastructure\obj\Debug\net6.0\ref\GymApi.Infrastructure.dll
