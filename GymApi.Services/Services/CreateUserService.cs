@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using GymApi.Data.Data.Interfaces;
 using GymApi.Domain;
 using GymApi.Domain.Dto.Request;
 using GymApi.Domain.Dto.Response;
@@ -8,54 +9,56 @@ namespace GymApi.UseCases.Services;
 
 public class CreateUserService
 {
+    private ICreateUserRepositorySql _createUser;
     private readonly IMapper _mapper;
-    private readonly UserManager<User> _userManager;
 
-    public CreateUserService(IMapper mapper, UserManager<User> userManage)
+    public CreateUserService(IMapper mapper, UserManager<User> userManage, ICreateUserRepositorySql createUser)
     {
         _mapper = mapper;
-        _userManager = userManage;
+        _createUser = createUser;
     }
 
     public async Task<CreateUserResponse> Create(CreateUserRequest createDto)
     {
         User user = _mapper.Map<User>(createDto);
-        IdentityResult created = await _userManager.CreateAsync(user, createDto.Password);
-        if (!created.Succeeded) throw new ApplicationException("Error on create user");
+        await _createUser.Create(user, createDto);
         var userResponse = _mapper.Map<CreateUserResponse>(user);
         return userResponse;
     }
     
-    public async Task<List<User>> GetUsers()
+    public List<User> GetUsers()
     {
-        List<User> user = _userManager.Users.ToList();
+        List<User> user = _createUser.GetUsers();
         return user;
     }
     
     public async Task<User> GetUserById(string userId)
     {
-        User user = await _userManager.FindByIdAsync(userId);
+        User user = await _createUser.GetUserById(userId);
         return user;
     }
 
     public async Task Update(string userId, UpdateUserRequest updateUserDto)
     {
-        User user = await _userManager.FindByIdAsync(userId);
+        User user = await _createUser.GetUserById(userId);
         if (user == null) throw new ApplicationException("User not found");
-
         _mapper.Map(updateUserDto, user); 
-        IdentityResult updated = await _userManager.UpdateAsync(user);
-
+        IdentityResult updated = await _createUser.Update(user);
         if (!updated.Succeeded) throw new ApplicationException("Error on updating user");
     }
 
     public async Task Delete(string userId)
     {
-        User user = await _userManager.FindByIdAsync(userId);
+        User user = await _createUser.GetUserById(userId);
         if (user == null) throw new ApplicationException("User not found");
 
-        IdentityResult deleted = await _userManager.DeleteAsync(user);
+        IdentityResult deleted = await _createUser.Delete(user);
 
         if (!deleted.Succeeded) throw new ApplicationException("Error on deleting user");
+    }
+
+    public Task IncreaseWorkOut(string userId)
+    {
+        return _createUser.IncreaseWorkOut(userId);
     }
 }

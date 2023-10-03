@@ -6,6 +6,7 @@ public class User : IdentityUser
 {
     public DateTime DateBirth { get; set; }
     public string Address { get; set; }
+    public int? TrainingDays { get; set; }
     public Guid PlanId { get; set; }
     public Plan Plan { get; set; }
     public Guid PersonalTrainerId { get; set; }

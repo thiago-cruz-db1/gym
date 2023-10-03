@@ -26,11 +26,11 @@ namespace GymUserApi.Controllers
         }
         
         [HttpGet]
-        public async Task<IActionResult> GetUser()
+        public IActionResult GetUser()
         {
             try
             {
-                var users = await _createUserService.GetUsers();
+                var users = _createUserService.GetUsers();
                 return Ok(users) ;
             }
             catch (Exception ex)

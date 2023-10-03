@@ -8,6 +8,7 @@ namespace GymApi.UseCases.Services;
 public class TicketGateService : ITicketGate
 {
     private readonly CreateUserService _createUserService;
+    
     private List<string> ValidUsers { get; set; } = new();
 
     public TicketGateService(CreateUserService createUserService)
@@ -15,10 +16,10 @@ public class TicketGateService : ITicketGate
         _createUserService = createUserService;
     }
 
-    public async Task<List<string>> UpdateTicketGate()
+    public List<string> UpdateTicketGate()
     {
         Console.WriteLine("on service job");
-        var users = await _createUserService.GetUsers();
+        var users = _createUserService.GetUsers();
         var idList = users.Select(e => e.Id).ToList();
         ValidUsers.AddRange(idList);
         return ValidUsers;
