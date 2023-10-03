@@ -14,8 +14,10 @@ namespace GymApi.Data.Data.MySql
         public DbSet<Product> Products { get; set; }
         public DbSet<Training> Trainings { get; set; }
         public DbSet<Exercise> Exercices { get; set; }
+        public DbSet<TicketGate> TicketGates { get; set; }
         public DbSet<TrainingUser> UserTrainings { get; set; }
         public DbSet<ExerciseTraining> ExerciseTrainings { get; set; }
+        public DbSet<TicketGateUser> TicketGateUsers { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new PlanConfig());
@@ -26,6 +28,14 @@ namespace GymApi.Data.Data.MySql
             modelBuilder.ApplyConfiguration(new ExerciseConfig());
             modelBuilder.ApplyConfiguration(new TrainingUserConfig());
             modelBuilder.ApplyConfiguration(new ExerciseTrainingConfig());
+            modelBuilder.ApplyConfiguration(new TicketGateConfig());
+            modelBuilder.ApplyConfiguration(new TicketGateUsersConfig());
+            
+            modelBuilder.Entity<TicketGate>().HasData(
+                new TicketGate { Id = Guid.NewGuid(), Name = "CatracaA"},
+                new TicketGate { Id = Guid.NewGuid(), Name = "CatracaB"},
+                new TicketGate { Id = Guid.NewGuid(), Name = "CatracaC"}
+            );
             
             base.OnModelCreating(modelBuilder);
         }

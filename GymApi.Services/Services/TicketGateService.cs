@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using GymApi.Data.Data.Interfaces;
 using GymApi.Domain;
 using GymApi.UseCases.Interfaces;
 using Microsoft.AspNetCore.Identity;
@@ -7,11 +8,11 @@ namespace GymApi.UseCases.Services;
 
 public class TicketGateService : ITicketGate
 {
-    private readonly CreateUserService _createUserService;
+    private readonly ICreateUserRepositorySql _createUserService;
     
     private List<string> ValidUsers { get; set; } = new();
 
-    public TicketGateService(CreateUserService createUserService)
+    public TicketGateService(ICreateUserRepositorySql createUserService)
     {
         _createUserService = createUserService;
     }

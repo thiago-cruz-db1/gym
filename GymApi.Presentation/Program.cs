@@ -1,5 +1,6 @@
 using System.Configuration;
 using System.Text;
+using System.Text.Json.Serialization;
 using GymApi.Data.Data.Interfaces;
 using GymApi.Data.Data.Mongo;
 using GymApi.Data.Data.MySql;
@@ -19,7 +20,7 @@ using Microsoft.IdentityModel.Tokens;
 var builder = WebApplication.CreateBuilder(args);
 
 var connectioMySql = builder.Configuration.GetConnectionString("MysqlConn");
-// Add services to the container.
+
 builder.Services.AddDbContext<GymDbContext>(opts =>
 {
     opts.UseMySql(connectioMySql, ServerVersion.AutoDetect(connectioMySql));
@@ -28,7 +29,6 @@ builder.Services.AddDbContext<GymDbContext>(opts =>
 builder.Services.Configure<GymDatabaseSettings>(
     builder.Configuration.GetSection("GymDatabase"));
 
-//config identity
 builder.Services.AddIdentity<User, IdentityRole>()
     .AddEntityFrameworkStores<GymDbContext>()
     .AddDefaultTokenProviders();
@@ -61,7 +61,8 @@ builder.Services.AddAuthentication(options =>
 
 builder.Services.AddSingleton<IAuthorizationHandler, AgeAuth>();
 
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddJsonOptions(x =>
+    x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);;
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -76,6 +77,8 @@ builder.Services.AddScoped<TrainingService>();
 builder.Services.AddScoped<TrainingByUserService>();
 builder.Services.AddScoped<ExerciseService>();
 builder.Services.AddScoped<ExerciseByTrainingService>();
+builder.Services.AddScoped<TicketGateService>();
+builder.Services.AddScoped<TicketGateUserService>();
 
 builder.Services.AddScoped<ITicketGate, TicketGateService>();
 builder.Services.AddHostedService<BackgroundTicketGateService>();
@@ -88,10 +91,11 @@ builder.Services.AddScoped<ITrainingRepositorySql, TrainingRepositorySql>();
 builder.Services.AddScoped<ITrainingByUserRepositorySql, TrainingByUserRepositorySql>();
 builder.Services.AddScoped<IExerciseRepositorySql, ExerciseRepositorySql>();
 builder.Services.AddScoped<IExerciseByTrainingRepositorySql, ExerciseByTrainingRepositorySql>();
+builder.Services.AddScoped<ICreateUserRepositorySql, CreateUserRepositorySql>();
+builder.Services.AddScoped<ITicketGateUserRepositorySql, TicketGateUserRepositorySql>();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

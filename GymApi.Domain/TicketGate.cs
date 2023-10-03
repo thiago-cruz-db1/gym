@@ -5,6 +5,7 @@ namespace GymApi.Domain;
 public class TicketGate
 {
     public Guid Id { get; set; }
-    public DateTime? StartAt { get; set; } = DateTime.Now;
-    public DateTime? EndAt { get; set; }
+    public string Name { get; set; }
+    
+    public ICollection<TicketGateUser> TicketGateUsers { get; set; }
 }

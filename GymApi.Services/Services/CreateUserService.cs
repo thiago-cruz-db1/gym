@@ -9,10 +9,10 @@ namespace GymApi.UseCases.Services;
 
 public class CreateUserService
 {
-    private ICreateUserRepositorySql _createUser;
+    private readonly ICreateUserRepositorySql _createUser;
     private readonly IMapper _mapper;
 
-    public CreateUserService(IMapper mapper, UserManager<User> userManage, ICreateUserRepositorySql createUser)
+    public CreateUserService(IMapper mapper, ICreateUserRepositorySql createUser)
     {
         _mapper = mapper;
         _createUser = createUser;

@@ -1,5 +1,4 @@
 ﻿using GymApi.Domain;
-using GymApi.UseCases.Interfaces;
 using GymApi.UseCases.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,11 +10,13 @@ public class TicketGateController: ControllerBase
 {
     private readonly CreateUserService _createUserService;
     private readonly TicketGateService _ticketGateService;
+    private readonly TicketGateUserService _ticketGateUserService;
 
-    public TicketGateController(TicketGateService ticketGateService, CreateUserService createUserService)
+    public TicketGateController(TicketGateService ticketGateService, CreateUserService createUserService, TicketGateUserService ticketGateUserService)
     {
         _ticketGateService = ticketGateService;
         _createUserService = createUserService;
+        _ticketGateUserService = ticketGateUserService;
     }
     
     [HttpGet]

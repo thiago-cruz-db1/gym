@@ -46,5 +46,6 @@ public class CreateUserRepositorySql : ICreateUserRepositorySql
     {
         var user = await _userManager.FindByIdAsync(userId);
         user.TrainingDays++;
+        await _contextUser.SaveChangesAsync();
     }
 }

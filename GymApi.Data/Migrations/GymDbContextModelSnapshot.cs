@@ -162,6 +162,66 @@ namespace GymApi.Data.Migrations
                     b.ToTable("products", (string)null);
                 });
 
+            modelBuilder.Entity("GymApi.Domain.TicketGate", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ticket_gate", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("7fbe0af4-8441-4efb-a0b5-7994b78a4b1f"),
+                            Name = "CatracaA"
+                        },
+                        new
+                        {
+                            Id = new Guid("c109cd3a-35a7-4368-b006-0389805cc110"),
+                            Name = "CatracaB"
+                        },
+                        new
+                        {
+                            Id = new Guid("82aaf6e1-2a3a-45f1-a6e8-3616de248f78"),
+                            Name = "CatracaC"
+                        });
+                });
+
+            modelBuilder.Entity("GymApi.Domain.TicketGateUser", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime?>("EndAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime>("StartAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid>("TicketGateId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TicketGateId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("ticketgate_user", (string)null);
+                });
+
             modelBuilder.Entity("GymApi.Domain.Training", b =>
                 {
                     b.Property<Guid>("Id")
@@ -280,6 +340,9 @@ namespace GymApi.Data.Migrations
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("longtext");
+
+                    b.Property<int>("TrainingDays")
+                        .HasColumnType("int");
 
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("tinyint(1)");
@@ -456,6 +519,25 @@ namespace GymApi.Data.Migrations
                     b.Navigation("Training");
                 });
 
+            modelBuilder.Entity("GymApi.Domain.TicketGateUser", b =>
+                {
+                    b.HasOne("GymApi.Domain.TicketGate", "TicketGate")
+                        .WithMany("TicketGateUsers")
+                        .HasForeignKey("TicketGateId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("GymApi.Domain.User", "User")
+                        .WithMany("TicketGateUsers")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("TicketGate");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("GymApi.Domain.TrainingUser", b =>
                 {
                     b.HasOne("GymApi.Domain.Training", "Training")
@@ -560,6 +642,11 @@ namespace GymApi.Data.Migrations
                     b.Navigation("Users");
                 });
 
+            modelBuilder.Entity("GymApi.Domain.TicketGate", b =>
+                {
+                    b.Navigation("TicketGateUsers");
+                });
+
             modelBuilder.Entity("GymApi.Domain.Training", b =>
                 {
                     b.Navigation("ExerciseTrainings");
@@ -569,6 +656,8 @@ namespace GymApi.Data.Migrations
 
             modelBuilder.Entity("GymApi.Domain.User", b =>
                 {
+                    b.Navigation("TicketGateUsers");
+
                     b.Navigation("UserTrainings");
                 });
 #pragma warning restore 612, 618
