@@ -3,6 +3,7 @@ using System;
 using GymApi.Data.Data.MySql;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GymApi.Data.Migrations
 {
     [DbContext(typeof(GymDbContext))]
-    partial class GymDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231003200437_change_diff_type")]
+    partial class change_diff_type
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -125,9 +127,6 @@ namespace GymApi.Data.Migrations
                     b.Property<int>("Age")
                         .HasColumnType("int");
 
-                    b.Property<double>("MaxMinutesPerDay")
-                        .HasColumnType("double");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("longtext")
@@ -137,6 +136,9 @@ namespace GymApi.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime")
                         .HasDefaultValueSql("CURRENT_TIMESTAMP");
+
+                    b.Property<int>("maxHoursPerDay")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -216,17 +218,17 @@ namespace GymApi.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("a15aa733-1e5e-4639-bb63-37b54f82a5c7"),
+                            Id = new Guid("3df8d80e-15a3-4ba3-bcb9-bd45b76ead97"),
                             Name = "CatracaA"
                         },
                         new
                         {
-                            Id = new Guid("e2722d4f-82e4-4efe-9785-d0c9c3b5ba46"),
+                            Id = new Guid("73c7b446-332f-4c63-9850-b68117386e57"),
                             Name = "CatracaB"
                         },
                         new
                         {
-                            Id = new Guid("fdab9b3f-6c64-4b8a-a1cb-b2bbffa8f99d"),
+                            Id = new Guid("8cbd79cd-3928-4e06-9a63-cada8eb9d4c0"),
                             Name = "CatracaC"
                         });
                 });

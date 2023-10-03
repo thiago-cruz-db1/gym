@@ -18,6 +18,7 @@ namespace GymApi.Data.Data.MySql
         public DbSet<TrainingUser> UserTrainings { get; set; }
         public DbSet<ExerciseTraining> ExerciseTrainings { get; set; }
         public DbSet<TicketGateUser> TicketGateUsers { get; set; }
+        public DbSet<PersonalByUser> PersonalByUsers { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new PlanConfig());
@@ -30,6 +31,7 @@ namespace GymApi.Data.Data.MySql
             modelBuilder.ApplyConfiguration(new ExerciseTrainingConfig());
             modelBuilder.ApplyConfiguration(new TicketGateConfig());
             modelBuilder.ApplyConfiguration(new TicketGateUsersConfig());
+            modelBuilder.ApplyConfiguration(new PersonalByUserConfig());
             
             modelBuilder.Entity<TicketGate>().HasData(
                 new TicketGate { Id = Guid.NewGuid(), Name = "CatracaA"},

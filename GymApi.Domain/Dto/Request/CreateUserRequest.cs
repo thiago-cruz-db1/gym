@@ -22,5 +22,4 @@ public class CreateUserRequest
     public string PhoneNumber { get; set; }
 
     public Guid PlanId { get; set; }
-    public Guid PersonalTrainerId { get; set; }
 }

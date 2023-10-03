@@ -79,6 +79,7 @@ builder.Services.AddScoped<ExerciseService>();
 builder.Services.AddScoped<ExerciseByTrainingService>();
 builder.Services.AddScoped<TicketGateService>();
 builder.Services.AddScoped<TicketGateUserService>();
+builder.Services.AddScoped<PersonalByUserService>();
 
 builder.Services.AddScoped<ITicketGate, TicketGateService>();
 builder.Services.AddHostedService<BackgroundTicketGateService>();
@@ -93,6 +94,7 @@ builder.Services.AddScoped<IExerciseRepositorySql, ExerciseRepositorySql>();
 builder.Services.AddScoped<IExerciseByTrainingRepositorySql, ExerciseByTrainingRepositorySql>();
 builder.Services.AddScoped<ICreateUserRepositorySql, CreateUserRepositorySql>();
 builder.Services.AddScoped<ITicketGateUserRepositorySql, TicketGateUserRepositorySql>();
+builder.Services.AddScoped<IPersonalByUserRepositorySql, PersonalByUserRepositorySql>();
 
 var app = builder.Build();
 

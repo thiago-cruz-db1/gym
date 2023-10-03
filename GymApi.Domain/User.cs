@@ -9,9 +9,7 @@ public class User : IdentityUser
     public int TrainingDays { get; set; }
     public Guid PlanId { get; set; }
     public Plan Plan { get; set; }
-    public Guid PersonalTrainerId { get; set; }
-    public PersonalTrainer PersonalTrainer { get; set; }
-    
+    public ICollection<PersonalByUser> PersonalByUsers { get; set; }
     public ICollection<TrainingUser> UserTrainings { get; set; }
     
     public ICollection<TicketGateUser> TicketGateUsers { get; set; }

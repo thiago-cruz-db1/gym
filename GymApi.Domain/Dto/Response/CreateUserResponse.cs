@@ -10,5 +10,4 @@ public class CreateUserResponse
     public string Address { get; set; }
     public string PhoneNumber { get; set; }
     public Guid PlanId { get; set; }
-    public Guid PersonalTrainerId { get; set; }
 }

@@ -7,5 +7,6 @@ public class PersonalTrainer
     public Guid Id { get; set; }
     public string Name { get; set; }
     public int Age { get; set; }
-    public ICollection<User> Users { get; set; }
+    public double MaxMinutesPerDay { get; set; } = 8 * 60;
+    public ICollection<PersonalByUser> PersonalByUsers { get; set; }
 }

@@ -3,6 +3,7 @@ using System;
 using GymApi.Data.Data.MySql;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GymApi.Data.Migrations
 {
     [DbContext(typeof(GymDbContext))]
-    partial class GymDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231003185512_change_personal_to_associative_entity_with_user")]
+    partial class change_personal_to_associative_entity_with_user
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -87,9 +89,6 @@ namespace GymApi.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
-                    b.Property<double>("DiffPersonalHours")
-                        .HasColumnType("double");
-
                     b.Property<DateTime>("EndAt")
                         .HasColumnType("datetime(6)");
 
@@ -125,9 +124,6 @@ namespace GymApi.Data.Migrations
                     b.Property<int>("Age")
                         .HasColumnType("int");
 
-                    b.Property<double>("MaxMinutesPerDay")
-                        .HasColumnType("double");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("longtext")
@@ -137,6 +133,9 @@ namespace GymApi.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime")
                         .HasDefaultValueSql("CURRENT_TIMESTAMP");
+
+                    b.Property<int>("maxHoursPerDay")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -216,17 +215,17 @@ namespace GymApi.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("a15aa733-1e5e-4639-bb63-37b54f82a5c7"),
+                            Id = new Guid("1cf8a00b-a993-4a60-96b3-2ce851012905"),
                             Name = "CatracaA"
                         },
                         new
                         {
-                            Id = new Guid("e2722d4f-82e4-4efe-9785-d0c9c3b5ba46"),
+                            Id = new Guid("c0e180f8-e282-40b5-9e90-02e9b667e089"),
                             Name = "CatracaB"
                         },
                         new
                         {
-                            Id = new Guid("fdab9b3f-6c64-4b8a-a1cb-b2bbffa8f99d"),
+                            Id = new Guid("45f11864-6557-47a5-b876-cb242c99a16c"),
                             Name = "CatracaC"
                         });
                 });

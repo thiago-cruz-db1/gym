@@ -11,11 +11,6 @@ public class UserConfig : IEntityTypeConfiguration<User>
         builder
             .ToTable("users");
         
-        builder 
-            .HasOne(u => u.PersonalTrainer)
-            .WithMany(t => t.Users)
-            .HasForeignKey(u => u.PersonalTrainerId);
-        
         builder
             .HasOne(u => u.Plan)
             .WithMany(p => p.Users)
