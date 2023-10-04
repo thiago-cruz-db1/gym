@@ -52,6 +52,20 @@ namespace GymUserApi.Controllers
                 return BadRequest($"Error: {ex.Message}");
             }
         }
+        
+        [HttpGet("/personalinday")]
+        public IActionResult GetPersonalTraineeByDay(Guid id, int day)
+        {
+            try
+            {
+                var listPersonalInDay = _createUserService.GetPersonalTraineeByDay(id, DateTime.Now.AddDays(day));
+                return Ok(listPersonalInDay);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Error: {ex.Message}");
+            }
+        }
 
         [HttpPut("{userId}")]
         public async Task<IActionResult> UpdateUser(string userId, [FromBody] UpdateUserRequest updateUserDto)

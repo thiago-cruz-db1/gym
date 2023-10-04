@@ -49,4 +49,9 @@ public class PersonalTrainerService
 
         _personalTrainerContext.Delete(personalTrainer);
     }
+    
+    public List<PersonalByUser> GetUsersTraineeByDay(Guid id, DateTime date)
+    {
+        return _personalTrainerContext.GetUsersTraineeByDay(id, date);
+    }
 }

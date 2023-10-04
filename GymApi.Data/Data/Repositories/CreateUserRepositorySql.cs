@@ -48,4 +48,9 @@ public class CreateUserRepositorySql : ICreateUserRepositorySql
         user.TrainingDays++;
         await _contextUser.SaveChangesAsync();
     }
+
+    public List<PersonalByUser> GetPersonalTraineeByDay(Guid id, DateTime date)
+    {
+        return _contextUser.PersonalByUsers.Where(e => e.StartAt.Date == date.Date && e.PersonalId == id).ToList();
+    }
 }

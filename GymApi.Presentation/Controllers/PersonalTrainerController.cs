@@ -74,6 +74,20 @@ public class PersonalTrainerController : ControllerBase
             throw new Exception("error on update personal",e);
         }
     }
+    
+    [HttpGet("/userinday")]
+    public IActionResult GetPersonalTraineeByDay(Guid id, int day)
+    {
+        try
+        {
+            var listUsersInDay = _personalTrainerService.GetUsersTraineeByDay(id, DateTime.Now.AddDays(day));
+            return Ok(listUsersInDay);
+        }
+        catch (Exception ex)
+        {
+            return BadRequest($"Error: {ex.Message}");
+        }
+    }
 
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeletePersonalTrainerById(Guid id)

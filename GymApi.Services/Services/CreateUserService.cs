@@ -61,4 +61,9 @@ public class CreateUserService
     {
         return _createUser.IncreaseWorkOut(userId);
     }
+
+    public List<PersonalByUser> GetPersonalTraineeByDay(Guid id, DateTime date)
+    {
+        return _createUser.GetPersonalTraineeByDay(id, date);
+    }
 }

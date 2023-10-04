@@ -13,4 +13,5 @@ public interface ICreateUserRepositorySql
     public Task<IdentityResult>  Update(User user);
     public Task<IdentityResult> Delete(User user);
     public Task IncreaseWorkOut(string userId);
+    public List<PersonalByUser> GetPersonalTraineeByDay(Guid id, DateTime date);
 }
