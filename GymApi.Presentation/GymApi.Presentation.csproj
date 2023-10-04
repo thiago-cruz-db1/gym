@@ -31,6 +31,8 @@
   <ItemGroup>
     <ProjectReference Include="..\GymApi.Data\GymApi.Data.csproj" />
     <ProjectReference Include="..\GymApi.Services\GymApi.Services.csproj" />
+
+
   </ItemGroup>
 
 
