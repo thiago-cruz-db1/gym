@@ -2,6 +2,7 @@
 using GymApi.Data.Data.Interfaces;
 using GymApi.Domain;
 using GymApi.Domain.Dto.Request;
+using GymApi.Domain.Enum;
 
 namespace GymApi.UseCases.Services;
 
@@ -15,9 +16,16 @@ public class PersonalByUserService
         _mapper = mapper;
         _personalByUserRepositorySql = personalByUserRepositorySql;
     }
-    public async Task<PersonalByUser> AddPersonalByUser(CreatePersonalByUserRequest planDto)
+    public async Task<PersonalByUser> AddPersonalByUser(CreatePersonalByUserRequest personalByUserDto)
     {
-        var personalByUser = _mapper.Map<PersonalByUser>(planDto);
+        var personalByUser = _mapper.Map<PersonalByUser>(personalByUserDto);
+        var isDuplicatePersonal = _personalByUserRepositorySql.IsDuplicatePersonalOnSameTime(personalByUser);
+        if (isDuplicatePersonal) throw new Exception("you cannot have two personal in same time");
+        var isDuplicateClient = _personalByUserRepositorySql.IsDuplicateClientOnSameTime(personalByUser);
+        if (isDuplicateClient) throw new Exception("Personal is not avalible in this time");
+        var isFree = _personalByUserRepositorySql.IsOpenToNewClient(personalByUser);
+        if (!isFree) throw new Exception($"Personal does not have any time to traine you, he has only" +  
+                                         $"{(double)HoursDayPersonal.EightHours - personalByUser.DiffPersonalHours} minutes.");
         await _personalByUserRepositorySql.Save(personalByUser);
         return personalByUser;
     }
