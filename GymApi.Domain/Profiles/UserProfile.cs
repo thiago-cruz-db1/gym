@@ -9,7 +9,7 @@ public class UserProfile : Profile
     public UserProfile()
     {
         CreateMap<CreateUserRequest, User>();
-        CreateMap<CreateUserResponse, User>();
-        CreateMap<User, CreateUserResponse>();
+        CreateMap<CreateUserResponse, User>().ReverseMap();
+        CreateMap<UpdateUserRequest, User>();
     }   
 }

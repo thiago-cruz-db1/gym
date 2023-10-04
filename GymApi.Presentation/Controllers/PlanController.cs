@@ -61,11 +61,11 @@ namespace GymUserApi.Controllers
         }
         
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdatePlanById(Guid id)
+        public async Task<IActionResult> UpdatePlanById(Guid id, [FromBody] UpdatePlanRequest updatePlanDto)
         {
             try
             {
-                var plan = await _planService.UpdatePlanById(id);
+                var plan = await _planService.UpdatePlanById(id, updatePlanDto);
                 return Ok(plan);
             }
             catch (Exception e)

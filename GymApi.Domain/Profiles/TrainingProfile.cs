@@ -9,5 +9,6 @@ public class TrainingProfile : Profile
     public TrainingProfile()
     {
         CreateMap<CreateTrainingRequest, Training>();
+        CreateMap<UpdateTrainingRequest, Training>();
     }
 }

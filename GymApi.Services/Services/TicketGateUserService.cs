@@ -32,9 +32,11 @@ public class TicketGateUserService
         return await _ticketGateUserRepositorySql.FindById(id);
     }
     
-    public async Task<TicketGateUser> UpdateTicketGateUserById(Guid id)
+    public async Task<TicketGateUser> UpdateTicketGateUserById(Guid id, UpdateTicketGateUsers updateticketGateDto)
     {
         var ticketGate = await _ticketGateUserRepositorySql.FindById(id);
+        if (ticketGate == null) throw new ApplicationException("ticketGate not found");
+        _mapper.Map(updateticketGateDto, ticketGate); 
         await _ticketGateUserRepositorySql.Update(ticketGate);
         return ticketGate;
     }

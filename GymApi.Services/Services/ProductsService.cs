@@ -32,9 +32,11 @@ public class ProductsService
         return await _contextProducts.FindById(id);
     }
     
-    public async Task<Product> UpdateProductById(Guid id)
+    public async Task<Product> UpdateProductById(Guid id, UpdateProductRequest updateproductDto)
     {
         var product = await _contextProducts.FindById(id);
+        if (product == null) throw new ApplicationException("product not found");
+        _mapper.Map(updateproductDto, product); 
         await _contextProducts.Update(product);
         return product;
     }

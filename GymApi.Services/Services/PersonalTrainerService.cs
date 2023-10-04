@@ -35,9 +35,11 @@ public class PersonalTrainerService
         return await _personalTrainerContext.FindById(id);
     }
     
-    public async Task<PersonalTrainer> UpdatePernalById(Guid id)
+    public async Task<PersonalTrainer> UpdatePersonalById(Guid id, UpdatePersonalRequest updatePersonalDto)
     {
         var personal = await _personalTrainerContext.FindById(id);
+        if (personal == null) throw new ApplicationException("personal not found");
+        _mapper.Map(updatePersonalDto, personal); 
         await _personalTrainerContext.Update(personal);
         return personal;
     }

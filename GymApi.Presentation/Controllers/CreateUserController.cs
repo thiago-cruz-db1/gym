@@ -68,7 +68,7 @@ namespace GymUserApi.Controllers
         }
 
         [HttpPut("{userId}")]
-        public async Task<IActionResult> UpdateUser(string userId, [FromBody] UpdateUserRequest updateUserDto)
+        public async Task<IActionResult> UpdateUser(string userId, UpdateUserRequest updateUserDto)
         {
             try
             {

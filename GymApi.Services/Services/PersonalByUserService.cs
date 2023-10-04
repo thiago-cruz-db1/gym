@@ -40,9 +40,11 @@ public class PersonalByUserService
         return await _personalByUserRepositorySql.FindById(id);
     }
     
-    public async Task<PersonalByUser> UpdatePersonalByUserById(Guid id)
+    public async Task<PersonalByUser> UpdatePersonalByUserById(Guid id, UpdatePersonalByUserRequest updatePersonalByUserDto)
     {
         var personalByUser = await _personalByUserRepositorySql.FindById(id);
+        if (personalByUser == null) throw new ApplicationException("personalByUser not found");
+        _mapper.Map(updatePersonalByUserDto, personalByUser); 
         await _personalByUserRepositorySql.Update(personalByUser);
         return personalByUser;
     }

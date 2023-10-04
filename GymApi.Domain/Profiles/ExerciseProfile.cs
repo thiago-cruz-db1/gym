@@ -8,5 +8,6 @@ public class ExerciseProfile : Profile
     public ExerciseProfile()
     {
         CreateMap<CreateExerciseRequest, Exercise>();   
+        CreateMap<UpdateExerciseRequest, Exercise>();   
     }
 }

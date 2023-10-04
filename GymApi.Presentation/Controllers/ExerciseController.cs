@@ -58,11 +58,11 @@ public class ExerciseController : ControllerBase
     }
     
     [HttpPut("{id}")]
-    public async Task<IActionResult> UpdateExerciseById(Guid id)
+    public async Task<IActionResult> UpdateExerciseById(Guid id, [FromBody] UpdateExerciseRequest updateExerciseDto)
     {
         try
         {
-            var training = await _exerciseService.UpdateExercise(id);
+            var training = await _exerciseService.UpdateExercise(id, updateExerciseDto);
             return Ok(training);
         }
         catch (Exception e)

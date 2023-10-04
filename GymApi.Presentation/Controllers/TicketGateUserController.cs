@@ -64,11 +64,11 @@ public class TicketGateUserController : ControllerBase
             }
             
             [HttpPut("{id}")]
-            public async Task<IActionResult> UpdateTicketGateUserById(Guid id)
+            public async Task<IActionResult> UpdateTicketGateUserById(Guid id, [FromBody] UpdateTicketGateUsers ticketGateDto)
             {
                 try
                 {
-                    var ticketGate = await _ticketGateUserService.UpdateTicketGateUserById(id);
+                    var ticketGate = await _ticketGateUserService.UpdateTicketGateUserById(id, ticketGateDto);
                     return Ok(ticketGate);
                 }
                 catch (Exception e)

@@ -8,5 +8,6 @@ public class PersonalByUserProfile : Profile
     public PersonalByUserProfile()
     {
         CreateMap<CreatePersonalByUserRequest, PersonalByUser>();
+        CreateMap<UpdatePersonalByUserRequest, PersonalByUser>();
     }
 }

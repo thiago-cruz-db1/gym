@@ -33,9 +33,11 @@ public class ExerciseByTrainingService
         return await _contextExerciseByTraining.FindById(id);
     }
     
-    public async Task<ExerciseTraining> UpdateExerciseTraining(Guid id)
+    public async Task<ExerciseTraining> UpdateExerciseTraining(Guid id, UpdateExerciseTrainingRequest updateExerciseTrainingDto)
     {
         var training = await _contextExerciseByTraining.FindById(id);
+        if (training == null) throw new ApplicationException("training not found");
+        _mapper.Map(updateExerciseTrainingDto, training); 
         await _contextExerciseByTraining.Update(training);
         return training;
     }

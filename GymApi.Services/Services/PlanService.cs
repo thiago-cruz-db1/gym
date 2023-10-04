@@ -35,9 +35,11 @@ public class PlanService
         return await _contextPlan.FindById(id);
     }
     
-    public async Task<Plan> UpdatePlanById(Guid id)
+    public async Task<Plan> UpdatePlanById(Guid id, UpdatePlanRequest updatePlanDto)
     {
         var plan = await _contextPlan.FindById(id);
+        if (plan == null) throw new ApplicationException("plan not found");
+        _mapper.Map(updatePlanDto, plan); 
         await _contextPlan.Update(plan);
         return plan;
     }

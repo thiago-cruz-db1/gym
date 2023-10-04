@@ -9,5 +9,6 @@ public class PersonalTrainerProfile : Profile
     public PersonalTrainerProfile()
     {
         CreateMap<CreatePersonalTrainerRequest, PersonalTrainer>();
+        CreateMap<UpdatePersonalTrainerRequest, PersonalTrainer>();
     }
 }

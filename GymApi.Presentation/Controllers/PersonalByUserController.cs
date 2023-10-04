@@ -61,11 +61,11 @@ public class PersonalByUserController: ControllerBase
     }
     
     [HttpPut("{id}")]
-    public async Task<IActionResult> UpdatePersonalByUserById(Guid id)
+    public async Task<IActionResult> UpdatePersonalByUserById(Guid id, [FromBody] UpdatePersonalByUserRequest updatePersonalByUserDto)
     {
         try
         {
-            var personalByUser = await _personalByUserService.UpdatePersonalByUserById(id);
+            var personalByUser = await _personalByUserService.UpdatePersonalByUserById(id, updatePersonalByUserDto);
             return Ok(personalByUser);
         }
         catch (Exception e)

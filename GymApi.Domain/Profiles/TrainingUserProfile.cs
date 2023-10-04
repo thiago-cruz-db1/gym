@@ -11,5 +11,8 @@ public class TrainingUserProfile : Profile
     {
         CreateMap<CreateTrainingByUserRequest, TrainingUser>()
             .ForMember(dest => dest.TrainingObservations, opt => opt.MapFrom(src => string.Join(", ", src.TrainingObservation)));
+        CreateMap<UpdateTrainingByUserRequest, TrainingUser>()
+            .ForMember(dest => dest.TrainingObservations, opt => opt.MapFrom(src => string.Join(", ", src.TrainingObservation)));
+
     }
 }

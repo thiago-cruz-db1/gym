@@ -61,11 +61,11 @@ public class TrainingController : ControllerBase
     }
     
     [HttpPut("{id}")]
-    public async Task<IActionResult> UpdateTrainingById(Guid id)
+    public async Task<IActionResult> UpdateTrainingById(Guid id, [FromBody] UpdateTrainingRequest createTrainingDto)
     {
         try
         {
-            var training = await _trainingService.UpdateTraining(id);
+            var training = await _trainingService.UpdateTraining(id, createTrainingDto);
             return Ok(training);
         }
         catch (Exception e)

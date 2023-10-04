@@ -32,9 +32,11 @@ public class TrainingService
         return await _contextTraining.FindById(id);
     }
     
-    public async Task<Training> UpdateTraining(Guid id)
+    public async Task<Training> UpdateTraining(Guid id, UpdateTrainingRequest updateTrainingDto)
     {
         var training = await _contextTraining.FindById(id);
+        if (training == null) throw new ApplicationException("training not found");
+        _mapper.Map(updateTrainingDto, training); 
         await _contextTraining.Update(training);
         return training;
     }

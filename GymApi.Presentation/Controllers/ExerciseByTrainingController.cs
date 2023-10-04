@@ -16,7 +16,7 @@ public class ExerciseByTrainingController : ControllerBase
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddPlan([FromBody] CreateExerciseByTrainingRequest exerciseByTrainingDto)
+        public async Task<IActionResult> AddExerciseTraining([FromBody] CreateExerciseByTrainingRequest exerciseByTrainingDto)
         {
             try
             {
@@ -30,7 +30,7 @@ public class ExerciseByTrainingController : ControllerBase
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetPlans()
+        public async Task<IActionResult> GetExerciseTraining()
         {
             try
             {
@@ -45,7 +45,7 @@ public class ExerciseByTrainingController : ControllerBase
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetPlanById(Guid id)
+        public async Task<IActionResult> GetExerciseTrainingById(Guid id)
         {
             try
             {
@@ -61,12 +61,12 @@ public class ExerciseByTrainingController : ControllerBase
         }
         
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdatePlanById(Guid id)
+        public async Task<IActionResult> UpdateExerciseTrainingById(Guid id, [FromBody] UpdateExerciseTrainingRequest updateExerciseTrainingDto)
         {
             try
             {
-                var plan = await _exerciseByTrainingService.UpdateExerciseTraining(id);
-                return Ok(plan);
+                var exerciseByTraining = await _exerciseByTrainingService.UpdateExerciseTraining(id, updateExerciseTrainingDto);
+                return Ok(exerciseByTraining);
             }
             catch (Exception e)
             {
@@ -75,7 +75,7 @@ public class ExerciseByTrainingController : ControllerBase
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeletePlanById(Guid id)
+        public async Task<IActionResult> DeleteExerciseTrainingById(Guid id)
         {
             try
             {

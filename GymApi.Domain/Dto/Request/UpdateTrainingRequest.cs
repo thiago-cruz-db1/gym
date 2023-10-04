@@ -3,5 +3,5 @@
 public class UpdateTrainingRequest
 {
     public string? Name { get; set; }
-    public ICollection<Guid> Exercises { get; set; }
+    public ICollection<Guid>? Exercises { get; set; }
 }

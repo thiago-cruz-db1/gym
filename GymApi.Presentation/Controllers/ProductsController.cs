@@ -56,11 +56,11 @@ public class ProductsController : ControllerBase
     }
     
     [HttpPut("{id}")]
-    public async Task<IActionResult> UpdateProductById(Guid id)
+    public async Task<IActionResult> UpdateProductById(Guid id, [FromBody] UpdateProductRequest productDto)
     {
         try
         {
-            var product = await _productsService.UpdateProductById(id);
+            var product = await _productsService.UpdateProductById(id, productDto);
             return Ok(product);
         }
         catch (Exception e)
