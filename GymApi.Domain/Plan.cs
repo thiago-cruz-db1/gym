@@ -6,7 +6,7 @@ public class Plan
     public double Amount { get; set; }
     public string Category { get; set; }
     public int TotalMonths { get; set; }
-
+    public string DayOfWeeks { get; set; }
     public ICollection<User> Users { get; set; }
 }
 

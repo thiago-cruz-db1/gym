@@ -8,8 +8,10 @@ namespace GymApi.Domain.Profiles
     {
         public PlanProfile()
         {
-            CreateMap<CreatePlanRequest, Plan>();
-            CreateMap<UpdatePlanRequest, Plan>();
+            CreateMap<CreatePlanRequest, Plan>()
+                .ForMember(dest => dest.DayOfWeeks, opt => opt.MapFrom(src => string.Join(", ", src.DayOfWeeks)));
+            CreateMap<UpdatePlanRequest, Plan>()
+                .ForMember(dest => dest.DayOfWeeks, opt => opt.MapFrom(src => string.Join(", ", src.DayOfWeeks)));
             CreateMap<GetPlanResponse, Plan>();
         }
     }
