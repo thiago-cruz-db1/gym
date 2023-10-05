@@ -32,6 +32,11 @@ namespace GymApi.Data.Data.ConfigModel
                 .HasColumnName("day_of_week_plan")
                 .HasColumnType("varchar(45)")
                 .IsRequired();
+            
+            builder
+                .Property(a => a.IsActive)
+                .HasColumnName("active_plan")
+                .IsRequired();
 
             builder
                 .Property<DateTime>("create_at")

@@ -8,5 +8,6 @@ public class Plan
     public int TotalMonths { get; set; }
     public string DayOfWeeks { get; set; }
     public ICollection<User> Users { get; set; }
+    public bool IsActive { get; set; } = true;
 }
 

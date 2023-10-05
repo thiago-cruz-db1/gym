@@ -2,6 +2,7 @@
 using GymApi.Data.Data.Interfaces;
 using GymApi.Domain;
 using GymApi.Domain.Dto.Request;
+using GymApi.Domain.Enum;
 
 namespace GymApi.UseCases.Services;
 
@@ -15,11 +16,13 @@ public class TicketGateUserService
         _mapper = mapper;
         _ticketGateUserRepositorySql = ticketGateUserRepositorySql;
     }
-    public async Task<TicketGateUser> AddTicketGateUser(CreateTicketGateUsers createTicketGateDto)
+    public async Task<bool> AddTicketGateUser(CreateTicketGateUsersRequest createTicketGateDto)
     {
+        var ableToPass = await _ticketGateUserRepositorySql.AbleToPass(createTicketGateDto.UserId, createTicketGateDto.day);
+        if (!ableToPass) return false;
         var ticketGate = _mapper.Map<TicketGateUser>(createTicketGateDto);
         await _ticketGateUserRepositorySql.Save(ticketGate);
-        return ticketGate;
+        return true;
     }
 
     public async Task<ICollection<TicketGateUser>> GetTicketGateUser()

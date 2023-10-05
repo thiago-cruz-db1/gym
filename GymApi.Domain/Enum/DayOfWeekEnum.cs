@@ -1,6 +1,6 @@
 ﻿namespace GymApi.Domain.Enum;
 
-public enum DayOfWeek
+public enum DayOfWeekEnum
 {
     Monday = 1,
     Tuesday = 2,
@@ -8,5 +8,5 @@ public enum DayOfWeek
     Thursday = 4,
     Friday = 5,
     Saturday = 6,
-    Sunday = 7
+    Sunday = 7,
 }

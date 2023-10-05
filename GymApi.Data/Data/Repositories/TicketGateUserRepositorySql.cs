@@ -2,12 +2,30 @@
 using GymApi.Data.Data.Interfaces;
 using GymApi.Data.Data.MySql;
 using GymApi.Domain;
+using GymApi.Domain.Enum;
 
 namespace GymApi.Data.Data.Repositories;
 
 public class TicketGateUserRepositorySql : EntityFrameworkRepositorySqlAbstract<Guid, TicketGateUser>, ITicketGateUserRepositorySql
 {
-    public TicketGateUserRepositorySql(GymDbContext context) : base(context)
+    private readonly IPlanRepositorySql _planRepositorySql;
+    private readonly ICreateUserRepositorySql _createUserRepositorySql;
+    public TicketGateUserRepositorySql(GymDbContext context, IPlanRepositorySql planRepositorySql, ICreateUserRepositorySql createUserRepositorySql) : base(context)
     {
+        _planRepositorySql = planRepositorySql;
+        _createUserRepositorySql = createUserRepositorySql;
+    }
+
+    public async Task<bool> AbleToPass(Guid id, DateTime day)
+    {
+        var user = await _createUserRepositorySql.GetUserById(id.ToString());
+        var planByUser = await _planRepositorySql.FindById(user.PlanId);
+        var dayInWeek = planByUser.DayOfWeeks.Split(',');
+        return dayInWeek
+            .Any(dayInPlan =>
+            string.Equals(
+                dayInPlan.Trim(), 
+                Enum.GetName(day.DayOfWeek), 
+                StringComparison.OrdinalIgnoreCase));
     }
 }

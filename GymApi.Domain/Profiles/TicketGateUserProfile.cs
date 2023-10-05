@@ -7,7 +7,7 @@ public class TicketGateUserProfile : Profile
 {
     public TicketGateUserProfile()
     {
-        CreateMap<CreateTicketGateUsers, TicketGateUser>();
+        CreateMap<CreateTicketGateUsersRequest, TicketGateUser>();
         CreateMap<UpdateTicketGateUsers, TicketGateUser>();
     }
 }
