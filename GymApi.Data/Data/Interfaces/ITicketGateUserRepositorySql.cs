@@ -6,5 +6,5 @@ namespace GymApi.Data.Data.Interfaces;
 
 public interface ITicketGateUserRepositorySql : IBaseRepositorySql<Guid, TicketGateUser>
 {
-    Task<bool> AbleToPass(Guid id, DateTime day);
+    Task<List<string>> GetAbleUsers(DateTime day);
 }

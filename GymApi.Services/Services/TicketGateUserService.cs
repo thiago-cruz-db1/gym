@@ -16,14 +16,15 @@ public class TicketGateUserService
         _mapper = mapper;
         _ticketGateUserRepositorySql = ticketGateUserRepositorySql;
     }
-    public async Task<bool> AddTicketGateUser(CreateTicketGateUsersRequest createTicketGateDto)
-    {
-        var ableToPass = await _ticketGateUserRepositorySql.AbleToPass(createTicketGateDto.UserId, createTicketGateDto.day);
-        if (!ableToPass) return false;
-        var ticketGate = _mapper.Map<TicketGateUser>(createTicketGateDto);
-        await _ticketGateUserRepositorySql.Save(ticketGate);
-        return true;
-    }
+    
+    // public async Task<bool> AddTicketGateUser(CreateTicketGateUsersRequest createTicketGateDto)
+    // {
+    //     var ableToPass = await _ticketGateUserRepositorySql.AbleToPass(createTicketGateDto.UserId, createTicketGateDto.day);
+    //     //if (!ableToPass) return false;
+    //     var ticketGate = _mapper.Map<TicketGateUser>(createTicketGateDto);
+    //     await _ticketGateUserRepositorySql.Save(ticketGate);
+    //     return true;
+    // }
 
     public async Task<ICollection<TicketGateUser>> GetTicketGateUser()
     {
@@ -48,5 +49,10 @@ public class TicketGateUserService
     {
         var ticketGate = await _ticketGateUserRepositorySql.FindById(id);
         _ticketGateUserRepositorySql.Delete(ticketGate);
+    }
+
+    public async Task<List<string>> GetAbleUsers(DateTime day)
+    {
+        return await _ticketGateUserRepositorySql.GetAbleUsers(day);
     }
 }

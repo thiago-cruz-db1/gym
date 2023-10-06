@@ -225,17 +225,17 @@ namespace GymApi.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("560fb3dc-ad08-4d4f-bac7-9d3fe37fe07b"),
+                            Id = new Guid("b6e2d105-943f-4026-a2b7-66b55960348b"),
                             Name = "CatracaA"
                         },
                         new
                         {
-                            Id = new Guid("d104642e-2fe1-4d78-ae04-3f660e539859"),
+                            Id = new Guid("6fb8cc1c-d096-478f-a594-5200d2077f9b"),
                             Name = "CatracaB"
                         },
                         new
                         {
-                            Id = new Guid("cde77067-a69d-4f05-8d3f-853463a43496"),
+                            Id = new Guid("2d6c3e53-40b5-4079-846d-ff3b4464c0eb"),
                             Name = "CatracaC"
                         });
                 });

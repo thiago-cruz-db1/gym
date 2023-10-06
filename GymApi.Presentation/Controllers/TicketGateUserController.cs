@@ -10,28 +10,11 @@ namespace GymUserApi.Controllers;
 [Route("[controller]")]
 public class TicketGateUserController : ControllerBase
 {
-    private readonly ICreateUserRepositorySql _createUserRepositorySql;
     private readonly TicketGateUserService _ticketGateUserService;
 
-    public TicketGateUserController(TicketGateUserService ticketGateUserService, ICreateUserRepositorySql createUser)
+    public TicketGateUserController(TicketGateUserService ticketGateUserService)
     {
         _ticketGateUserService = ticketGateUserService;
-        _createUserRepositorySql = createUser;
-    }
-    [HttpPost]
-    public async Task<IActionResult> AddTicketGateUser([FromBody] CreateTicketGateUsersRequest ticketGateDto)
-    {
-        try
-        {
-            var ticketGate = await _ticketGateUserService.AddTicketGateUser(ticketGateDto);
-            if (!ticketGate) return Unauthorized();
-            await _createUserRepositorySql.IncreaseWorkOut(ticketGateDto.UserId.ToString());
-            return Ok(ticketGate);
-        }
-        catch (Exception e)
-        {
-            throw new Exception("error on create ticketGate", e);
-        }
     }
 
     [HttpGet]
@@ -90,6 +73,20 @@ public class TicketGateUserController : ControllerBase
         catch (Exception e)
         {
             throw new Exception("error on delete ticketGate", e);
+        }
+    }
+    
+    [HttpPost("/send")]
+    public async Task<IActionResult> GetAbleUsers([FromBody] CreateTicketGateUsersRequest ticketGateDto)
+    {
+        try
+        {
+            var validUser = await _ticketGateUserService.GetAbleUsers(ticketGateDto.day);
+            return Ok(validUser);
+        }
+        catch (Exception e)
+        {
+            throw new Exception("error on verify able users", e);
         }
     }
 }
