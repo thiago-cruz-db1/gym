@@ -18,6 +18,7 @@ public class ExerciseService
     public async Task<Exercise> AddExercise(CreateExerciseRequest exerciseDto)
     {
         var exercise = _mapper.Map<Exercise>(exerciseDto);
+        if(_contextExercise.DuplicateExercise(exercise)) throw new Exception("exercise already exists");
         await _contextExercise.Save(exercise);
         return exercise;
     }
@@ -31,12 +32,12 @@ public class ExerciseService
     {
         return await _contextExercise.FindById(id);
     }
-    
+
     public async Task<Exercise> UpdateExercise(Guid id, UpdateExerciseRequest updateExerciseDto)
     {
         var exercise = await _contextExercise.FindById(id);
         if (exercise == null) throw new ApplicationException("exercise not found");
-        _mapper.Map(updateExerciseDto, exercise); 
+        _mapper.Map(updateExerciseDto, exercise);
         await _contextExercise.Update(exercise);
         return exercise;
     }

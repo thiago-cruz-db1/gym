@@ -13,7 +13,7 @@ namespace GymApi.Data.Data.MySql
         public DbSet<PersonalTrainer> PersonalTrainers { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Training> Trainings { get; set; }
-        public DbSet<Exercise> Exercices { get; set; }
+        public DbSet<Exercise> Exercises { get; set; }
         public DbSet<TicketGate> TicketGates { get; set; }
         public DbSet<TrainingUser> UserTrainings { get; set; }
         public DbSet<ExerciseTraining> ExerciseTrainings { get; set; }
@@ -32,13 +32,13 @@ namespace GymApi.Data.Data.MySql
             modelBuilder.ApplyConfiguration(new TicketGateConfig());
             modelBuilder.ApplyConfiguration(new TicketGateUsersConfig());
             modelBuilder.ApplyConfiguration(new PersonalByUserConfig());
-            
+
             modelBuilder.Entity<TicketGate>().HasData(
                 new TicketGate { Id = Guid.NewGuid(), Name = "CatracaA"},
                 new TicketGate { Id = Guid.NewGuid(), Name = "CatracaB"},
                 new TicketGate { Id = Guid.NewGuid(), Name = "CatracaC"}
             );
-            
+
             base.OnModelCreating(modelBuilder);
         }
     }
