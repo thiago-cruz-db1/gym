@@ -82,7 +82,8 @@ public class TicketGateUserController : ControllerBase
         try
         {
             var validUser = await _ticketGateUserService.GetAbleUsers(ticketGateDto.day);
-            return Ok(validUser);
+            var send = _ticketGateUserService.SendToTicketGate(validUser);
+            return Accepted(send);
         }
         catch (Exception e)
         {

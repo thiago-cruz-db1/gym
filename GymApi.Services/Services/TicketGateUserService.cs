@@ -1,8 +1,12 @@
-﻿using AutoMapper;
+﻿using System.Text;
+using System.Text.Json;
+using AutoMapper;
 using GymApi.Data.Data.Interfaces;
 using GymApi.Domain;
 using GymApi.Domain.Dto.Request;
 using GymApi.Domain.Enum;
+using Microsoft.AspNetCore.Mvc;
+using RabbitMQ.Client;
 
 namespace GymApi.UseCases.Services;
 
@@ -54,5 +58,27 @@ public class TicketGateUserService
     public async Task<List<string>> GetAbleUsers(DateTime day)
     {
         return await _ticketGateUserRepositorySql.GetAbleUsers(day);
+    }
+
+    public bool SendToTicketGate(List<string> ids)
+    {
+        var factory = new ConnectionFactory { HostName = "localhost" };
+        using var connection = factory.CreateConnection();
+        using var channel = connection.CreateModel();
+
+        channel.QueueDeclare(queue: "ticket_gate",
+            durable: false,
+            exclusive: false,
+            autoDelete: false,
+            arguments: null);
+
+        var message = JsonSerializer.Serialize(ids);
+        var body = Encoding.UTF8.GetBytes(message);
+
+        channel.BasicPublish(exchange: string.Empty,
+            routingKey: "ticket_gate",
+            basicProperties: null,
+            body: body);
+        return true;
     }
 }
