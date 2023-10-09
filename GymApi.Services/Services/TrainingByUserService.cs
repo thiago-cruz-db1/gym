@@ -17,9 +17,14 @@ public class TrainingByUserService
     }
     public async Task<TrainingUser> AddTrainingUser(CreateTrainingByUserRequest trainingUserDto)
     {
-        var training = _mapper.Map<TrainingUser>(trainingUserDto);
-        await _contextTrainingByUser.Save(training);
-        return training;
+	    var validDay = await _contextTrainingByUser.CorrectDayOfTraining(trainingUserDto.UserId);
+	    if (validDay)
+	    {
+		    var training = _mapper.Map<TrainingUser>(trainingUserDto);
+		    await _contextTrainingByUser.Save(training);
+		    return training;
+	    }
+	    throw new Exception("day is not able to be a trainee for this user");
     }
 
     public async Task<ICollection<TrainingUser>> GetTrainingUser()
@@ -31,12 +36,12 @@ public class TrainingByUserService
     {
         return await _contextTrainingByUser.FindById(id);
     }
-    
+
     public async Task<TrainingUser> UpdateTrainingUser(Guid id, UpdateTrainingByUserRequest updateTrainingDto)
     {
         var trainingByUser = await _contextTrainingByUser.FindById(id);
         if (trainingByUser == null) throw new ApplicationException("trainingByUser not found");
-        _mapper.Map(updateTrainingDto, trainingByUser); 
+        _mapper.Map(updateTrainingDto, trainingByUser);
         await _contextTrainingByUser.Update(trainingByUser);
         return trainingByUser;
     }
