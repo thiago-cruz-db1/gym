@@ -16,9 +16,9 @@ public class TrainingRepositorySql : EntityFrameworkRepositorySqlAbstract<Guid, 
 
     public bool ValidationIfExerciseExist(ICollection<Guid> exercisesId)
     {
-        var idsFromDataBase = _contextExercise.Exercices
+        var idsFromDataBase = _contextExercise.Exercises
             .Count(e => exercisesId.Contains(e.Id)) == exercisesId.Count;
         return idsFromDataBase;
     }
-    
+
 }

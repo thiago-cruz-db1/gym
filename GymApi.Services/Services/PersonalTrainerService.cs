@@ -22,6 +22,7 @@ public class PersonalTrainerService
     {
         var personalTrainer = _mapper.Map<PersonalTrainer>(personalTrainerDto);
         await _personalTrainerContext.Save(personalTrainer);
+        await _personalTrainerContext.SaveChange();
         return personalTrainer;
     }
 
@@ -34,13 +35,14 @@ public class PersonalTrainerService
     {
         return await _personalTrainerContext.FindById(id);
     }
-    
+
     public async Task<PersonalTrainer> UpdatePersonalById(Guid id, UpdatePersonalRequest updatePersonalDto)
     {
         var personal = await _personalTrainerContext.FindById(id);
         if (personal == null) throw new ApplicationException("personal not found");
-        _mapper.Map(updatePersonalDto, personal); 
+        _mapper.Map(updatePersonalDto, personal);
         await _personalTrainerContext.Update(personal);
+        await _personalTrainerContext.SaveChange();
         return personal;
     }
 
@@ -50,8 +52,9 @@ public class PersonalTrainerService
         if (personalTrainer == null) throw new Exception("Personal is null");
 
         _personalTrainerContext.Delete(personalTrainer);
+        await _personalTrainerContext.SaveChange();
     }
-    
+
     public List<PersonalByUser> GetUsersTraineeByDay(Guid id, DateTime date)
     {
         return _personalTrainerContext.GetUsersTraineeByDay(id, date);

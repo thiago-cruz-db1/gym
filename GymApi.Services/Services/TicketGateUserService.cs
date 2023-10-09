@@ -10,7 +10,7 @@ using RabbitMQ.Client;
 
 namespace GymApi.UseCases.Services;
 
-public class TicketGateUserService 
+public class TicketGateUserService
 {
     private readonly IMapper _mapper;
     private readonly ITicketGateUserRepositorySql _ticketGateUserRepositorySql;
@@ -20,13 +20,14 @@ public class TicketGateUserService
         _mapper = mapper;
         _ticketGateUserRepositorySql = ticketGateUserRepositorySql;
     }
-    
+
     // public async Task<bool> AddTicketGateUser(CreateTicketGateUsersRequest createTicketGateDto)
     // {
     //     var ableToPass = await _ticketGateUserRepositorySql.AbleToPass(createTicketGateDto.UserId, createTicketGateDto.day);
     //     //if (!ableToPass) return false;
     //     var ticketGate = _mapper.Map<TicketGateUser>(createTicketGateDto);
     //     await _ticketGateUserRepositorySql.Save(ticketGate);
+    //     await _ticketGateUserRepositorySql.SaveChange();
     //     return true;
     // }
 
@@ -39,13 +40,14 @@ public class TicketGateUserService
     {
         return await _ticketGateUserRepositorySql.FindById(id);
     }
-    
+
     public async Task<TicketGateUser> UpdateTicketGateUserById(Guid id, UpdateTicketGateUsers updateticketGateDto)
     {
         var ticketGate = await _ticketGateUserRepositorySql.FindById(id);
         if (ticketGate == null) throw new ApplicationException("ticketGate not found");
-        _mapper.Map(updateticketGateDto, ticketGate); 
+        _mapper.Map(updateticketGateDto, ticketGate);
         await _ticketGateUserRepositorySql.Update(ticketGate);
+        await _ticketGateUserRepositorySql.SaveChange();
         return ticketGate;
     }
 
@@ -53,6 +55,7 @@ public class TicketGateUserService
     {
         var ticketGate = await _ticketGateUserRepositorySql.FindById(id);
         _ticketGateUserRepositorySql.Delete(ticketGate);
+        await _ticketGateUserRepositorySql.SaveChange();
     }
 
     public async Task<List<string>> GetAbleUsers(DateTime day)

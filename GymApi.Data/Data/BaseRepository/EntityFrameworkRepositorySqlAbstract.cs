@@ -18,10 +18,14 @@ public abstract class EntityFrameworkRepositorySqlAbstract<TId, TEntity> : IBase
         await _context.SaveChangesAsync();
     }
 
+    public async Task SaveChange()
+    {
+	    await _context.SaveChangesAsync();
+    }
+
     public async Task Update(TEntity entity)
     {
         _context.Set<TEntity>().Update(entity);
-        await _context.SaveChangesAsync();
     }
 
     public async Task<List<TEntity>> FindAll()
@@ -37,6 +41,5 @@ public abstract class EntityFrameworkRepositorySqlAbstract<TId, TEntity> : IBase
     public async void Delete(TEntity entity)
     {
         _context.Set<TEntity>().Remove(entity!);
-        await _context.SaveChangesAsync();
     }
 }

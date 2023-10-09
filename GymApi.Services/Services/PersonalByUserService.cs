@@ -24,9 +24,10 @@ public class PersonalByUserService
         var isDuplicateClient = _personalByUserRepositorySql.IsDuplicateClientOnSameTime(personalByUser);
         if (isDuplicateClient) throw new Exception("Personal is not avalible in this time");
         var isFree = _personalByUserRepositorySql.IsOpenToNewClient(personalByUser);
-        if (!isFree) throw new Exception($"Personal does not have any time to traine you, he has only" +  
+        if (!isFree) throw new Exception($"Personal does not have any time to traine you, he has only" +
                                          $"{(double)HoursDayPersonal.EightHours - personalByUser.DiffPersonalHours} minutes.");
         await _personalByUserRepositorySql.Save(personalByUser);
+        await _personalByUserRepositorySql.SaveChange();
         return personalByUser;
     }
 
@@ -39,13 +40,14 @@ public class PersonalByUserService
     {
         return await _personalByUserRepositorySql.FindById(id);
     }
-    
+
     public async Task<PersonalByUser> UpdatePersonalByUserById(Guid id, UpdatePersonalByUserRequest updatePersonalByUserDto)
     {
         var personalByUser = await _personalByUserRepositorySql.FindById(id);
         if (personalByUser == null) throw new ApplicationException("personalByUser not found");
-        _mapper.Map(updatePersonalByUserDto, personalByUser); 
+        _mapper.Map(updatePersonalByUserDto, personalByUser);
         await _personalByUserRepositorySql.Update(personalByUser);
+        await _personalByUserRepositorySql.SaveChange();
         return personalByUser;
     }
 
@@ -53,5 +55,6 @@ public class PersonalByUserService
     {
         var personalByUser = await _personalByUserRepositorySql.FindById(id);
         _personalByUserRepositorySql.Delete(personalByUser);
+        await _personalByUserRepositorySql.SaveChange();
     }
 }

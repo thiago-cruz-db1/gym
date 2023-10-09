@@ -19,6 +19,7 @@ public class TrainingService
     {
         var training = _mapper.Map<Training>(trainingDto);
         await _contextTraining.Save(training);
+        await _contextTraining.SaveChange();
         return training;
     }
 
@@ -31,13 +32,14 @@ public class TrainingService
     {
         return await _contextTraining.FindById(id);
     }
-    
+
     public async Task<Training> UpdateTraining(Guid id, UpdateTrainingRequest updateTrainingDto)
     {
         var training = await _contextTraining.FindById(id);
         if (training == null) throw new ApplicationException("training not found");
-        _mapper.Map(updateTrainingDto, training); 
+        _mapper.Map(updateTrainingDto, training);
         await _contextTraining.Update(training);
+        await _contextTraining.SaveChange();
         return training;
     }
 
@@ -45,6 +47,7 @@ public class TrainingService
     {
         var training = await _contextTraining.FindById(id);
         _contextTraining.Delete(training);
+        await _contextTraining.SaveChange();
     }
 
     public bool ValidationIfExerciseExist(ICollection<Guid> ids)

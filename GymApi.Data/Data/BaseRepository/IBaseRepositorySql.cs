@@ -4,6 +4,7 @@ namespace GymApi.Data.Data.BaseRepository;
 
 public interface IBaseRepositorySql<TId, TEntity> where TEntity : class
 {
+	Task SaveChange();
     Task Save(TEntity entity);
     Task Update(TEntity entity);
     Task<List<TEntity>> FindAll();

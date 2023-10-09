@@ -25,6 +25,7 @@ public class PlanService
 	    {
 		    var plan = _mapper.Map<Plan>(planDto);
 		    await _contextPlan.Save(plan);
+		    await _contextPlan.SaveChange();
 		    return plan;
 	    }
 
@@ -47,6 +48,7 @@ public class PlanService
         if (plan == null) throw new ApplicationException("plan not found");
         _mapper.Map(updatePlanDto, plan);
         await _contextPlan.Update(plan);
+        await _contextPlan.SaveChange();
         return plan;
     }
 
@@ -54,5 +56,6 @@ public class PlanService
     {
         var plan = await _contextPlan.FindById(id);
         _contextPlan.Delete(plan);
+        await _contextPlan.SaveChange();
     }
 }

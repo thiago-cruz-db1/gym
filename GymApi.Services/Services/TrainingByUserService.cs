@@ -22,6 +22,7 @@ public class TrainingByUserService
 	    {
 		    var training = _mapper.Map<TrainingUser>(trainingUserDto);
 		    await _contextTrainingByUser.Save(training);
+		    await _contextTrainingByUser.SaveChange();
 		    return training;
 	    }
 	    throw new Exception("day is not able to be a trainee for this user");
@@ -43,6 +44,7 @@ public class TrainingByUserService
         if (trainingByUser == null) throw new ApplicationException("trainingByUser not found");
         _mapper.Map(updateTrainingDto, trainingByUser);
         await _contextTrainingByUser.Update(trainingByUser);
+        await _contextTrainingByUser.SaveChange();
         return trainingByUser;
     }
 
@@ -50,5 +52,6 @@ public class TrainingByUserService
     {
         var training = await _contextTrainingByUser.FindById(id);
         _contextTrainingByUser.Delete(training);
+        await _contextTrainingByUser.SaveChange();
     }
 }
