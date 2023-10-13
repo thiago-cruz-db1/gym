@@ -105,3 +105,5 @@ C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.Presentation\bin\Debug\ne
 C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.Presentation\bin\Debug\net6.0\Quartz.Extensions.DependencyInjection.dll
 C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.Presentation\bin\Debug\net6.0\RabbitMQ.Client.dll
 C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.Presentation\bin\Debug\net6.0\System.Threading.Channels.dll
+C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.Presentation\bin\Debug\net6.0\ExcelDataReader.dll
+C:\Users\thiago.cruz\Documents\Proj\Pessoal\Gym\GymApi.Presentation\bin\Debug\net6.0\GymApi.Presentation.staticwebassets.runtime.json

@@ -15,7 +15,6 @@ public abstract class EntityFrameworkRepositorySqlAbstract<TId, TEntity> : IBase
     public async Task Save(TEntity entity)
     {
         await _context.Set<TEntity>().AddAsync(entity);
-        await _context.SaveChangesAsync();
     }
 
     public async Task SaveChange()

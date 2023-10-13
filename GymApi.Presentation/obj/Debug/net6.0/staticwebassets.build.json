@@ -1,11 +1,39 @@
 {
   "Version": 1,
-  "Hash": "0C27qcm7SNWB5lz1g3RGnA21nPyRxwFK7DkMyoHQ1Dc=",
+  "Hash": "/FhjzdZgCtmweSzZcp9OfY/CqPYDoe6zpR9HdSm6b3o=",
   "Source": "GymApi.Presentation",
   "BasePath": "_content/GymApi.Presentation",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
+  "DiscoveryPatterns": [
+    {
+      "Name": "GymApi.Presentation\\wwwroot",
+      "Source": "GymApi.Presentation",
+      "ContentRoot": "C:\\Users\\thiago.cruz\\Documents\\Proj\\Pessoal\\Gym\\GymApi.Presentation\\wwwroot\\",
+      "BasePath": "_content/GymApi.Presentation",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\thiago.cruz\\Documents\\Proj\\Pessoal\\Gym\\GymApi.Presentation\\wwwroot\\Uploads\\Pasta.xlsx",
+      "SourceId": "GymApi.Presentation",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\thiago.cruz\\Documents\\Proj\\Pessoal\\Gym\\GymApi.Presentation\\wwwroot\\",
+      "BasePath": "_content/GymApi.Presentation",
+      "RelativePath": "Uploads/Pasta.xlsx",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Uploads\\Pasta.xlsx"
+    }
+  ]
 }

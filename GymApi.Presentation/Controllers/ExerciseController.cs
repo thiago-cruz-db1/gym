@@ -28,7 +28,7 @@ public class ExerciseController : ControllerBase
             throw new Exception("error on add Exercise",e);
         }
     }
-    
+
     [HttpGet]
     public async Task<IActionResult> GetExercise()
     {
@@ -42,7 +42,7 @@ public class ExerciseController : ControllerBase
             throw new Exception("error on get Exercise",e);
         }
     }
-    
+
     [HttpGet("{id}")]
     public async Task<IActionResult> GetExerciseById(Guid id)
     {
@@ -56,7 +56,7 @@ public class ExerciseController : ControllerBase
             throw new Exception("error on get Exercise",e);
         }
     }
-    
+
     [HttpPut("{id}")]
     public async Task<IActionResult> UpdateExerciseById(Guid id, [FromBody] UpdateExerciseRequest updateExerciseDto)
     {
@@ -70,7 +70,7 @@ public class ExerciseController : ControllerBase
             throw new Exception("error on update Exercise",e);
         }
     }
-    
+
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteExerciseById(Guid id)
     {
@@ -83,5 +83,25 @@ public class ExerciseController : ControllerBase
         {
             throw new Exception("error on delete Exercise",e);
         }
+    }
+
+    [HttpPost("/upload")]
+    public async Task<IActionResult> UploadTableOfExercise(IFormFile file)
+    {
+	    if (file is null || file.Length <= 0)
+	    {
+		    throw new ArgumentNullException(nameof(file), "File is empty or null.");
+	    }
+
+	    var dataFileName = Path.GetFileName(file.FileName);
+
+	    var extension = Path.GetExtension(dataFileName);
+
+	    var allowedExtsnions = new[] { ".xls", ".xlsx"};
+	    if (!allowedExtsnions.Contains(extension))
+		    throw new Exception("Sorry! This file is not allowed, make sure that file having extension as either .xls or .xlsx is uploaded.");
+	    var upload = await _exerciseService.UploadTableOfExercise(file);
+	    if(upload) return Ok("done");
+	    throw new Exception("something went wrong with your upload");
     }
 }

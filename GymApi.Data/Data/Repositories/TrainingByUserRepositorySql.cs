@@ -20,11 +20,10 @@ public class TrainingByUserRepositorySql : EntityFrameworkRepositorySqlAbstract<
 	    var user = await _createUserRepository.GetUserById(id.ToString());
 	    var planUser = await _planRepositorySql.FindById(user.PlanId);
 	    var dayInWeek = planUser.DayOfWeeks.Split(',');
-	    if (dayInWeek.Any(dayInPlan =>
-	        string.Equals(
-		        dayInPlan.Trim(),
-		        Enum.GetName(DateTime.Today.DayOfWeek),
-		        StringComparison.OrdinalIgnoreCase))) return true;
-	    return false;
+	    return dayInWeek.Any(dayInPlan =>
+		    string.Equals(
+			    dayInPlan.Trim(),
+			    Enum.GetName(DateTime.Today.DayOfWeek),
+			    StringComparison.OrdinalIgnoreCase));
     }
 }

@@ -1,4 +1,3 @@
-using System.Configuration;
 using System.Text;
 using System.Text.Json.Serialization;
 using GymApi.Data.Data.Interfaces;
@@ -80,6 +79,7 @@ builder.Services.AddScoped<ExerciseByTrainingService>();
 builder.Services.AddScoped<TicketGateService>();
 builder.Services.AddScoped<TicketGateUserService>();
 builder.Services.AddScoped<PersonalByUserService>();
+builder.Services.AddScoped<ExcelDataReaderService>();
 
 builder.Services.AddScoped<ITicketGate, TicketGateService>();
 builder.Services.AddHostedService<BackgroundTicketGateService>();
@@ -95,6 +95,7 @@ builder.Services.AddScoped<IExerciseByTrainingRepositorySql, ExerciseByTrainingR
 builder.Services.AddScoped<ICreateUserRepositorySql, CreateUserRepositorySql>();
 builder.Services.AddScoped<ITicketGateUserRepositorySql, TicketGateUserRepositorySql>();
 builder.Services.AddScoped<IPersonalByUserRepositorySql, PersonalByUserRepositorySql>();
+builder.Services.AddScoped<IExcelReader, ExcelDataReaderService>();
 
 var app = builder.Build();
 
