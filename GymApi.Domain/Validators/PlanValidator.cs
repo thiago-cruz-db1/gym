@@ -1,9 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using FluentValidation;
+using GymApi.Domain.Dto.Request;
+using GymApi.Domain.Enum;
+using System.Linq;
 
 namespace GymApi.Domain.Validators;
 
-public class PlanValidator : AbstractValidator<Plan>, IValidator<Plan>
+public class PlanValidator : AbstractValidator<CreatePlanRequest>, IValidator<CreatePlanRequest>
 {
 
 		public PlanValidator()
@@ -13,25 +16,24 @@ public class PlanValidator : AbstractValidator<Plan>, IValidator<Plan>
 
 			RuleFor(expense => expense.Category)
 				.NotEmpty().WithMessage("Category is required.")
-				.MaximumLength(50).WithMessage("Category must not exceed 50 characters.");
+				.MaximumLength(100).WithMessage("Category must not exceed 100 characters.");
 
 			RuleFor(expense => expense.TotalMonths)
 				.GreaterThan(0).WithMessage("TotalMonths must be greater than 0.");
 
 			RuleFor(expense => expense.DayOfWeeks)
 				.NotEmpty().WithMessage("DayOfWeeks is required.")
-				.Must(BeValidDaysOfWeek).WithMessage("Invalid DaysOfWeek format. Use a comma-separated list (e.g., 'Mon,Tue,Wed').");
+				.Must(BeValidDaysOfWeek).WithMessage("Invalid DaysOfWeek collection.");
+
 		}
 
-		private bool BeValidDaysOfWeek(string dayOfWeeks)
+		private bool BeValidDaysOfWeek(ICollection<DayOfWeekEnum>? dayOfWeeks)
 		{
-			if (string.IsNullOrWhiteSpace(dayOfWeeks))
+			if (dayOfWeeks is null || !dayOfWeeks.Any())
 				return false;
 
-			var validDays = new[] { "1", "2", "3", "4", "5", "6", "7" };
+			var validDays = System.Enum.GetValues(typeof(DayOfWeekEnum)).Cast<DayOfWeekEnum>();
 
-			var days = dayOfWeeks.Split(',');
-
-			return days.All(day => validDays.Contains(day.Trim()));
+			return dayOfWeeks.All(day => validDays.Contains(day));
 		}
 }

@@ -12,8 +12,8 @@ public class FluentValidatorWrapper<T> : IValidator<T>
 		_validator = validator ?? throw new ArgumentNullException(nameof(validator));
 	}
 
-	public ValidationResult Validate(T entity)
+	public ValidationResult Validate(T dto)
 	{
-		return _validator.Validate(entity);
+		return _validator.Validate(dto);
 	}
 }
