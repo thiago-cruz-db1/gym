@@ -6,25 +6,24 @@ using System.Linq;
 
 namespace GymApi.Domain.Validators;
 
-public class PlanValidator : AbstractValidator<CreatePlanRequest>, IValidator<CreatePlanRequest>
+public class PlanValidator : AbstractValidator<CreatePlanRequest>
 {
 
 		public PlanValidator()
 		{
-			RuleFor(expense => expense.Amount)
+			RuleFor(plan => plan.Amount)
 				.GreaterThan(0).WithMessage("Amount must be greater than 0.");
 
-			RuleFor(expense => expense.Category)
+			RuleFor(plan => plan.Category)
 				.NotEmpty().WithMessage("Category is required.")
 				.MaximumLength(100).WithMessage("Category must not exceed 100 characters.");
 
-			RuleFor(expense => expense.TotalMonths)
+			RuleFor(plan => plan.TotalMonths)
 				.GreaterThan(0).WithMessage("TotalMonths must be greater than 0.");
 
-			RuleFor(expense => expense.DayOfWeeks)
+			RuleFor(plan => plan.DayOfWeeks)
 				.NotEmpty().WithMessage("DayOfWeeks is required.")
 				.Must(BeValidDaysOfWeek).WithMessage("Invalid DaysOfWeek collection.");
-
 		}
 
 		private bool BeValidDaysOfWeek(ICollection<DayOfWeekEnum>? dayOfWeeks)

@@ -1,4 +1,6 @@
-﻿using GymApi.Domain.Dto.Request;
+﻿using FluentValidation;
+using FluentValidation.Results;
+using GymApi.Domain.Dto.Request;
 using GymApi.UseCases.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,16 +10,23 @@ namespace GymUserApi.Controllers
     [Route("[controller]")]
     public class PlanController : ControllerBase
     {
+	    private readonly IValidator<CreatePlanRequest> _validator;
         private readonly PlanService _planService;
 
-        public PlanController(PlanService planService)
+        public PlanController(PlanService planService, IValidator<CreatePlanRequest> validator)
         {
-            _planService = planService;
+	        _planService = planService;
+	        _validator = validator;
         }
 
         [HttpPost]
         public async Task<IActionResult> AddPlan([FromBody] CreatePlanRequest planDto)
         {
+	        var result = await _validator.ValidateAsync(planDto);
+	        if (!result.IsValid)
+	        {
+		        throw new Exception("same validations are not done");
+	        }
             try
             {
                 var plan = await _planService.AddPlan(planDto);
@@ -59,7 +68,7 @@ namespace GymUserApi.Controllers
             }
 
         }
-        
+
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdatePlanById(Guid id, [FromBody] UpdatePlanRequest updatePlanDto)
         {

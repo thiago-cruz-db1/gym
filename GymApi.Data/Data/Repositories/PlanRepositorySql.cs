@@ -3,7 +3,7 @@ using GymApi.Data.Data.Interfaces;
 using GymApi.Data.Data.MySql;
 using GymApi.Domain;
 
-namespace GymApi.Data.Data.PlanRepository;
+namespace GymApi.Data.Data.Repositories;
 
 public class PlanRepositorySql : EntityFrameworkRepositorySqlAbstract<Guid, Plan>, IPlanRepositorySql
 {
@@ -16,6 +16,6 @@ public class PlanRepositorySql : EntityFrameworkRepositorySqlAbstract<Guid, Plan
     public bool IsValidName(string name)
     {
 	    var isDuplicate = _planRepositorySql.Plans.Any(e => e.Category == name);
-	    return !isDuplicate;
+	    return isDuplicate;
     }
 }
