@@ -15,6 +15,7 @@ public class PlanValidator : AbstractValidator<CreatePlanRequest>
 				.GreaterThan(0).WithMessage("Amount must be greater than 0.");
 
 			RuleFor(plan => plan.Category)
+				.Cascade(CascadeMode.Stop)
 				.NotEmpty().WithMessage("Category is required.")
 				.MaximumLength(100).WithMessage("Category must not exceed 100 characters.");
 
@@ -22,6 +23,7 @@ public class PlanValidator : AbstractValidator<CreatePlanRequest>
 				.GreaterThan(0).WithMessage("TotalMonths must be greater than 0.");
 
 			RuleFor(plan => plan.DayOfWeeks)
+				.Cascade(CascadeMode.Stop)
 				.NotEmpty().WithMessage("DayOfWeeks is required.")
 				.Must(BeValidDaysOfWeek).WithMessage("Invalid DaysOfWeek collection.");
 		}

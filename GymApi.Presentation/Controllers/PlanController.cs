@@ -25,7 +25,7 @@ namespace GymUserApi.Controllers
 	        var result = await _validator.ValidateAsync(planDto);
 	        if (!result.IsValid)
 	        {
-		        throw new Exception("same validations are not done");
+		        return Problem($"{result.Errors}");
 	        }
             try
             {
