@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymApi.Domain", "GymApi.Dom
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymApi.Services", "GymApi.Services\GymApi.Services.csproj", "{224A87E3-0160-4A7F-B419-6293FF7513F3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymApi.Test", "GymApi.Test\GymApi.Test.csproj", "{7536AC61-F181-4F8D-9B5E-0EB522F43369}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{224A87E3-0160-4A7F-B419-6293FF7513F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{224A87E3-0160-4A7F-B419-6293FF7513F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{224A87E3-0160-4A7F-B419-6293FF7513F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7536AC61-F181-4F8D-9B5E-0EB522F43369}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7536AC61-F181-4F8D-9B5E-0EB522F43369}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7536AC61-F181-4F8D-9B5E-0EB522F43369}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7536AC61-F181-4F8D-9B5E-0EB522F43369}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

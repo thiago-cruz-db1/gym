@@ -1,14 +1,11 @@
 using System.Text;
 using System.Text.Json.Serialization;
-using FluentValidation;
 using GymApi.Data.Data.Interfaces;
 using GymApi.Data.Data.Mongo;
 using GymApi.Data.Data.MySql;
 using GymApi.Data.Data.PlanRepository;
 using GymApi.Data.Data.Repositories;
 using GymApi.Domain;
-using GymApi.Domain.Dto.Request;
-using GymApi.Domain.Validators;
 using GymApi.UseCases.AuthorizationPolicyService;
 using GymApi.UseCases.Interfaces;
 using GymApi.UseCases.Jobs;
@@ -99,8 +96,6 @@ builder.Services.AddScoped<ICreateUserRepositorySql, CreateUserRepositorySql>();
 builder.Services.AddScoped<ITicketGateUserRepositorySql, TicketGateUserRepositorySql>();
 builder.Services.AddScoped<IPersonalByUserRepositorySql, PersonalByUserRepositorySql>();
 builder.Services.AddScoped<IExcelReader, ExcelDataReaderService>();
-
-builder.Services.AddValidatorsFromAssemblyContaining<PlanValidator>();
 
 var app = builder.Build();
 

@@ -22,11 +22,6 @@ namespace GymUserApi.Controllers
         [HttpPost]
         public async Task<IActionResult> AddPlan([FromBody] CreatePlanRequest planDto)
         {
-	        var result = await _validator.ValidateAsync(planDto);
-	        if (!result.IsValid)
-	        {
-		        return Problem($"{result.Errors}");
-	        }
             try
             {
                 var plan = await _planService.AddPlan(planDto);
