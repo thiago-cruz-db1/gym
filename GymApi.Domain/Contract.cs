@@ -53,7 +53,6 @@ public class Contract
 	    }
     }
 
-
     private void ValidateStartDate()
     {
 	    if (StartDate < DateTime.Today)
@@ -78,7 +77,7 @@ public class Contract
 		    _validationErrors.Add("Terms must have at least one item.");
     }
 
-    public bool Validate(out List<string> errors)
+    public void Validate(out List<string> errors)
     {
 	    errors = new List<string>();
 
@@ -86,7 +85,5 @@ public class Contract
 	    ValidateEndDate();
 	    ValidateUserPlan();
 	    ValidateTerms();
-
-	    return errors.Count == 0;
     }
 }

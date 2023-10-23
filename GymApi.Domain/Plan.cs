@@ -5,7 +5,7 @@ namespace GymApi.Domain;
 public class Plan
 {
 	private List<string> _validationErrors;
-	public Guid Id { get; set; }
+	public Guid Id { get; set; } = Guid.NewGuid();
 	private double _amount;
 	public double Amount
 	{
@@ -89,7 +89,7 @@ public class Plan
 	    });
     }
 
-    private void Validate()
+    public void Validate()
     {
 	    _validationErrors = new List<string>();
 

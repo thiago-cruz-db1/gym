@@ -10,13 +10,11 @@ namespace GymUserApi.Controllers
     [Route("[controller]")]
     public class PlanController : ControllerBase
     {
-	    private readonly IValidator<CreatePlanRequest> _validator;
         private readonly PlanService _planService;
 
-        public PlanController(PlanService planService, IValidator<CreatePlanRequest> validator)
+        public PlanController(PlanService planService)
         {
 	        _planService = planService;
-	        _validator = validator;
         }
 
         [HttpPost]

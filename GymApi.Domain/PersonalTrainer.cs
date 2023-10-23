@@ -5,9 +5,55 @@ namespace GymApi.Domain;
 
 public class PersonalTrainer
 {
-    public Guid Id { get; set; }
-    public string Name { get; set; }
-    public int Age { get; set; }
+	private List<string> _validationErrors;
+    public Guid Id { get; set; } = Guid.NewGuid();
+    private string _name;
+
+    public string Name
+    {
+	    get => _name;
+	    set
+	    {
+		    _name = value;
+		    ValidateName();
+	    }
+    }
+
+    private int _age;
+
+    public int Age
+    {
+	    get => _age;
+	    set
+	    {
+		    _age = value;
+		    ValidateAge();
+	    }
+    }
+
     public HoursDayPersonal MaxMinutesPerDay { get; set; } = HoursDayPersonal.EightHours;
     public ICollection<PersonalByUser> PersonalByUsers { get; set; }
+
+
+    private void ValidateName()
+    {
+	    if (string.IsNullOrWhiteSpace(Name))
+		    _validationErrors.Add("Name is required.");
+	    else if (Name.Length > 100)
+		    _validationErrors.Add("Name must not exceed 100 characters.");
+    }
+
+    private void ValidateAge()
+    {
+		if (Age < 18)
+		    _validationErrors.Add("Age have to be gretter than 18.");
+    }
+
+    public void Validate()
+    {
+	    _validationErrors = new List<string>();
+
+	    ValidateName();
+	    ValidateAge();
+    }
 }

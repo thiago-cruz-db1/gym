@@ -3,7 +3,7 @@
 public class Exercise
 {
 	private List<string> _validationErrors;
-	public Guid Id { get; set; }
+	public Guid Id { get; set; } = Guid.NewGuid();
 	private string _machine;
 	public string Machine
 	{
@@ -101,5 +101,4 @@ public class Exercise
 		ValidateRepetition();
 		ValidateTechnique();
 	}
-
 }
