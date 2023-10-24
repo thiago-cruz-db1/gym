@@ -1,6 +1,4 @@
-﻿using GymApi.Data.Data.Interfaces;
-using GymApi.Domain.Dto.Request;
-using GymApi.Domain.Enum;
+﻿using GymApi.UseCases.Dto.Request;
 using GymApi.UseCases.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -47,7 +45,7 @@ public class TicketGateUserController : ControllerBase
         }
 
     }
-    
+
     [HttpPut("{id}")]
     public async Task<IActionResult> UpdateTicketGateUserById(Guid id, [FromBody] UpdateTicketGateUsers ticketGateDto)
     {
@@ -75,7 +73,7 @@ public class TicketGateUserController : ControllerBase
             throw new Exception("error on delete ticketGate", e);
         }
     }
-    
+
     [HttpPost("/send")]
     public async Task<IActionResult> GetAbleUsers([FromBody] CreateTicketGateUsersRequest ticketGateDto)
     {

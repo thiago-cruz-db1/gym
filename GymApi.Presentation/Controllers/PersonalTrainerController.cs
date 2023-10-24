@@ -1,7 +1,4 @@
-﻿using AutoMapper;
-using GymApi.Data.Data;
-using GymApi.Domain;
-using GymApi.Domain.Dto.Request;
+﻿using GymApi.UseCases.Dto.Request;
 using GymApi.UseCases.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -60,7 +57,7 @@ public class PersonalTrainerController : ControllerBase
             throw new Exception("error on get personal",e);
         }
     }
-        
+
     [HttpPut("{id}")]
     public async Task<IActionResult> UpdatePersonalById(Guid id, [FromBody] UpdatePersonalRequest updatePersonalDto)
     {
@@ -74,7 +71,7 @@ public class PersonalTrainerController : ControllerBase
             throw new Exception("error on update personal",e);
         }
     }
-    
+
     [HttpGet("/userinday")]
     public IActionResult GetPersonalTraineeByDay(Guid id, int day)
     {

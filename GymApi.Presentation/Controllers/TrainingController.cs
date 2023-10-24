@@ -1,4 +1,4 @@
-﻿using GymApi.Domain.Dto.Request;
+﻿using GymApi.UseCases.Dto.Request;
 using GymApi.UseCases.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -31,7 +31,7 @@ public class TrainingController : ControllerBase
             throw new Exception("error on add training",e);
         }
     }
-    
+
     [HttpGet]
     public async Task<IActionResult> GetTraining()
     {
@@ -45,7 +45,7 @@ public class TrainingController : ControllerBase
             throw new Exception("error on get training",e);
         }
     }
-    
+
     [HttpGet("{id}")]
     public async Task<IActionResult> GetTrainingById(Guid id)
     {
@@ -59,7 +59,7 @@ public class TrainingController : ControllerBase
             throw new Exception("error on get training",e);
         }
     }
-    
+
     [HttpPut("{id}")]
     public async Task<IActionResult> UpdateTrainingById(Guid id, [FromBody] UpdateTrainingRequest createTrainingDto)
     {
@@ -73,7 +73,7 @@ public class TrainingController : ControllerBase
             throw new Exception("error on update training",e);
         }
     }
-    
+
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteTrainingById(Guid id)
     {

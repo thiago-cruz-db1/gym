@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using GymApi.Data.Data.Interfaces;
 using GymApi.Domain;
-using GymApi.Domain.Dto.Request;
+using GymApi.UseCases.Dto.Request;
 
 namespace GymApi.UseCases.Services;
 
@@ -31,12 +31,12 @@ public class ProductsService
     {
         return await _contextProducts.FindById(id);
     }
-    
+
     public async Task<Product> UpdateProductById(Guid id, UpdateProductRequest updateproductDto)
     {
         var product = await _contextProducts.FindById(id);
         if (product == null) throw new ApplicationException("product not found");
-        _mapper.Map(updateproductDto, product); 
+        _mapper.Map(updateproductDto, product);
         await _contextProducts.Update(product);
         return product;
     }

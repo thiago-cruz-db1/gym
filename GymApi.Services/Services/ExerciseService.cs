@@ -2,7 +2,7 @@
 using AutoMapper;
 using GymApi.Data.Data.Interfaces;
 using GymApi.Domain;
-using GymApi.Domain.Dto.Request;
+using GymApi.UseCases.Dto.Request;
 using GymApi.UseCases.Interfaces;
 using Microsoft.AspNetCore.Http;
 

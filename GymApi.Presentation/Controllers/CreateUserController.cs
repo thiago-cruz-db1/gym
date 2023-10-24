@@ -1,6 +1,4 @@
-﻿using GymApi.Domain;
-using GymApi.Domain.Dto.Request;
-using GymApi.UseCases;
+﻿using GymApi.UseCases.Dto.Request;
 using GymApi.UseCases.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,12 +9,12 @@ namespace GymUserApi.Controllers
     public class CreateUserController : ControllerBase
     {
         private readonly CreateUserService _createUserService;
-        
+
         public CreateUserController(CreateUserService serviceService, GenerateTokenService generateTokenService)
         {
             _createUserService = serviceService;
         }
-    
+
         [HttpPost]
         public async Task<IActionResult> CreateLogin(CreateUserRequest createDto)
         {
@@ -24,7 +22,7 @@ namespace GymUserApi.Controllers
 
             return Ok(user);
         }
-        
+
         [HttpGet]
         public IActionResult GetUser()
         {
@@ -52,7 +50,7 @@ namespace GymUserApi.Controllers
                 return BadRequest($"Error: {ex.Message}");
             }
         }
-        
+
         [HttpGet("/personalinday")]
         public IActionResult GetPersonalTraineeByDay(Guid id, int day)
         {

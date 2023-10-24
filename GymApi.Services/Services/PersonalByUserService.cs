@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using GymApi.Data.Data.Interfaces;
 using GymApi.Domain;
-using GymApi.Domain.Dto.Request;
 using GymApi.Domain.Enum;
+using GymApi.UseCases.Dto.Request;
 
 namespace GymApi.UseCases.Services;
 

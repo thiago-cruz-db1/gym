@@ -1,4 +1,4 @@
-﻿using GymApi.Domain.Dto.Request;
+﻿using GymApi.UseCases.Dto.Request;
 using GymApi.UseCases.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -59,7 +59,7 @@ public class PersonalByUserController: ControllerBase
         }
 
     }
-    
+
     [HttpPut("{id}")]
     public async Task<IActionResult> UpdatePersonalByUserById(Guid id, [FromBody] UpdatePersonalByUserRequest updatePersonalByUserDto)
     {

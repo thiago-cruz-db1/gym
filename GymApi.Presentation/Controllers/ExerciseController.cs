@@ -1,4 +1,4 @@
-﻿using GymApi.Domain.Dto.Request;
+﻿using GymApi.UseCases.Dto.Request;
 using GymApi.UseCases.Services;
 using Microsoft.AspNetCore.Mvc;
 

@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using GymApi.Data.Data.Interfaces;
 using GymApi.Domain;
-using GymApi.Domain.Dto.Request;
 using GymApi.Domain.Dto.Response;
+using GymApi.UseCases.Dto.Request;
 using Microsoft.AspNetCore.Identity;
 
 namespace GymApi.UseCases.Services;
@@ -21,17 +21,17 @@ public class CreateUserService
     public async Task<CreateUserResponse> Create(CreateUserRequest createDto)
     {
         User user = _mapper.Map<User>(createDto);
-        await _createUser.Create(user, createDto);
+        await _createUser.Create(user, createDto.Password);
         var userResponse = _mapper.Map<CreateUserResponse>(user);
         return userResponse;
     }
-    
+
     public List<User> GetUsers()
     {
         List<User> user = _createUser.GetUsers();
         return user;
     }
-    
+
     public async Task<User> GetUserById(string userId)
     {
         User user = await _createUser.GetUserById(userId);
@@ -42,7 +42,7 @@ public class CreateUserService
     {
         User user = await _createUser.GetUserById(userId);
         if (user == null) throw new ApplicationException("User not found");
-        _mapper.Map(updateUserDto, user); 
+        _mapper.Map(updateUserDto, user);
         IdentityResult updated = await _createUser.Update(user);
         if (!updated.Succeeded) throw new ApplicationException("Error on updating user");
     }

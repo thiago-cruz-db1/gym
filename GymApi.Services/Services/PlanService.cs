@@ -1,8 +1,7 @@
 ﻿using AutoMapper;
-using FluentValidation;
 using GymApi.Data.Data.Interfaces;
 using GymApi.Domain;
-using GymApi.Domain.Dto.Request;
+using GymApi.UseCases.Dto.Request;
 
 
 namespace GymApi.UseCases.Services;
@@ -22,7 +21,9 @@ public class PlanService
     {
 	    var duplicateName = _contextPlan.IsValidName(planDto.Category);
 	    if (duplicateName) throw new Exception("plan with this name already exist");
+
 	    var plan = _mapper.Map<Plan>(planDto);
+	    plan.Validate();
 	    await _contextPlan.Save(plan);
 	    await _contextPlan.SaveChange();
 	    return plan;

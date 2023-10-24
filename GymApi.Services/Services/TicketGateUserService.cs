@@ -3,9 +3,7 @@ using System.Text.Json;
 using AutoMapper;
 using GymApi.Data.Data.Interfaces;
 using GymApi.Domain;
-using GymApi.Domain.Dto.Request;
-using GymApi.Domain.Enum;
-using Microsoft.AspNetCore.Mvc;
+using GymApi.UseCases.Dto.Request;
 using RabbitMQ.Client;
 
 namespace GymApi.UseCases.Services;

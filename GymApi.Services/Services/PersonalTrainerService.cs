@@ -1,9 +1,7 @@
 ﻿using AutoMapper;
-using GymApi.Data.Data;
 using GymApi.Data.Data.Interfaces;
-using GymApi.Data.Data.MySql;
 using GymApi.Domain;
-using GymApi.Domain.Dto.Request;
+using GymApi.UseCases.Dto.Request;
 
 namespace GymApi.UseCases.Services;
 

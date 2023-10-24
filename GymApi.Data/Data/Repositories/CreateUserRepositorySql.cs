@@ -1,8 +1,6 @@
 ﻿using GymApi.Data.Data.Interfaces;
 using GymApi.Data.Data.MySql;
 using GymApi.Domain;
-using GymApi.Domain.Dto.Request;
-using GymApi.Domain.Dto.Response;
 using Microsoft.AspNetCore.Identity;
 
 namespace GymApi.Data.Data.Repositories;
@@ -15,10 +13,10 @@ public class CreateUserRepositorySql : ICreateUserRepositorySql
     {
         _contextUser = context;
         _userManager = userManager;
-    } 
-    public async Task Create(User user, CreateUserRequest createDto)
+    }
+    public async Task Create(User user, string createDto)
     {
-        IdentityResult created = await _userManager.CreateAsync(user, createDto.Password);
+        IdentityResult created = await _userManager.CreateAsync(user, createDto);
         if (!created.Succeeded) throw new ApplicationException("Error on create user");
     }
 
