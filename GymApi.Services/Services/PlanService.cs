@@ -43,7 +43,8 @@ public class PlanService
     {
         var plan = await _contextPlan.FindById(id);
         if (plan == null) throw new ApplicationException("plan not found");
-        _mapper.Map(updatePlanDto, plan);
+        var pl = _mapper.Map(updatePlanDto, plan);
+        pl.Validate();
         await _contextPlan.Update(plan);
         await _contextPlan.SaveChange();
         return plan;

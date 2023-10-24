@@ -1,4 +1,5 @@
 ﻿using GymApi.Domain;
+using GymApi.UseCases.Dto.Request;
 using GymApi.UseCases.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,7 +17,7 @@ public class ContractUserController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> Post(Contract newContract)
+    public async Task<IActionResult> Post(CreateContractRequest newContract)
     {
         try
         {
@@ -59,13 +60,13 @@ public class ContractUserController : ControllerBase
     }
 
     [HttpPut("{id:length(24)}")]
-    public async Task<IActionResult> Update(string id, Contract updatedContract)
+    public async Task<IActionResult> Update(string id, UpdateContractRequest updatedContract)
     {
         try
         {
             var contract = await _contractGymService.GetAsync(id);
             if (contract is null) return NotFound();
-            updatedContract.ContractId = contract.ContractId;
+            updatedContract.ContractId = contract.ContractId!;
             await _contractGymService.UpdateAsync(id, updatedContract);
             return NoContent();
         }

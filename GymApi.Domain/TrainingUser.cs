@@ -8,15 +8,7 @@ public class TrainingUser
 
     private string _userId;
 
-    public string UserId
-    {
-	    get => _userId;
-	    set
-	    {
-		    _userId = value;
-		    ValidateUserId();
-	    }
-    }
+    public string UserId { get; set; }
     public User User { get; set; }
 
     public Guid TrainingId { get; set; }
@@ -32,8 +24,9 @@ public class TrainingUser
 
     public void Validate()
     {
-	    _validationErrors = new List<string>();
-
 	    ValidateUserId();
+
+	    if (_validationErrors.Any())
+		    throw new ArgumentException(string.Join(", ", _validationErrors));
     }
 }

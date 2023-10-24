@@ -18,6 +18,7 @@ public class TrainingService
     public async Task<Training> AddTraining(CreateTrainingRequest trainingDto)
     {
         var training = _mapper.Map<Training>(trainingDto);
+        training.Validate();
         await _contextTraining.Save(training);
         await _contextTraining.SaveChange();
         return training;
@@ -37,7 +38,8 @@ public class TrainingService
     {
         var training = await _contextTraining.FindById(id);
         if (training == null) throw new ApplicationException("training not found");
-        _mapper.Map(updateTrainingDto, training);
+        var tr = _mapper.Map(updateTrainingDto, training);
+		tr.Validate();
         await _contextTraining.Update(training);
         await _contextTraining.SaveChange();
         return training;

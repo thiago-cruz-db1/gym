@@ -19,6 +19,7 @@ public class PersonalTrainerService
     public async Task<PersonalTrainer> AddPersonalTrainer(CreatePersonalTrainerRequest personalTrainerDto)
     {
         var personalTrainer = _mapper.Map<PersonalTrainer>(personalTrainerDto);
+        personalTrainer.Validate();
         await _personalTrainerContext.Save(personalTrainer);
         await _personalTrainerContext.SaveChange();
         return personalTrainer;
@@ -38,7 +39,8 @@ public class PersonalTrainerService
     {
         var personal = await _personalTrainerContext.FindById(id);
         if (personal == null) throw new ApplicationException("personal not found");
-        _mapper.Map(updatePersonalDto, personal);
+        var ps = _mapper.Map(updatePersonalDto, personal);
+        ps.Validate();
         await _personalTrainerContext.Update(personal);
         await _personalTrainerContext.SaveChange();
         return personal;

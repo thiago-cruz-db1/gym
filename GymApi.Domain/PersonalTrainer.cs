@@ -9,27 +9,11 @@ public class PersonalTrainer
     public Guid Id { get; set; } = Guid.NewGuid();
     private string _name;
 
-    public string Name
-    {
-	    get => _name;
-	    set
-	    {
-		    _name = value;
-		    ValidateName();
-	    }
-    }
+    public string Name { get; set; }
 
     private int _age;
 
-    public int Age
-    {
-	    get => _age;
-	    set
-	    {
-		    _age = value;
-		    ValidateAge();
-	    }
-    }
+    public int Age { get; set; }
 
     public HoursDayPersonal MaxMinutesPerDay { get; set; } = HoursDayPersonal.EightHours;
     public ICollection<PersonalByUser> PersonalByUsers { get; set; }
@@ -55,5 +39,8 @@ public class PersonalTrainer
 
 	    ValidateName();
 	    ValidateAge();
+
+	    if (_validationErrors.Any())
+		    throw new ArgumentException(string.Join(", ", _validationErrors));
     }
 }

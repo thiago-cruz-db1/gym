@@ -6,15 +6,7 @@ public class Training
     public Guid Id { get; set; } = Guid.NewGuid();
 
     private string _name;
-    public string Name
-    {
-	    get => _name;
-	    set
-	    {
-		    _name = value;
-		    ValidateName();
-	    }
-    }
+    public string Name { get; set; }
     public DateTime StartDate { get; set; } = DateTime.Now;
     public DateTime EndDate { get; set; } = DateTime.Now.AddMonths(2);
 
@@ -32,8 +24,9 @@ public class Training
 
     public void Validate()
     {
-	    _validationErrors = new List<string>();
-
 	    ValidateName();
+
+	    if (_validationErrors.Any())
+		    throw new ArgumentException(string.Join(", ", _validationErrors));
     }
 }

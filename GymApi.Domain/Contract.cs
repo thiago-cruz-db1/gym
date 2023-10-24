@@ -11,47 +11,15 @@ public class Contract
     public string? ContractId { get; set; }
     public Guid UserId { get; set; }
     private DateTime _startDate;
-    public DateTime StartDate
-    {
-	    get => _startDate;
-	    set
-	    {
-		    _startDate = value;
-		    ValidateStartDate();
-	    }
-    }
+    public DateTime StartDate { get; set; }
 
     private DateTime _endDate;
-    public DateTime EndDate
-    {
-	    get => _endDate;
-	    set
-	    {
-		    _endDate = value;
-		    ValidateEndDate();
-	    }
-    }
+    public DateTime EndDate { get; set; }
     private string _userPlan;
-    public string UserPlan
-    {
-	    get => _userPlan;
-	    set
-	    {
-		    _userPlan = value;
-		    ValidateUserPlan();
-	    }
-    }
+    public string UserPlan { get; set; }
 
     private ICollection<string> _terms;
-    public ICollection<string> Terms
-    {
-	    get => _terms;
-	    set
-	    {
-		    _terms = value;
-		    ValidateTerms();
-	    }
-    }
+    public ICollection<string> Terms { get; set; }
 
     private void ValidateStartDate()
     {
@@ -77,13 +45,15 @@ public class Contract
 		    _validationErrors.Add("Terms must have at least one item.");
     }
 
-    public void Validate(out List<string> errors)
+    public void Validate()
     {
-	    errors = new List<string>();
-
 	    ValidateStartDate();
 	    ValidateEndDate();
 	    ValidateUserPlan();
 	    ValidateTerms();
+
+	    if (_validationErrors.Any())
+		    throw new ArgumentException(string.Join(", ", _validationErrors));
+
     }
 }

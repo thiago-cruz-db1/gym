@@ -21,6 +21,7 @@ public class TrainingByUserService
 	    if (validDay)
 	    {
 		    var training = _mapper.Map<TrainingUser>(trainingUserDto);
+		    training.Validate();
 		    await _contextTrainingByUser.Save(training);
 		    await _contextTrainingByUser.SaveChange();
 		    return training;
@@ -42,7 +43,8 @@ public class TrainingByUserService
     {
         var trainingByUser = await _contextTrainingByUser.FindById(id);
         if (trainingByUser == null) throw new ApplicationException("trainingByUser not found");
-        _mapper.Map(updateTrainingDto, trainingByUser);
+        var tr =_mapper.Map(updateTrainingDto, trainingByUser);
+        tr.Validate();
         await _contextTrainingByUser.Update(trainingByUser);
         await _contextTrainingByUser.SaveChange();
         return trainingByUser;

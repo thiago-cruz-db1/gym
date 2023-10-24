@@ -7,41 +7,13 @@ public class Plan
 	private List<string> _validationErrors = new();
 	public Guid Id { get; set; } = Guid.NewGuid();
 	private double _amount;
-	public double Amount
-	{
-		get => _amount;
-		set
-		{
-			_amount = value;
-		}
-	}
+	public double Amount { get; set; }
 	private string _category;
-	public string Category
-	{
-		get => _category;
-		set
-		{
-			_category = value;
-		}
-	}
+	public string Category  { get; set; }
 	private int _totalMonths;
-	public int TotalMonths
-	{
-		get => _totalMonths;
-		set
-		{
-			_totalMonths = value;
-		}
-	}
+	public int TotalMonths { get; set; }
 	private string _dayOfWeeks;
-	public string DayOfWeeks
-	{
-		get => _dayOfWeeks;
-		set
-		{
-			_dayOfWeeks = value;
-		}
-	}
+	public string DayOfWeeks { get; set; }
 	public ICollection<User> Users { get; set; }
 	public bool IsActive { get; set; } = true;
 
@@ -91,6 +63,7 @@ public class Plan
 	    ValidateCategory();
 	    ValidateTotalMonths();
 	    ValidateDayOfWeeks();
+
 	    if (_validationErrors.Any())
 		    throw new ArgumentException(string.Join(", ", _validationErrors));
     }

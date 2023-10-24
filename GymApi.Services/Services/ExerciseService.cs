@@ -24,6 +24,7 @@ public class ExerciseService
     {
         var exercise = _mapper.Map<Exercise>(exerciseDto);
         if(_contextExercise.DuplicateExercise(exercise)) throw new Exception("exercise already exists");
+        exercise.Validate();
         await _contextExercise.Save(exercise);
         await _contextExercise.SaveChange();
         return exercise;
@@ -43,7 +44,8 @@ public class ExerciseService
     {
         var exercise = await _contextExercise.FindById(id);
         if (exercise == null) throw new ApplicationException("exercise not found");
-        _mapper.Map(updateExerciseDto, exercise);
+        var ex =_mapper.Map(updateExerciseDto, exercise);
+        ex.Validate();
         await _contextExercise.Update(exercise);
         await _contextExercise.SaveChange();
         return exercise;

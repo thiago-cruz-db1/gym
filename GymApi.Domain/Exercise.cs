@@ -5,59 +5,19 @@ public class Exercise
 	private List<string> _validationErrors;
 	public Guid Id { get; set; } = Guid.NewGuid();
 	private string _machine;
-	public string Machine
-	{
-		get => _machine;
-		set
-		{
-			_machine = value;
-			ValidateMachine();
-		}
-	}
+	public string Machine { get; set; }
 
 	private int _pause;
-	public int Pause
-	{
-		get => _pause;
-		set
-		{
-			_pause = value;
-			ValidatePause();
-		}
-	}
+	public int Pause { get; set; }
 
 	private int _set;
-	public int Set
-	{
-		get => _set;
-		set
-		{
-			_set = value;
-			ValidateSet();
-		}
-	}
+	public int Set { get; set; }
 
 	private int _repetition;
-	public int Repetition
-	{
-		get => _repetition;
-		set
-		{
-			_repetition = value;
-			ValidateRepetition();
-		}
-	}
+	public int Repetition { get; set; }
 
 	private string _technique;
-	public string Technique
-	{
-		get => _technique;
-		set
-		{
-			_technique = value;
-			ValidateTechnique();
-		}
-	}
+	public string Technique { get; set; }
 
 	public ICollection<ExerciseTraining> ExerciseTrainings { get; set; }
 
@@ -91,7 +51,7 @@ public class Exercise
 			_validationErrors.Add("Technique is required.");
 	}
 
-	private void Validate()
+	public void Validate()
 	{
 		_validationErrors = new List<string>();
 
@@ -100,5 +60,8 @@ public class Exercise
 		ValidateSet();
 		ValidateRepetition();
 		ValidateTechnique();
+
+		if (_validationErrors.Any())
+			throw new ArgumentException(string.Join(", ", _validationErrors));
 	}
 }
