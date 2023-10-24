@@ -1,11 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "m3xwYh380tG7sUU5BIqITCyNKYxXSO0vIiMr4ZKeyebF7UeaybmkWQBk13ZoVONpNL85LXVpYGv0WnLh5Gh3jQ==",
+  "dgSpecHash": "G/5O7l3qZ89XaYSGquOFKbo3sUApzrcMT0lenmkrjBeNypJYzPp7gNek/zpQCRsW95LQcnYap84/U6Cm9nT+Mw==",
   "success": true,
   "projectFilePath": "C:\\Users\\thiago.cruz\\Documents\\Proj\\Pessoal\\Gym\\GymApi.Domain\\GymApi.Domain.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\thiago.cruz\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
-    "C:\\Users\\thiago.cruz\\.nuget\\packages\\fluentvalidation\\11.7.1\\fluentvalidation.11.7.1.nupkg.sha512",
     "C:\\Users\\thiago.cruz\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\6.0.22\\microsoft.aspnetcore.cryptography.internal.6.0.22.nupkg.sha512",
     "C:\\Users\\thiago.cruz\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\6.0.22\\microsoft.aspnetcore.cryptography.keyderivation.6.0.22.nupkg.sha512",
     "C:\\Users\\thiago.cruz\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

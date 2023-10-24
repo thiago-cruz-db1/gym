@@ -4,7 +4,7 @@ namespace GymApi.Domain;
 
 public class Plan
 {
-	private List<string> _validationErrors;
+	private List<string> _validationErrors = new();
 	public Guid Id { get; set; } = Guid.NewGuid();
 	private double _amount;
 	public double Amount
@@ -13,7 +13,6 @@ public class Plan
 		set
 		{
 			_amount = value;
-			ValidateAmount();
 		}
 	}
 	private string _category;
@@ -23,7 +22,6 @@ public class Plan
 		set
 		{
 			_category = value;
-			ValidateCategory();
 		}
 	}
 	private int _totalMonths;
@@ -33,7 +31,6 @@ public class Plan
 		set
 		{
 			_totalMonths = value;
-			ValidateTotalMonths();
 		}
 	}
 	private string _dayOfWeeks;
@@ -43,7 +40,6 @@ public class Plan
 		set
 		{
 			_dayOfWeeks = value;
-			ValidateDayOfWeeks();
 		}
 	}
 	public ICollection<User> Users { get; set; }
@@ -55,7 +51,7 @@ public class Plan
 		    _validationErrors.Add("Amount must be greater than 0.");
     }
 
-    private void ValidateCategory()
+    private  void  ValidateCategory()
     {
 	    if (string.IsNullOrWhiteSpace(Category))
 		    _validationErrors.Add("Category is required.");
@@ -91,12 +87,11 @@ public class Plan
 
     public void Validate()
     {
-	    _validationErrors = new List<string>();
-
 	    ValidateAmount();
 	    ValidateCategory();
 	    ValidateTotalMonths();
 	    ValidateDayOfWeeks();
+	    if (_validationErrors.Any())
+		    throw new ArgumentException(string.Join(", ", _validationErrors));
     }
 }
-
