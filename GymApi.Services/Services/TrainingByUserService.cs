@@ -1,23 +1,25 @@
 ﻿using AutoMapper;
 using GymApi.Data.Data.Interfaces;
+using GymApi.Data.Data.Validator;
+using GymApi.Data.Data.Validator.Interfaces;
 using GymApi.Domain;
 using GymApi.UseCases.Dto.Request;
 
 namespace GymApi.UseCases.Services;
 
-public class TrainingByUserService
+public class TrainingByUserService : AbstractTrainingByUserValidator
 {
     private readonly IMapper _mapper;
     private readonly ITrainingByUserRepositorySql _contextTrainingByUser;
 
-    public TrainingByUserService(ITrainingByUserRepositorySql contextTrainingByUser,IMapper mapper)
+    public TrainingByUserService(ITrainingByUserRepositorySql contextTrainingByUser,IMapper mapper, IValidatorTrainingByUser validatorTrainingByUser) :base(validatorTrainingByUser)
     {
         _contextTrainingByUser = contextTrainingByUser;
         _mapper = mapper;
     }
     public async Task<TrainingUser> AddTrainingUser(CreateTrainingByUserRequest trainingUserDto)
     {
-	    var validDay = await _contextTrainingByUser.CorrectDayOfTraining(trainingUserDto.UserId);
+	    var validDay = await CorrectDayOfTrainingByUserId(trainingUserDto.UserId);
 	    if (validDay)
 	    {
 		    var training = _mapper.Map<TrainingUser>(trainingUserDto);

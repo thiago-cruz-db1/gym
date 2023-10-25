@@ -5,5 +5,5 @@ namespace GymApi.Data.Data.Interfaces;
 
 public interface IExerciseRepositorySql : IBaseRepositorySql<Guid, Exercise>
 {
-	public bool DuplicateExercise(Exercise exercise);
+
 }

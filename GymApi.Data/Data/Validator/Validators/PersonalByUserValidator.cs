@@ -1,9 +1,9 @@
 ﻿using GymApi.Data.Data.MySql;
-using GymApi.Data.Data.ValidatorDecorator.Interfaces;
+using GymApi.Data.Data.Validator.Interfaces;
 using GymApi.Domain;
 using GymApi.Domain.Enum;
 
-namespace GymApi.Data.Data.ValidatorDecorator.Validators;
+namespace GymApi.Data.Data.Validator.Validators;
 
 public class PersonalByUserValidator : IValidatorPersonalByUser
 {
@@ -14,7 +14,7 @@ public class PersonalByUserValidator : IValidatorPersonalByUser
 		_context = context;
 	}
 
-	public bool IsPeronalOpenToNewClient(PersonalByUser personalByUser)
+	public bool IsPersonalOpenToNewClient(PersonalByUser personalByUser)
 	{
 		var personalTrainerId = personalByUser.PersonalId;
 		double totalMinutesConsumed = _context.PersonalByUsers

@@ -2,18 +2,20 @@
 using System.Text.Json;
 using AutoMapper;
 using GymApi.Data.Data.Interfaces;
+using GymApi.Data.Data.Validator;
+using GymApi.Data.Data.Validator.Interfaces;
 using GymApi.Domain;
 using GymApi.UseCases.Dto.Request;
 using RabbitMQ.Client;
 
 namespace GymApi.UseCases.Services;
 
-public class TicketGateUserService
+public class TicketGateUserService : AbstractTicketGateValidator
 {
     private readonly IMapper _mapper;
     private readonly ITicketGateUserRepositorySql _ticketGateUserRepositorySql;
 
-    public TicketGateUserService(IMapper mapper, ITicketGateUserRepositorySql ticketGateUserRepositorySql)
+    public TicketGateUserService(IMapper mapper, ITicketGateUserRepositorySql ticketGateUserRepositorySql, IValidatorTicketGate validatorTicketGate) :base(validatorTicketGate)
     {
         _mapper = mapper;
         _ticketGateUserRepositorySql = ticketGateUserRepositorySql;
@@ -58,7 +60,7 @@ public class TicketGateUserService
 
     public async Task<List<string>> GetAbleUsers(DateTime day)
     {
-        return await _ticketGateUserRepositorySql.GetAbleUsers(day);
+        return await GetAbleUsersToTicketGate(day);
     }
 
     public bool SendToTicketGate(List<string> ids)

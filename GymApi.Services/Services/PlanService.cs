@@ -1,14 +1,14 @@
 ﻿using AutoMapper;
 using GymApi.Data.Data.Interfaces;
-using GymApi.Data.Data.ValidatorDecorator;
-using GymApi.Data.Data.ValidatorDecorator.Interfaces;
+using GymApi.Data.Data.Validator;
+using GymApi.Data.Data.Validator.Interfaces;
 using GymApi.Domain;
 using GymApi.UseCases.Dto.Request;
 
 
 namespace GymApi.UseCases.Services;
 
-public class PlanService : PlanDecorator
+public class PlanService : AbstractPlanValidator
 {
     private readonly IMapper _mapper;
     private readonly IPlanRepositorySql _contextPlan;
@@ -21,8 +21,7 @@ public class PlanService : PlanDecorator
 
     public async Task<Plan> AddPlan(CreatePlanRequest planDto)
     {
-	    var duplicateName = IsValidPlanName(planDto.Category);
-	    //var duplicateName = _contextPlan.IsValidName(planDto.Category);
+	    var duplicateName = await IsValidPlanName(planDto.Category);
 	    if (duplicateName) throw new Exception("plan with this name already exist");
 
 	    var plan = _mapper.Map<Plan>(planDto);

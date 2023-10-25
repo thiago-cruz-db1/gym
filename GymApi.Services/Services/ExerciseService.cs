@@ -1,6 +1,8 @@
 ﻿using System.Text;
 using AutoMapper;
 using GymApi.Data.Data.Interfaces;
+using GymApi.Data.Data.Validator;
+using GymApi.Data.Data.Validator.Interfaces;
 using GymApi.Domain;
 using GymApi.UseCases.Dto.Request;
 using GymApi.UseCases.Interfaces;
@@ -8,13 +10,13 @@ using Microsoft.AspNetCore.Http;
 
 namespace GymApi.UseCases.Services;
 
-public class ExerciseService
+public class ExerciseService : AbstractExerciseValidator
 {
     private readonly IMapper _mapper;
     private readonly IExerciseRepositorySql _contextExercise;
     private readonly IExcelReader _excelReader;
 
-    public ExerciseService(IExerciseRepositorySql contextExercise,IMapper mapper, IExcelReader excelReader)
+    public ExerciseService(IExerciseRepositorySql contextExercise,IMapper mapper, IExcelReader excelReader, IValidatorExercise validatorExercise) :base(validatorExercise)
     {
         _contextExercise = contextExercise;
         _mapper = mapper;
@@ -23,7 +25,7 @@ public class ExerciseService
     public async Task<Exercise> AddExercise(CreateExerciseRequest exerciseDto)
     {
         var exercise = _mapper.Map<Exercise>(exerciseDto);
-        if(_contextExercise.DuplicateExercise(exercise)) throw new Exception("exercise already exists");
+        if(DuplicateExercise(exercise)) throw new Exception("exercise already exists");
         exercise.Validate();
         await _contextExercise.Save(exercise);
         await _contextExercise.SaveChange();

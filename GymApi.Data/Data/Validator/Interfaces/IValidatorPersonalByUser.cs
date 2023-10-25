@@ -1,10 +1,10 @@
 ﻿using GymApi.Domain;
 
-namespace GymApi.Data.Data.ValidatorDecorator.Interfaces;
+namespace GymApi.Data.Data.Validator.Interfaces;
 
 public interface IValidatorPersonalByUser
 {
-	public bool IsPeronalOpenToNewClient(PersonalByUser personalByUser);
+	public bool IsPersonalOpenToNewClient(PersonalByUser personalByUser);
 	public bool IsDuplicateClientOnSameTimeToPersonal(PersonalByUser personalByUser);
 	public bool IsDuplicatePersonalOnSameTimeToClient(PersonalByUser personalByUser);
 }

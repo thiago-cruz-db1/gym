@@ -1,17 +1,19 @@
 ﻿using AutoMapper;
 using GymApi.Data.Data.Interfaces;
+using GymApi.Data.Data.Validator;
+using GymApi.Data.Data.Validator.Interfaces;
 using GymApi.Domain;
 using GymApi.Domain.Enum;
 using GymApi.UseCases.Dto.Request;
 
 namespace GymApi.UseCases.Services;
 
-public class PersonalByUserService
+public class PersonalByUserService : AbstractPersonalByUserValidator
 {
     private readonly IMapper _mapper;
     private readonly IPersonalByUserRepositorySql _personalByUserRepositorySql;
 
-    public PersonalByUserService(IMapper mapper, IPersonalByUserRepositorySql personalByUserRepositorySql)
+    public PersonalByUserService(IMapper mapper, IPersonalByUserRepositorySql personalByUserRepositorySql, IValidatorPersonalByUser validatorPersonalByUser) :base(validatorPersonalByUser)
     {
         _mapper = mapper;
         _personalByUserRepositorySql = personalByUserRepositorySql;
@@ -19,11 +21,11 @@ public class PersonalByUserService
     public async Task<PersonalByUser> AddPersonalByUser(CreatePersonalByUserRequest personalByUserDto)
     {
         var personalByUser = _mapper.Map<PersonalByUser>(personalByUserDto);
-        var isDuplicatePersonal = _personalByUserRepositorySql.IsDuplicatePersonalOnSameTime(personalByUser);
+        var isDuplicatePersonal = IsDuplicatePersonalOnSameTimeToClient(personalByUser);
         if (isDuplicatePersonal) throw new Exception("you cannot have two personal in same time");
-        var isDuplicateClient = _personalByUserRepositorySql.IsDuplicateClientOnSameTime(personalByUser);
+        var isDuplicateClient = IsDuplicateClientOnSameTimeToPersonal(personalByUser);
         if (isDuplicateClient) throw new Exception("Personal is not avalible in this time");
-        var isFree = _personalByUserRepositorySql.IsOpenToNewClient(personalByUser);
+        var isFree = IsPersonalOpenToNewClient(personalByUser);
         if (!isFree) throw new Exception($"Personal does not have any time to traine you, he has only" +
                                          $"{(double)HoursDayPersonal.EightHours - personalByUser.DiffPersonalHours} minutes.");
         await _personalByUserRepositorySql.Save(personalByUser);

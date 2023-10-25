@@ -1,16 +1,18 @@
 ﻿using AutoMapper;
 using GymApi.Data.Data.Interfaces;
+using GymApi.Data.Data.Validator;
+using GymApi.Data.Data.Validator.Interfaces;
 using GymApi.Domain;
 using GymApi.UseCases.Dto.Request;
 
 namespace GymApi.UseCases.Services;
 
-public class TrainingService
+public class TrainingService : AbstractTrainingValidator
 {
     private readonly IMapper _mapper;
     private readonly ITrainingRepositorySql _contextTraining;
 
-    public TrainingService(ITrainingRepositorySql contextTraining,IMapper mapper)
+    public TrainingService(ITrainingRepositorySql contextTraining,IMapper mapper, IValidatorTraining validatorTraining) :base(validatorTraining)
     {
         _contextTraining = contextTraining;
         _mapper = mapper;
@@ -52,8 +54,8 @@ public class TrainingService
         await _contextTraining.SaveChange();
     }
 
-    public bool ValidationIfExerciseExist(ICollection<Guid> ids)
+    public bool ValidationExerciseExist(ICollection<Guid> ids)
     {
-        return _contextTraining.ValidationIfExerciseExist(ids);
+        return ValidationIfExerciseExist(ids);
     }
 }

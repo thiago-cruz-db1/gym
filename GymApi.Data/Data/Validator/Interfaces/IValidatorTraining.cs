@@ -1,4 +1,4 @@
-﻿namespace GymApi.Data.Data.ValidatorDecorator.Interfaces;
+﻿namespace GymApi.Data.Data.Validator.Interfaces;
 
 public interface IValidatorTraining
 {

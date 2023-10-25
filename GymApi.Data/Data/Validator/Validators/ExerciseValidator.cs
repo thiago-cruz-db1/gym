@@ -1,8 +1,8 @@
 ﻿using GymApi.Data.Data.MySql;
-using GymApi.Data.Data.ValidatorDecorator.Interfaces;
+using GymApi.Data.Data.Validator.Interfaces;
 using GymApi.Domain;
 
-namespace GymApi.Data.Data.ValidatorDecorator.Validators;
+namespace GymApi.Data.Data.Validator.Validators;
 
 public class ExerciseValidator : IValidatorExercise
 {

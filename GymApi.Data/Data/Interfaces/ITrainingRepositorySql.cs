@@ -6,5 +6,5 @@ namespace GymApi.Data.Data.Interfaces;
 
 public interface ITrainingRepositorySql : IBaseRepositorySql<Guid, Training>
 {
-    public bool ValidationIfExerciseExist(ICollection<Guid> exercisesId);
+
 }
