@@ -13,10 +13,10 @@ public class PersonalByUserRepositorySql : EntityFrameworkRepositorySqlAbstract<
     {
         _personalByUserRepositorySql = context;
     }
-    
+
     public bool IsOpenToNewClient(PersonalByUser personalByUser)
     {
-        var personalTrainerId = personalByUser.PersonalId; 
+        var personalTrainerId = personalByUser.PersonalId;
         double totalMinutesConsumed = _personalByUserRepositorySql.PersonalByUsers
             .Where(e => e.StartAt.Date == personalByUser.StartAt.Date && e.PersonalId == personalTrainerId && e.IsActive)
             .Sum(e => e.DiffPersonalHours);
@@ -26,7 +26,7 @@ public class PersonalByUserRepositorySql : EntityFrameworkRepositorySqlAbstract<
 
     public bool IsDuplicateClientOnSameTime(PersonalByUser personalByUser)
     {
-        var personalTrainerId = personalByUser.PersonalId; 
+        var personalTrainerId = personalByUser.PersonalId;
         var personalByUsers =_personalByUserRepositorySql.PersonalByUsers
             .Where(e => e.IsActive && personalTrainerId == e.PersonalId)
             .ToList();
@@ -37,10 +37,10 @@ public class PersonalByUserRepositorySql : EntityFrameworkRepositorySqlAbstract<
         );
         return isDuplicate;
     }
-    
+
     public bool IsDuplicatePersonalOnSameTime(PersonalByUser personalByUser)
     {
-        var personalTrainerId = personalByUser.UserId; 
+        var personalTrainerId = personalByUser.UserId;
         var personalByUsers =_personalByUserRepositorySql.PersonalByUsers
             .Where(e => e.IsActive && personalTrainerId == e.UserId)
             .ToList();
@@ -51,4 +51,5 @@ public class PersonalByUserRepositorySql : EntityFrameworkRepositorySqlAbstract<
         );
         return isDuplicate;
     }
+
 }

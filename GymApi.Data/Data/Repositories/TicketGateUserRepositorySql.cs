@@ -16,22 +16,9 @@ public class TicketGateUserRepositorySql : EntityFrameworkRepositorySqlAbstract<
         _createUserRepositorySql = createUserRepositorySql;
     }
 
-    // public async Task<bool> AbleToPass(Guid id, DateTime day)
-    // {
-    //     var user = await _createUserRepositorySql.GetUserById(id.ToString());
-    //     var planByUser = await _planRepositorySql.FindById(user.PlanId);
-    //     var dayInWeek = planByUser.DayOfWeeks.Split(',');
-    //     return dayInWeek
-    //         .Any(dayInPlan =>
-    //         string.Equals(
-    //             dayInPlan.Trim(), 
-    //             Enum.GetName(day.DayOfWeek), 
-    //             StringComparison.OrdinalIgnoreCase));
-    // }
-
     public async Task<List<string>> GetAbleUsers(DateTime day)
     {
-        var allUsers = _createUserRepositorySql.GetUsers(); 
+        var allUsers = _createUserRepositorySql.GetUsers();
         var ableUsers = new List<string>();
 
         foreach (var user in allUsers)

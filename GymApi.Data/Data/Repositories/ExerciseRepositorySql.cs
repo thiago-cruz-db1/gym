@@ -21,4 +21,5 @@ public class ExerciseRepositorySql : EntityFrameworkRepositorySqlAbstract<Guid, 
 		    e.Set == exercise.Set &&
 		    e.Repetition == exercise.Repetition);
     }
+
 }

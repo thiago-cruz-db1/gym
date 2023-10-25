@@ -21,4 +21,5 @@ public class TrainingRepositorySql : EntityFrameworkRepositorySqlAbstract<Guid, 
         return idsFromDataBase;
     }
 
+
 }

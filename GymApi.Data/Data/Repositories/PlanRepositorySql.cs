@@ -12,10 +12,4 @@ public class PlanRepositorySql : EntityFrameworkRepositorySqlAbstract<Guid, Plan
     {
 	    _planRepositorySql = context;
     }
-
-    public bool IsValidName(string name)
-    {
-	    var isDuplicate = _planRepositorySql.Plans.Any(e => e.Category == name);
-	    return isDuplicate;
-    }
 }

@@ -5,6 +5,8 @@ using GymApi.Data.Data.Mongo;
 using GymApi.Data.Data.MySql;
 using GymApi.Data.Data.PlanRepository;
 using GymApi.Data.Data.Repositories;
+using GymApi.Data.Data.ValidatorDecorator.Interfaces;
+using GymApi.Data.Data.ValidatorDecorator.Validators;
 using GymApi.Domain;
 using GymApi.UseCases.AuthorizationPolicyService;
 using GymApi.UseCases.Interfaces;
@@ -96,6 +98,7 @@ builder.Services.AddScoped<ICreateUserRepositorySql, CreateUserRepositorySql>();
 builder.Services.AddScoped<ITicketGateUserRepositorySql, TicketGateUserRepositorySql>();
 builder.Services.AddScoped<IPersonalByUserRepositorySql, PersonalByUserRepositorySql>();
 builder.Services.AddScoped<IExcelReader, ExcelDataReaderService>();
+builder.Services.AddScoped<IValidatorPlan, PlanValidator>();
 
 var app = builder.Build();
 

@@ -26,4 +26,5 @@ public class TrainingByUserRepositorySql : EntityFrameworkRepositorySqlAbstract<
 			    Enum.GetName(DateTime.Today.DayOfWeek),
 			    StringComparison.OrdinalIgnoreCase));
     }
+
 }

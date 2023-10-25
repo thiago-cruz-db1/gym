@@ -23,6 +23,8 @@
 
     <ItemGroup>
       <ProjectReference Include="..\GymApi.Domain\GymApi.Domain.csproj" />
+
+
     </ItemGroup>
 
 
