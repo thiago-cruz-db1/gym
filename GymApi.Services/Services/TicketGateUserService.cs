@@ -21,16 +21,6 @@ public class TicketGateUserService : AbstractTicketGateValidator
         _ticketGateUserRepositorySql = ticketGateUserRepositorySql;
     }
 
-    // public async Task<bool> AddTicketGateUser(CreateTicketGateUsersRequest createTicketGateDto)
-    // {
-    //     var ableToPass = await _ticketGateUserRepositorySql.AbleToPass(createTicketGateDto.UserId, createTicketGateDto.day);
-    //     //if (!ableToPass) return false;
-    //     var ticketGate = _mapper.Map<TicketGateUser>(createTicketGateDto);
-    //     await _ticketGateUserRepositorySql.Save(ticketGate);
-    //     await _ticketGateUserRepositorySql.SaveChange();
-    //     return true;
-    // }
-
     public async Task<ICollection<TicketGateUser>> GetTicketGateUser()
     {
         return await _ticketGateUserRepositorySql.FindAll();

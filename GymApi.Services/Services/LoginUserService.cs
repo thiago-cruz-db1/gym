@@ -14,7 +14,7 @@ public class LoginUserService
         _signInManager = signInManager;
         _generateTokenService = generateTokenService;
     }
-    public async Task<string> Login(LoginUserRequest loginDto)
+    public virtual async Task<string> Login(LoginUserRequest loginDto)
     {
 	    var result = await _signInManager.PasswordSignInAsync(loginDto.UserName, loginDto.Password, false, false);
         if (!result.Succeeded) throw new ApplicationException("User not auth");

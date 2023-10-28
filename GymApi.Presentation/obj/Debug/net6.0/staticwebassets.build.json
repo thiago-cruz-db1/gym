@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "/FhjzdZgCtmweSzZcp9OfY/CqPYDoe6zpR9HdSm6b3o=",
+  "Hash": "y4kJqBPriVwqz1oag2B/M4coGsS0gV/ifjrCL+BEffo=",
   "Source": "GymApi.Presentation",
   "BasePath": "_content/GymApi.Presentation",
   "Mode": "Default",
@@ -8,32 +8,30 @@
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [
     {
-      "Name": "GymApi.Presentation\\wwwroot",
+      "Name": "GymApi.Presentation/wwwroot",
       "Source": "GymApi.Presentation",
-      "ContentRoot": "C:\\Users\\thiago.cruz\\Documents\\Proj\\Pessoal\\Gym\\GymApi.Presentation\\wwwroot\\",
+      "ContentRoot": "/home/thiago/Documentos/projetos/gym/GymApi.Presentation/wwwroot/",
       "BasePath": "_content/GymApi.Presentation",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\thiago.cruz\\Documents\\Proj\\Pessoal\\Gym\\GymApi.Presentation\\wwwroot\\Uploads\\Pasta.xlsx",
+      "Identity": "/home/thiago/Documentos/projetos/gym/GymApi.Presentation/wwwroot/Uploads/Pasta.xlsx",
       "SourceId": "GymApi.Presentation",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\thiago.cruz\\Documents\\Proj\\Pessoal\\Gym\\GymApi.Presentation\\wwwroot\\",
+      "ContentRoot": "/home/thiago/Documentos/projetos/gym/GymApi.Presentation/wwwroot/",
       "BasePath": "_content/GymApi.Presentation",
       "RelativePath": "Uploads/Pasta.xlsx",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Uploads\\Pasta.xlsx"
+      "OriginalItemSpec": "wwwroot/Uploads/Pasta.xlsx"
     }
   ]
 }

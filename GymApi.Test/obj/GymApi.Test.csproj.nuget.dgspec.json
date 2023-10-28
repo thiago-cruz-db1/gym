@@ -1,32 +1,122 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\thiago.cruz\\Documents\\Proj\\Pessoal\\Gym\\GymApi.Test\\GymApi.Test.csproj": {}
+    "/home/thiago/Documentos/projetos/gym/GymApi.Test/GymApi.Test.csproj": {}
   },
   "projects": {
-    "C:\\Users\\thiago.cruz\\Documents\\Proj\\Pessoal\\Gym\\GymApi.Test\\GymApi.Test.csproj": {
+    "/home/thiago/Documentos/projetos/gym/GymApi.Data/GymApi.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\thiago.cruz\\Documents\\Proj\\Pessoal\\Gym\\GymApi.Test\\GymApi.Test.csproj",
-        "projectName": "GymApi.Test",
-        "projectPath": "C:\\Users\\thiago.cruz\\Documents\\Proj\\Pessoal\\Gym\\GymApi.Test\\GymApi.Test.csproj",
-        "packagesPath": "C:\\Users\\thiago.cruz\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\thiago.cruz\\Documents\\Proj\\Pessoal\\Gym\\GymApi.Test\\obj\\",
+        "projectUniqueName": "/home/thiago/Documentos/projetos/gym/GymApi.Data/GymApi.Data.csproj",
+        "projectName": "GymApi.Data",
+        "projectPath": "/home/thiago/Documentos/projetos/gym/GymApi.Data/GymApi.Data.csproj",
+        "packagesPath": "/home/thiago/.nuget/packages/",
+        "outputPath": "/home/thiago/Documentos/projetos/gym/GymApi.Data/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\thiago.cruz\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/home/thiago/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "/home/thiago/Documentos/projetos/gym/GymApi.Domain/GymApi.Domain.csproj": {
+                "projectPath": "/home/thiago/Documentos/projetos/gym/GymApi.Domain/GymApi.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.22, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.22, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[6.0.22, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.22, )"
+            },
+            "Microsoft.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[6.0.1, )"
+            },
+            "Microsoft.Extensions.Logging": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "MongoDB.Driver": {
+              "target": "Package",
+              "version": "[2.21.0, )"
+            },
+            "MongoDB.Entities": {
+              "target": "Package",
+              "version": "[22.1.0, )"
+            },
+            "Pomelo.EntityFrameworkCore.MySql": {
+              "target": "Package",
+              "version": "[6.0.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/home/thiago/.dotnet/sdk/6.0.413/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/thiago/Documentos/projetos/gym/GymApi.Domain/GymApi.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/thiago/Documentos/projetos/gym/GymApi.Domain/GymApi.Domain.csproj",
+        "projectName": "GymApi.Domain",
+        "projectPath": "/home/thiago/Documentos/projetos/gym/GymApi.Domain/GymApi.Domain.csproj",
+        "packagesPath": "/home/thiago/.nuget/packages/",
+        "outputPath": "/home/thiago/Documentos/projetos/gym/GymApi.Domain/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/thiago/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -39,9 +129,171 @@
           "warnAsError": [
             "NU1605"
           ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "Microsoft.Extensions.Identity.Stores": {
+              "target": "Package",
+              "version": "[6.0.22, )"
+            },
+            "MongoDB.Bson": {
+              "target": "Package",
+              "version": "[2.21.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/home/thiago/.dotnet/sdk/6.0.413/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/thiago/Documentos/projetos/gym/GymApi.Services/GymApi.Services.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/thiago/Documentos/projetos/gym/GymApi.Services/GymApi.Services.csproj",
+        "projectName": "GymApi.Services",
+        "projectPath": "/home/thiago/Documentos/projetos/gym/GymApi.Services/GymApi.Services.csproj",
+        "packagesPath": "/home/thiago/.nuget/packages/",
+        "outputPath": "/home/thiago/Documentos/projetos/gym/GymApi.Services/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/thiago/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
         },
-        "restoreAuditProperties": {
-          "enableAudit": "default"
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "/home/thiago/Documentos/projetos/gym/GymApi.Data/GymApi.Data.csproj": {
+                "projectPath": "/home/thiago/Documentos/projetos/gym/GymApi.Data/GymApi.Data.csproj"
+              },
+              "/home/thiago/Documentos/projetos/gym/GymApi.Domain/GymApi.Domain.csproj": {
+                "projectPath": "/home/thiago/Documentos/projetos/gym/GymApi.Domain/GymApi.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "ExcelDataReader": {
+              "target": "Package",
+              "version": "[3.6.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[6.0.22, )"
+            },
+            "Microsoft.AspNetCore.Authorization": {
+              "target": "Package",
+              "version": "[6.0.22, )"
+            },
+            "Microsoft.AspNetCore.Identity": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "MongoDB.Driver": {
+              "target": "Package",
+              "version": "[2.21.0, )"
+            },
+            "Quartz": {
+              "target": "Package",
+              "version": "[3.7.0, )"
+            },
+            "RabbitMQ.Client": {
+              "target": "Package",
+              "version": "[6.5.0, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[6.32.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/home/thiago/.dotnet/sdk/6.0.413/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/thiago/Documentos/projetos/gym/GymApi.Test/GymApi.Test.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/thiago/Documentos/projetos/gym/GymApi.Test/GymApi.Test.csproj",
+        "projectName": "GymApi.Test",
+        "projectPath": "/home/thiago/Documentos/projetos/gym/GymApi.Test/GymApi.Test.csproj",
+        "packagesPath": "/home/thiago/.nuget/packages/",
+        "outputPath": "/home/thiago/Documentos/projetos/gym/GymApi.Test/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/thiago/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "/home/thiago/Documentos/projetos/gym/GymApi.Services/GymApi.Services.csproj": {
+                "projectPath": "/home/thiago/Documentos/projetos/gym/GymApi.Services/GymApi.Services.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
         }
       },
       "frameworks": {
@@ -51,6 +303,10 @@
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
               "version": "[17.6.0, )"
+            },
+            "Moq": {
+              "target": "Package",
+              "version": "[4.20.69, )"
             },
             "coverlet.collector": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
@@ -80,26 +336,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[6.0.20, 6.0.20]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[6.0.20, 6.0.20]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[6.0.20, 6.0.20]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100-preview.7.23376.3\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/home/thiago/.dotnet/sdk/6.0.413/RuntimeIdentifierGraph.json"
         }
       }
     }
