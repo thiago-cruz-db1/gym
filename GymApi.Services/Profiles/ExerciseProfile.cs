@@ -8,7 +8,7 @@ public class ExerciseProfile : Profile
 {
     public ExerciseProfile()
     {
-        CreateMap<CreateExerciseRequest, Exercise>();
-        CreateMap<UpdateExerciseRequest, Exercise>();
+        CreateMap<CreateExerciseRequest, Exercise>().ReverseMap();
+        CreateMap<UpdateExerciseRequest, Exercise>().ReverseMap();
     }
 }

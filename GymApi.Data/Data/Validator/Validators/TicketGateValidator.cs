@@ -8,7 +8,7 @@ public class TicketGateValidator : IValidatorTicketGate
 	private readonly IPlanRepositorySql _planRepositorySql;
 	private readonly ICreateUserRepositorySql _createUserRepositorySql;
 
-	protected TicketGateValidator(IPlanRepositorySql planRepositorySql, ICreateUserRepositorySql createUserRepositorySql)
+	public TicketGateValidator(IPlanRepositorySql planRepositorySql, ICreateUserRepositorySql createUserRepositorySql)
 	{
 		_planRepositorySql = planRepositorySql;
 		_createUserRepositorySql = createUserRepositorySql;

@@ -1,5 +1,6 @@
 using AutoMapper;
 using GymApi.Data.Data.Interfaces;
+using GymApi.Data.Data.Validator.Interfaces;
 using GymApi.Data.Data.Validator.Validators;
 using GymApi.Domain;
 using GymApi.UseCases.Dto.Request;
@@ -17,7 +18,7 @@ public class TrainingByUserServiceTests
 	    // Arrange
 	    var trainingByUserRepositorySqlMock = new Mock<ITrainingByUserRepositorySql>();
 	    var mapperMock = new Mock<IMapper>();
-	    var validatorTrainingByUserMock = new Mock<TrainingByUserValidator>();
+	    var validatorTrainingByUserMock = new Mock<IValidatorTrainingByUser>();
 
 	    var service = new TrainingByUserService(trainingByUserRepositorySqlMock.Object, mapperMock.Object, validatorTrainingByUserMock.Object);
 	    var createTrainingRequest = new CreateTrainingByUserRequest();
@@ -41,7 +42,7 @@ public class TrainingByUserServiceTests
 	    // Arrange
 	    var trainingByUserRepositorySqlMock = new Mock<ITrainingByUserRepositorySql>();
 	    var mapperMock = new Mock<IMapper>();
-	    var validatorTrainingByUserMock = new Mock<TrainingByUserValidator>();
+	    var validatorTrainingByUserMock = new Mock<IValidatorTrainingByUser>();
 
 	    var service = new TrainingByUserService(trainingByUserRepositorySqlMock.Object, mapperMock.Object, validatorTrainingByUserMock.Object);
 	    var createTrainingRequest = new CreateTrainingByUserRequest();
@@ -58,7 +59,7 @@ public class TrainingByUserServiceTests
 	    // Arrange
 	    var trainingByUserRepositorySqlMock = new Mock<ITrainingByUserRepositorySql>();
 	    var mapperMock = new Mock<IMapper>();
-	    var validatorTrainingByUserMock = new Mock<TrainingByUserValidator>();
+	    var validatorTrainingByUserMock = new Mock<IValidatorTrainingByUser>();
 
 	    var service = new TrainingByUserService(trainingByUserRepositorySqlMock.Object, mapperMock.Object, validatorTrainingByUserMock.Object);
 	    var updateTrainingRequest = new UpdateTrainingByUserRequest();
@@ -83,7 +84,7 @@ public class TrainingByUserServiceTests
 	    // Arrange
 	    var trainingByUserRepositorySqlMock = new Mock<ITrainingByUserRepositorySql>();
 	    var mapperMock = new Mock<IMapper>();
-	    var validatorTrainingByUserMock = new Mock<TrainingByUserValidator>();
+	    var validatorTrainingByUserMock = new Mock<IValidatorTrainingByUser>();
 
 	    var service = new TrainingByUserService(trainingByUserRepositorySqlMock.Object, mapperMock.Object, validatorTrainingByUserMock.Object);
 	    var updateTrainingRequest = new UpdateTrainingByUserRequest();
@@ -101,7 +102,7 @@ public class TrainingByUserServiceTests
 	    // Arrange
 	    var trainingByUserRepositorySqlMock = new Mock<ITrainingByUserRepositorySql>();
 	    var mapperMock = new Mock<IMapper>();
-	    var validatorTrainingByUserMock = new Mock<TrainingByUserValidator>();
+	    var validatorTrainingByUserMock = new Mock<IValidatorTrainingByUser>();
 
 	    var service = new TrainingByUserService(trainingByUserRepositorySqlMock.Object, mapperMock.Object, validatorTrainingByUserMock.Object);
 	    var updateTrainingRequest = new UpdateTrainingByUserRequest();
@@ -122,7 +123,7 @@ public class TrainingByUserServiceTests
 	    // Arrange
 	    var trainingByUserRepositorySqlMock = new Mock<ITrainingByUserRepositorySql>();
 	    var mapperMock = new Mock<IMapper>();
-	    var validatorTrainingByUserMock = new Mock<TrainingByUserValidator>();
+	    var validatorTrainingByUserMock = new Mock<IValidatorTrainingByUser>();
 
 	    var service = new TrainingByUserService(trainingByUserRepositorySqlMock.Object, mapperMock.Object, validatorTrainingByUserMock.Object);
 	    var trainingUserId = Guid.NewGuid();

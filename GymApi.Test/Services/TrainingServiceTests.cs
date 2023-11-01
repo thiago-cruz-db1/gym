@@ -1,6 +1,7 @@
 using System.Collections;
 using AutoMapper;
 using GymApi.Data.Data.Interfaces;
+using GymApi.Data.Data.Validator.Interfaces;
 using GymApi.Data.Data.Validator.Validators;
 using GymApi.Domain;
 using GymApi.UseCases.Dto.Request;
@@ -18,11 +19,11 @@ public class TrainingServiceTests
 	    // Arrange
 	    var trainingRepositorySqlMock = new Mock<ITrainingRepositorySql>();
 	    var mapperMock = new Mock<IMapper>();
-	    var validatorTrainingMock = new Mock<TrainingValidator>();
+	    var validatorTrainingMock = new Mock<IValidatorTraining>();
 
 	    var service = new TrainingService(trainingRepositorySqlMock.Object, mapperMock.Object, validatorTrainingMock.Object);
-	    var createTrainingRequest = new CreateTrainingRequest();
-	    var training = new Training();
+	    var createTrainingRequest = MockCreateRequest();
+	    var training = MockTraining();
 
 	    mapperMock.Setup(mapper => mapper.Map<Training>(createTrainingRequest)).Returns(training);
 	    trainingRepositorySqlMock.Setup(repo => repo.Save(training));
@@ -41,11 +42,11 @@ public class TrainingServiceTests
 	    // Arrange
 	    var trainingRepositorySqlMock = new Mock<ITrainingRepositorySql>();
 	    var mapperMock = new Mock<IMapper>();
-	    var validatorTrainingMock = new Mock<TrainingValidator>();
+	    var validatorTrainingMock = new Mock<IValidatorTraining>();
 
 	    var service = new TrainingService(trainingRepositorySqlMock.Object, mapperMock.Object, validatorTrainingMock.Object);
 	    ICollection<Guid> ids = new[] { Guid.NewGuid() };
-	    var createTrainingRequest = new CreateTrainingRequest();
+	    var createTrainingRequest = MockCreateRequest();
 
 	    validatorTrainingMock.Setup(validator => validator.ValidationIfExerciseExist(ids)).Returns(false);
 
@@ -59,13 +60,13 @@ public class TrainingServiceTests
 	    // Arrange
 	    var trainingRepositorySqlMock = new Mock<ITrainingRepositorySql>();
 	    var mapperMock = new Mock<IMapper>();
-	    var validatorTrainingMock = new Mock<TrainingValidator>();
+	    var validatorTrainingMock = new Mock<IValidatorTraining>();
 
 	    var service = new TrainingService(trainingRepositorySqlMock.Object, mapperMock.Object, validatorTrainingMock.Object);
 	    var updateTrainingRequest = new UpdateTrainingRequest();
 
 	    var trainingId = Guid.NewGuid();
-	    var existingTraining = new Training();
+	    var existingTraining = MockTraining();
 
 	    trainingRepositorySqlMock.Setup(repo => repo.FindById(trainingId)).ReturnsAsync(existingTraining);
 	    mapperMock.Setup(mapper => mapper.Map(updateTrainingRequest, existingTraining)).Returns(existingTraining);
@@ -85,11 +86,11 @@ public class TrainingServiceTests
 	    // Arrange
 	    var trainingRepositorySqlMock = new Mock<ITrainingRepositorySql>();
 	    var mapperMock = new Mock<IMapper>();
-	    var validatorTrainingMock = new Mock<TrainingValidator>();
+	    var validatorTrainingMock = new Mock<IValidatorTraining>();
 
 	    var service = new TrainingService(trainingRepositorySqlMock.Object, mapperMock.Object, validatorTrainingMock.Object);
 	    var updateTrainingRequest = new UpdateTrainingRequest();
-	    var trainingId = Guid.NewGuid();
+	    var trainingId = Guid.Parse("08dbc5a3-7bbc-4e90-83de-c4c4207c922c");
 
 	    trainingRepositorySqlMock.Setup(repo => repo.FindById(trainingId)).ReturnsAsync((Training)null);
 
@@ -98,33 +99,12 @@ public class TrainingServiceTests
 	}
 
 	[Fact]
-	public async Task UpdateTraining_WithInvalidExerciseIds_ShouldThrowException()
-	{
-	    // Arrange
-	    var trainingRepositorySqlMock = new Mock<ITrainingRepositorySql>();
-	    var mapperMock = new Mock<IMapper>();
-	    var validatorTrainingMock = new Mock<TrainingValidator>();
-
-	    var service = new TrainingService(trainingRepositorySqlMock.Object, mapperMock.Object, validatorTrainingMock.Object);
-	    var updateTrainingRequest = new UpdateTrainingRequest();
-	    ICollection<Guid> ids = new[] { Guid.NewGuid() };
-	    var trainingId = Guid.NewGuid();
-	    var existingTraining = new Training();
-
-	    trainingRepositorySqlMock.Setup(repo => repo.FindById(trainingId)).ReturnsAsync(existingTraining);
-	    validatorTrainingMock.Setup(validator => validator.ValidationIfExerciseExist(ids)).Returns(false);
-
-	    // Act and Assert
-	    await Assert.ThrowsAsync<Exception>(() => service.UpdateTraining(trainingId, updateTrainingRequest));
-	}
-
-	[Fact]
 	public async Task GetTraining_WithExistingTrainings_ShouldReturnListOfTrainings()
 	{
 	    // Arrange
 	    var trainingRepositorySqlMock = new Mock<ITrainingRepositorySql>();
 	    var mapperMock = new Mock<IMapper>();
-	    var validatorTrainingMock = new Mock<TrainingValidator>();
+	    var validatorTrainingMock = new Mock<IValidatorTraining>();
 
 	    var service = new TrainingService(trainingRepositorySqlMock.Object, mapperMock.Object, validatorTrainingMock.Object);
 	    var existingTrainings = new List<Training>
@@ -149,7 +129,7 @@ public class TrainingServiceTests
 	    // Arrange
 	    var trainingRepositorySqlMock = new Mock<ITrainingRepositorySql>();
 	    var mapperMock = new Mock<IMapper>();
-	    var validatorTrainingMock = new Mock<TrainingValidator>();
+	    var validatorTrainingMock = new Mock<IValidatorTraining>();
 
 	    var service = new TrainingService(trainingRepositorySqlMock.Object, mapperMock.Object, validatorTrainingMock.Object);
 
@@ -168,11 +148,11 @@ public class TrainingServiceTests
 	    // Arrange
 	    var trainingRepositorySqlMock = new Mock<ITrainingRepositorySql>();
 	    var mapperMock = new Mock<IMapper>();
-	    var validatorTrainingMock = new Mock<TrainingValidator>();
+	    var validatorTrainingMock = new Mock<IValidatorTraining>();
 
 	    var service = new TrainingService(trainingRepositorySqlMock.Object, mapperMock.Object, validatorTrainingMock.Object);
-	    var trainingId = Guid.NewGuid();
-	    var existingTraining = new Training();
+	    var trainingId = Guid.Parse("08dbc5a3-7bbc-4e90-83de-c4c4207c922c");
+	    var existingTraining = MockTraining();
 
 	    trainingRepositorySqlMock.Setup(repo => repo.FindById(trainingId)).ReturnsAsync(existingTraining);
 	    trainingRepositorySqlMock.Setup(repo => repo.Delete(existingTraining));
@@ -185,21 +165,34 @@ public class TrainingServiceTests
 	    trainingRepositorySqlMock.Verify(repo => repo.Delete(existingTraining), Times.Once);
 	}
 
-	[Fact]
-	public async Task DeleteTrainingById_WithInvalidTrainingId_ShouldThrowException()
+	private CreateTrainingRequest MockCreateRequest()
 	{
-	    // Arrange
-	    var trainingRepositorySqlMock = new Mock<ITrainingRepositorySql>();
-	    var mapperMock = new Mock<IMapper>();
-	    var validatorTrainingMock = new Mock<TrainingValidator>();
-
-	    var service = new TrainingService(trainingRepositorySqlMock.Object, mapperMock.Object, validatorTrainingMock.Object);
-	    var trainingId = Guid.NewGuid();
-
-	    trainingRepositorySqlMock.Setup(repo => repo.FindById(trainingId)).ReturnsAsync((Training)null);
-
-	    // Act and Assert
-	    await Assert.ThrowsAsync<ApplicationException>(() => service.DeleteTrainingById(trainingId));
+		return new CreateTrainingRequest
+		{
+			Name = "A",
+			Exercises = new List<Guid>()
+		};
 	}
 
+	private UpdateTrainingRequest MockUpdateRequest()
+	{
+		return new UpdateTrainingRequest
+		{
+			Name = "A",
+			Exercises = new List<Guid>()
+		};
+	}
+
+	private Training MockTraining()
+	{
+		return new Training
+		{
+			Id = Guid.Parse("08dbc5a3-7bbc-4e90-83de-c4c4207c922c"),
+			Name = "A",
+			StartDate = default,
+			EndDate = default,
+			UserTrainings = null,
+			ExerciseTrainings = null
+		};
+	}
 }

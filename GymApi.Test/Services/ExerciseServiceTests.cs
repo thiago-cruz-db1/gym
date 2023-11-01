@@ -23,8 +23,8 @@ public class ExerciseServiceTests
 		var excelReaderMock = new Mock<IExcelReader>();
 
 		var service = new ExerciseService(exerciseRepositorySqlMock.Object, mapperMock.Object, excelReaderMock.Object, validatorExerciseMock.Object);
-		var createExerciseRequest = new CreateExerciseRequest();
-		var exercise = new Exercise();
+		var createExerciseRequest = MockCreateRequest();
+		var exercise = MockExercise();
 
 		mapperMock.Setup(mapper => mapper.Map<Exercise>(createExerciseRequest)).Returns(exercise);
 		validatorExerciseMock.Setup(validator => validator.DuplicateExercise(exercise)).Returns(false);
@@ -91,7 +91,7 @@ public class ExerciseServiceTests
 
 		var service = new ExerciseService(exerciseRepositorySqlMock.Object, mapperMock.Object, excelReaderMock.Object, validatorExerciseMock.Object);
 		var exerciseId = Guid.NewGuid();
-		var expectedExercise = new Exercise();
+		var expectedExercise = MockExercise();
 
 		exerciseRepositorySqlMock.Setup(repo => repo.FindById(exerciseId)).ReturnsAsync(expectedExercise);
 
@@ -112,13 +112,12 @@ public class ExerciseServiceTests
 		var excelReaderMock = new Mock<IExcelReader>();
 
 		var service = new ExerciseService(exerciseRepositorySqlMock.Object, mapperMock.Object, excelReaderMock.Object, validatorExerciseMock.Object);
-		var exerciseId = Guid.NewGuid();
-		var updateExerciseRequest = new UpdateExerciseRequest();
-		var existingExercise = new Exercise();
+		var exerciseId = Guid.Parse("08dbc5a3-7bbc-4e90-83de-c4c4207c922c");
+		var updateExerciseRequest = MockUpdateRequest();
+		var existingExercise = MockExercise();
 
 		exerciseRepositorySqlMock.Setup(repo => repo.FindById(exerciseId)).ReturnsAsync(existingExercise);
 		mapperMock.Setup(mapper => mapper.Map(updateExerciseRequest, existingExercise));
-		validatorExerciseMock.Setup(validator => validator.DuplicateExercise(existingExercise)).Returns(false);
 
 		exerciseRepositorySqlMock.Setup(repo => repo.Update(existingExercise));
 		exerciseRepositorySqlMock.Setup(repo => repo.SaveChange());
@@ -140,13 +139,13 @@ public class ExerciseServiceTests
 		var excelReaderMock = new Mock<IExcelReader>();
 
 		var service = new ExerciseService(exerciseRepositorySqlMock.Object, mapperMock.Object, excelReaderMock.Object, validatorExerciseMock.Object);
-		var exerciseId = Guid.NewGuid();
-		var updateExerciseRequest = new UpdateExerciseRequest();
-		var existingExercise = new Exercise();
+		var exerciseId = Guid.Parse("08dbc5a3-7bbc-4e90-83de-c4c4207c922c");
+		var updateExerciseRequest = MockUpdateRequest();
+		var existingExercise = MockExercise();
 
 		exerciseRepositorySqlMock.Setup(repo => repo.FindById(exerciseId)).ReturnsAsync(existingExercise);
 		mapperMock.Setup(mapper => mapper.Map(updateExerciseRequest, existingExercise));
-		validatorExerciseMock.Setup(validator => validator.DuplicateExercise(existingExercise)).Returns(true);
+		var duplicate = validatorExerciseMock.Setup(validator => validator.DuplicateExercise(existingExercise)).Returns(true);
 
 		// Act and Assert
 		await Assert.ThrowsAsync<Exception>(() => service.UpdateExercise(exerciseId, updateExerciseRequest));
@@ -162,8 +161,8 @@ public class ExerciseServiceTests
 		var excelReaderMock = new Mock<IExcelReader>();
 
 		var service = new ExerciseService(exerciseRepositorySqlMock.Object, mapperMock.Object, excelReaderMock.Object, validatorExerciseMock.Object);
-		var exerciseId = Guid.NewGuid();
-		var existingExercise = new Exercise();
+		var exerciseId = Guid.Parse("08dbc5a3-7bbc-4e90-83de-c4c4207c922c");
+		var existingExercise = MockExercise();
 
 		exerciseRepositorySqlMock.Setup(repo => repo.FindById(exerciseId)).ReturnsAsync(existingExercise);
 		exerciseRepositorySqlMock.Setup(repo => repo.SaveChange());
@@ -208,9 +207,47 @@ public class ExerciseServiceTests
 		var service = new ExerciseService(exerciseRepositorySqlMock.Object, mapperMock.Object, excelReaderMock.Object, validatorExerciseMock.Object);
 		var file = new Mock<IFormFile>();
 
-		excelReaderMock.Setup(reader => reader.ReadExercises(It.IsAny<Stream>())).Throws<Exception>(); // Simulate an error during reading
+		excelReaderMock.Setup(reader => reader.ReadExercises(It.IsAny<Stream>())).Throws<Exception>();
 
 		// Act and Assert
-		await Assert.ThrowsAsync<Exception>(() => service.UploadTableOfExercise(file.Object));
+		await Assert.ThrowsAsync<ArgumentNullException>(() => service.UploadTableOfExercise(file.Object));
+	}
+
+	private CreateExerciseRequest MockCreateRequest()
+	{
+		return new CreateExerciseRequest
+		{
+			Machine = "supino",
+			Pause = 30,
+			Set = 4,
+			Repetition = 15,
+			Technique = "nenhuma",
+		};
+	}
+
+	private UpdateExerciseRequest MockUpdateRequest()
+	{
+		return new UpdateExerciseRequest
+		{
+			Machine = "supino",
+			Pause = 30,
+			Set = 4,
+			Repetition = 15,
+			Technique = "nenhuma",
+		};
+	}
+
+	private Exercise MockExercise()
+	{
+		return new Exercise
+		{
+			Id = Guid.Parse("08dbc5a3-7bbc-4e90-83de-c4c4207c922c"),
+			Machine = "supino",
+			Pause = 30,
+			Set = 4,
+			Repetition = 15,
+			Technique = "nenhuma",
+			ExerciseTrainings = null
+		};
 	}
 }

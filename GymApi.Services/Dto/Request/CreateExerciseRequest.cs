@@ -3,8 +3,8 @@
 public class CreateExerciseRequest
 {
     public string Machine { get; set; }
-    public string Pause { get; set; }
-    public string Set { get; set; }
-    public string Repetition { get; set; }
+    public int Pause { get; set; }
+    public int Set { get; set; }
+    public int Repetition { get; set; }
     public string Technique { get; set; }
 }

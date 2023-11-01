@@ -1,5 +1,6 @@
 using AutoMapper;
 using GymApi.Data.Data.Interfaces;
+using GymApi.Data.Data.Validator.Interfaces;
 using GymApi.Data.Data.Validator.Validators;
 using GymApi.Domain;
 using GymApi.UseCases.Dto.Request;
@@ -17,7 +18,7 @@ public class PersonalByUserServiceTests
         // Arrange
         var personalByUserRepositorySqlMock = new Mock<IPersonalByUserRepositorySql>();
         var mapperMock = new Mock<IMapper>();
-        var validatorPersonalByUserMock = new Mock<PersonalByUserValidator>();
+        var validatorPersonalByUserMock = new Mock<IValidatorPersonalByUser>();
 
         var service = new PersonalByUserService(mapperMock.Object, personalByUserRepositorySqlMock.Object, validatorPersonalByUserMock.Object);
         var createPersonalByUserRequest = new CreatePersonalByUserRequest();
@@ -45,7 +46,7 @@ public class PersonalByUserServiceTests
         // Arrange
         var personalByUserRepositorySqlMock = new Mock<IPersonalByUserRepositorySql>();
         var mapperMock = new Mock<IMapper>();
-        var validatorPersonalByUserMock = new Mock<PersonalByUserValidator>();
+        var validatorPersonalByUserMock = new Mock<IValidatorPersonalByUser>();
 
         var service = new PersonalByUserService(mapperMock.Object, personalByUserRepositorySqlMock.Object, validatorPersonalByUserMock.Object);
         var createPersonalByUserRequest = new CreatePersonalByUserRequest();
@@ -63,7 +64,7 @@ public class PersonalByUserServiceTests
         // Arrange
         var personalByUserRepositorySqlMock = new Mock<IPersonalByUserRepositorySql>();
         var mapperMock = new Mock<IMapper>();
-        var validatorPersonalByUserMock = new Mock<PersonalByUserValidator>();
+        var validatorPersonalByUserMock = new Mock<IValidatorPersonalByUser>();
 
         var service = new PersonalByUserService(mapperMock.Object, personalByUserRepositorySqlMock.Object, validatorPersonalByUserMock.Object);
         var personalByUserId = Guid.NewGuid();
@@ -92,7 +93,7 @@ public class PersonalByUserServiceTests
         // Arrange
         var personalByUserRepositorySqlMock = new Mock<IPersonalByUserRepositorySql>();
         var mapperMock = new Mock<IMapper>();
-        var validatorPersonalByUserMock = new Mock<PersonalByUserValidator>();
+        var validatorPersonalByUserMock = new Mock<IValidatorPersonalByUser>();
 
         var service = new PersonalByUserService(mapperMock.Object, personalByUserRepositorySqlMock.Object, validatorPersonalByUserMock.Object);
         var personalByUserId = Guid.NewGuid();
@@ -112,7 +113,7 @@ public class PersonalByUserServiceTests
         // Arrange
         var personalByUserRepositorySqlMock = new Mock<IPersonalByUserRepositorySql>();
         var mapperMock = new Mock<IMapper>();
-        var validatorPersonalByUserMock = new Mock<PersonalByUserValidator>();
+        var validatorPersonalByUserMock = new Mock<IValidatorPersonalByUser>();
 
         var service = new PersonalByUserService(mapperMock.Object, personalByUserRepositorySqlMock.Object, validatorPersonalByUserMock.Object);
         var personalByUserId = Guid.NewGuid();
@@ -134,7 +135,7 @@ public class PersonalByUserServiceTests
 	    // Arrange
 	    var personalByUserRepositorySqlMock = new Mock<IPersonalByUserRepositorySql>();
 	    var mapperMock = new Mock<IMapper>();
-	    var validatorPersonalByUserMock = new Mock<PersonalByUserValidator>();
+	    var validatorPersonalByUserMock = new Mock<IValidatorPersonalByUser>();
 
 	    var service = new PersonalByUserService(mapperMock.Object, personalByUserRepositorySqlMock.Object, validatorPersonalByUserMock.Object);
 	    var createPersonalByUserRequest = new CreatePersonalByUserRequest();
@@ -153,7 +154,7 @@ public class PersonalByUserServiceTests
 	    // Arrange
 	    var personalByUserRepositorySqlMock = new Mock<IPersonalByUserRepositorySql>();
 	    var mapperMock = new Mock<IMapper>();
-	    var validatorPersonalByUserMock = new Mock<PersonalByUserValidator>();
+	    var validatorPersonalByUserMock = new Mock<IValidatorPersonalByUser>();
 
 	    var service = new PersonalByUserService(mapperMock.Object, personalByUserRepositorySqlMock.Object, validatorPersonalByUserMock.Object);
 	    var createPersonalByUserRequest = new CreatePersonalByUserRequest();
@@ -173,7 +174,7 @@ public class PersonalByUserServiceTests
 	    // Arrange
 	    var personalByUserRepositorySqlMock = new Mock<IPersonalByUserRepositorySql>();
 	    var mapperMock = new Mock<IMapper>();
-	    var validatorPersonalByUserMock = new Mock<PersonalByUserValidator>();
+	    var validatorPersonalByUserMock = new Mock<IValidatorPersonalByUser>();
 
 	    var service = new PersonalByUserService(mapperMock.Object, personalByUserRepositorySqlMock.Object, validatorPersonalByUserMock.Object);
 	    var personalByUserId = Guid.NewGuid();

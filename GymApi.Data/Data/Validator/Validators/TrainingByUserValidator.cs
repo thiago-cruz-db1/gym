@@ -8,7 +8,7 @@ public class TrainingByUserValidator : IValidatorTrainingByUser
 	private readonly IPlanRepositorySql _planRepositorySql;
 	private readonly ICreateUserRepositorySql _createUserRepositorySql;
 
-	protected TrainingByUserValidator(IPlanRepositorySql planRepositorySql, ICreateUserRepositorySql createUserRepositorySql)
+	public TrainingByUserValidator(IPlanRepositorySql planRepositorySql, ICreateUserRepositorySql createUserRepositorySql)
 	{
 		_planRepositorySql = planRepositorySql;
 		_createUserRepositorySql = createUserRepositorySql;

@@ -12,7 +12,7 @@ public class TrainingValidator : IValidatorTraining
 		_context = context;
 	}
 
-	public bool ValidationIfExerciseExist(ICollection<Guid> exercisesId)
+	public virtual bool ValidationIfExerciseExist(ICollection<Guid> exercisesId)
 	{
 		var idsFromDataBase = _context.Exercises
 			.Count(e => exercisesId.Contains(e.Id)) == exercisesId.Count;
