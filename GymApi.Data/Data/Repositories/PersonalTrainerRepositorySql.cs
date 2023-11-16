@@ -12,9 +12,9 @@ public class PersonalTrainerRepositorySql : EntityFrameworkRepositorySqlAbstract
     {
         _context = context;
     }
-    
+
     public List<PersonalByUser> GetUsersTraineeByDay(Guid id, DateTime date)
     {
-        return _context.PersonalByUsers.Where(e => e.StartAt.Date == date.Date && e.UserId == id.ToString()).ToList();
+        return _context.PersonalByUsers.Where(e => e.StartAt.Date == date.Date && e.PersonalId == id).ToList();
     }
 }

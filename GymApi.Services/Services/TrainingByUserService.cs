@@ -23,7 +23,6 @@ public class TrainingByUserService : AbstractTrainingByUserValidator
 	    if (validDay)
 	    {
 		    var training = _mapper.Map<TrainingUser>(trainingUserDto);
-		    training.Validate();
 		    await _contextTrainingByUser.Save(training);
 		    await _contextTrainingByUser.SaveChange();
 		    return training;

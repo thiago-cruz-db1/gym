@@ -9,9 +9,9 @@ namespace GymApi.UseCases.Profiles
     {
         public PlanProfile()
         {
-            CreateMap<CreatePlanRequest, Plan>()
+            CreateMap<CreatePlanCommand, Plan>()
                 .ForMember(dest => dest.DayOfWeeks, opt => opt.MapFrom(src => string.Join(", ", src.DayOfWeeks)));
-            CreateMap<UpdatePlanRequest, Plan>()
+            CreateMap<UpdatePlanCommand, Plan>()
                 .ForMember(dest => dest.DayOfWeeks, opt => opt.MapFrom(src => string.Join(", ", src.DayOfWeeks)));
             CreateMap<GetPlanResponse, Plan>();
         }

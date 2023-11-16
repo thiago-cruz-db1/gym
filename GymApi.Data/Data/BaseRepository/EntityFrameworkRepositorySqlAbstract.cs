@@ -19,7 +19,7 @@ public abstract class EntityFrameworkRepositorySqlAbstract<TId, TEntity> : IBase
 
     public async Task SaveChange()
     {
-	    await _context.SaveChangesAsync();
+	    await _context.SaveChangesAsync(CancellationToken.None);
     }
 
     public async Task Update(TEntity entity)

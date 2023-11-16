@@ -4,19 +4,10 @@ public class Exercise
 {
 	private List<string> _validationErrors;
 	public Guid Id { get; set; } = Guid.NewGuid();
-	private string _machine;
 	public string Machine { get; set; }
-
-	private int _pause;
 	public int Pause { get; set; }
-
-	private int _set;
 	public int Set { get; set; }
-
-	private int _repetition;
 	public int Repetition { get; set; }
-
-	private string _technique;
 	public string Technique { get; set; }
 
 	public ICollection<ExerciseTraining> ExerciseTrainings { get; set; }
