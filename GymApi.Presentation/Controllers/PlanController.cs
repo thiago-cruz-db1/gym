@@ -1,5 +1,9 @@
-﻿using GymApi.UseCases.Dto.Request;
+﻿using GymApi.Domain;
+using GymApi.UseCases.Dto.Request;
 using GymApi.UseCases.Services;
+using GymApi.UseCases.Services.Plan;
+using GymApi.UseCases.Services.PlanHandler;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GymUserApi.Controllers
@@ -8,20 +12,24 @@ namespace GymUserApi.Controllers
     [Route("[controller]")]
     public class PlanController : ControllerBase
     {
-        private readonly PlanService _planService;
+	    private readonly GetByIdPlanCommandHandler _getByIdPlan;
+	    private readonly GetAllPlanCommandHandler _getAllPlan;
+        private readonly IMediator _mediator;
 
-        public PlanController(PlanService planService)
+        public PlanController(IMediator mediator, GetByIdPlanCommandHandler getByIdPlan, GetAllPlanCommandHandler getAllPlan)
         {
-	        _planService = planService;
+	        _mediator = mediator;
+	        _getByIdPlan = getByIdPlan;
+	        _getAllPlan = getAllPlan;
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddPlan([FromBody] CreatePlanRequest planDto)
+        public async Task<IActionResult> AddPlan([FromBody] CreatePlanCommand planDto, CancellationToken cancellationToken)
         {
             try
             {
-                var plan = await _planService.AddPlan(planDto);
-                return Ok(plan);
+	            var response = await _mediator.Send(planDto);
+	            return Ok(response);;
             }
             catch (Exception e)
             {
@@ -34,7 +42,7 @@ namespace GymUserApi.Controllers
         {
             try
             {
-                var plans = await _planService.GetPlans();
+                var plans = await _getAllPlan.HandleGetAll();
                 return Ok(plans);
             }
             catch (Exception e)
@@ -49,7 +57,7 @@ namespace GymUserApi.Controllers
         {
             try
             {
-                var plan = await _planService.GetPlanById(id);
+                var plan = await _getByIdPlan.HandleGetById(id);
                 if (plan == null!) return NotFound();
                 return Ok(plan);
             }
@@ -61,12 +69,12 @@ namespace GymUserApi.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdatePlanById(Guid id, [FromBody] UpdatePlanRequest updatePlanDto)
+        public async Task<IActionResult> UpdatePlanById([FromBody] UpdatePlanCommand updatePlanDto)
         {
             try
             {
-                var plan = await _planService.UpdatePlanById(id, updatePlanDto);
-                return Ok(plan);
+	            var response = await _mediator.Send(updatePlanDto);
+	            return Ok(response);
             }
             catch (Exception e)
             {
@@ -75,12 +83,12 @@ namespace GymUserApi.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeletePlanById(Guid id)
+        public async Task<IActionResult> DeletePlanById(DeletePlanCommand plan)
         {
             try
             {
-                await _planService.DeletePlanById(id);
-                return NoContent();
+	            var response = await _mediator.Send(plan.Id);
+	            return Ok(response);
             }
             catch (Exception e)
             {

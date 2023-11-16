@@ -6,6 +6,8 @@ using GymApi.Domain;
 using GymApi.Domain.Enum;
 using GymApi.UseCases.Dto.Request;
 using GymApi.UseCases.Services;
+using GymApi.UseCases.Services.Plan;
+using GymApi.UseCases.Services.PlanHandler;
 using Moq;
 using Xunit;
 
@@ -163,9 +165,9 @@ public class PlanServiceTests
 	    await Assert.ThrowsAsync<ApplicationException>(() => service.DeletePlanById(planId));
 	}
 
-	private CreatePlanRequest MockCreateRequest()
+	private CreatePlanCommand MockCreateRequest()
 	{
-		return new CreatePlanRequest
+		return new CreatePlanCommand
 		{
 			Amount = 80,
 			Category = "academia230",
@@ -174,9 +176,9 @@ public class PlanServiceTests
 		};
 	}
 
-	private CreatePlanRequest MockInvalidCreateRequest()
+	private CreatePlanCommand MockInvalidCreateRequest()
 	{
-		return new CreatePlanRequest
+		return new CreatePlanCommand
 		{
 			Amount = 80,
 			Category = "",
@@ -185,9 +187,9 @@ public class PlanServiceTests
 		};
 	}
 
-	private UpdatePlanRequest MockUpdateRequest()
+	private UpdatePlanCommand MockUpdateRequest()
 	{
-		return new UpdatePlanRequest
+		return new UpdatePlanCommand
 		{
 			Amount = 80,
 			Category = "academia23",

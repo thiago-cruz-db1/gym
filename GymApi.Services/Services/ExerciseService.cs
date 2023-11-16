@@ -46,6 +46,7 @@ public class ExerciseService : AbstractExerciseValidator
     {
         var exercise = await _contextExercise.FindById(id);
         if (exercise == null) throw new ApplicationException("exercise not found");
+        if(DuplicateExercise(exercise)) throw new Exception("exercise already exists");
         var ex =_mapper.Map(updateExerciseDto, exercise);
         ex.Validate();
         await _contextExercise.Update(exercise);

@@ -49,6 +49,6 @@ public class CreateUserRepositorySql : ICreateUserRepositorySql
 
     public List<PersonalByUser> GetPersonalTraineeByDay(Guid id, DateTime date)
     {
-        return _contextUser.PersonalByUsers.Where(e => e.StartAt.Date == date.Date && e.PersonalId == id).ToList();
+        return _contextUser.PersonalByUsers.Where(e => e.StartAt.Date == date.Date && e.UserId == id.ToString()).ToList();
     }
 }

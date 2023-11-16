@@ -7,7 +7,7 @@ namespace GymApi.Data.Data.Repositories;
 
 public class PlanRepositorySql : EntityFrameworkRepositorySqlAbstract<Guid, Plan>, IPlanRepositorySql
 {
-    public PlanRepositorySql(GymDbContext context) : base(context)
-    {
-    }
+	public PlanRepositorySql(GymDbContext context) : base(context)
+	{
+	}
 }

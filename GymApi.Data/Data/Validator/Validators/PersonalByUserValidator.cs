@@ -30,12 +30,11 @@ public class PersonalByUserValidator : IValidatorPersonalByUser
 		var personalByUsers =_context.PersonalByUsers
 			.Where(e => e.IsActive && personalTrainerId == e.PersonalId)
 			.ToList();
-		bool isDuplicate = personalByUsers.Any(e =>
+		return personalByUsers.Any(e =>
 			(personalByUser.StartAt >= e.StartAt && personalByUser.StartAt < e.EndAt) ||
 			(personalByUser.EndAt > e.StartAt && personalByUser.EndAt <= e.EndAt) ||
 			(personalByUser.StartAt <= e.StartAt && personalByUser.EndAt >= e.EndAt)
 		);
-		return isDuplicate;
 	}
 
 	public bool IsDuplicatePersonalOnSameTimeToClient(PersonalByUser personalByUser)
@@ -44,11 +43,10 @@ public class PersonalByUserValidator : IValidatorPersonalByUser
 		var personalByUsers =_context.PersonalByUsers
 			.Where(e => e.IsActive && personalTrainerId == e.UserId)
 			.ToList();
-		bool isDuplicate = personalByUsers.Any(e =>
+		return personalByUsers.Any(e =>
 			(personalByUser.StartAt >= e.StartAt && personalByUser.StartAt < e.EndAt) ||
 			(personalByUser.EndAt > e.StartAt && personalByUser.EndAt <= e.EndAt) ||
 			(personalByUser.StartAt <= e.StartAt && personalByUser.EndAt >= e.EndAt)
 		);
-		return isDuplicate;
 	}
 }

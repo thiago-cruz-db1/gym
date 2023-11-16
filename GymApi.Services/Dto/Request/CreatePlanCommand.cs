@@ -1,8 +1,9 @@
 ﻿using GymApi.Domain.Enum;
+using MediatR;
 
 namespace GymApi.UseCases.Dto.Request
 {
-    public class CreatePlanRequest
+    public class CreatePlanCommand : IRequest<string>
     {
         public double Amount { get; set; }
         public string Category { get; set; }
