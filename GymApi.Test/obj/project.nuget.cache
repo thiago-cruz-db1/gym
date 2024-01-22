@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "79oUFFe5DU1xR6Wk+OFXHZtyI0fZC0tW/p7Jjret2z3pIyiNk+29p2zFPrxdB4hQnaTOXZRLpiuYeQ6sP9kCiw==",
+  "dgSpecHash": "xIPIFwwXETxwmaryrhWSy/K/yGiqfmri2kX1096ZR5MepYlj0JFIsbP1aPnoyqmTfFpEfIXWcJ+ldeml4Ct37w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\thiago.cruz\\Documents\\Proj\\Pessoal\\Gym\\GymApi.Test\\GymApi.Test.csproj",
+  "projectFilePath": "C:\\Users\\thiago.cruz\\Documents\\Proj\\Pessoal\\projetos\\Gym\\GymApi.Test\\GymApi.Test.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\thiago.cruz\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\thiago.cruz\\.nuget\\packages\\awssdk.core\\3.7.100.14\\awssdk.core.3.7.100.14.nupkg.sha512",
@@ -186,10 +186,7 @@
     "C:\\Users\\thiago.cruz\\.nuget\\packages\\xunit.extensibility.core\\2.4.2\\xunit.extensibility.core.2.4.2.nupkg.sha512",
     "C:\\Users\\thiago.cruz\\.nuget\\packages\\xunit.extensibility.execution\\2.4.2\\xunit.extensibility.execution.2.4.2.nupkg.sha512",
     "C:\\Users\\thiago.cruz\\.nuget\\packages\\xunit.runner.visualstudio\\2.4.5\\xunit.runner.visualstudio.2.4.5.nupkg.sha512",
-    "C:\\Users\\thiago.cruz\\.nuget\\packages\\zstdsharp.port\\0.6.2\\zstdsharp.port.0.6.2.nupkg.sha512",
-    "C:\\Users\\thiago.cruz\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.20\\microsoft.netcore.app.ref.6.0.20.nupkg.sha512",
-    "C:\\Users\\thiago.cruz\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.20\\microsoft.windowsdesktop.app.ref.6.0.20.nupkg.sha512",
-    "C:\\Users\\thiago.cruz\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.20\\microsoft.aspnetcore.app.ref.6.0.20.nupkg.sha512"
+    "C:\\Users\\thiago.cruz\\.nuget\\packages\\zstdsharp.port\\0.6.2\\zstdsharp.port.0.6.2.nupkg.sha512"
   ],
   "logs": [
     {

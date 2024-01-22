@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "T3GNAiU7Yw6B5IHo9s3u2ho+rAeu88EorVVe99esVohMIRQivD+jQE9Tmf/AqqodZOjqgtp7NcbafW+qQLe0yg==",
+  "dgSpecHash": "Q/1a/8L01sVv2hZeTB2oK4xSVhzmwIv5ruSJpCFK8uOtD58Jvloo+VlScgsIl23k999eFlmDoaJ56x2cyaKieg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\thiago.cruz\\Documents\\Proj\\Pessoal\\Gym\\GymApi.Presentation\\GymApi.Presentation.csproj",
+  "projectFilePath": "C:\\Users\\thiago.cruz\\Documents\\Proj\\Pessoal\\projetos\\Gym\\GymApi.Presentation\\GymApi.Presentation.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\thiago.cruz\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\thiago.cruz\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
@@ -118,11 +118,7 @@
     "C:\\Users\\thiago.cruz\\.nuget\\packages\\system.text.json\\4.7.2\\system.text.json.4.7.2.nupkg.sha512",
     "C:\\Users\\thiago.cruz\\.nuget\\packages\\system.threading.channels\\7.0.0\\system.threading.channels.7.0.0.nupkg.sha512",
     "C:\\Users\\thiago.cruz\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512",
-    "C:\\Users\\thiago.cruz\\.nuget\\packages\\zstdsharp.port\\0.6.2\\zstdsharp.port.0.6.2.nupkg.sha512",
-    "C:\\Users\\thiago.cruz\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.20\\microsoft.netcore.app.ref.6.0.20.nupkg.sha512",
-    "C:\\Users\\thiago.cruz\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.20\\microsoft.windowsdesktop.app.ref.6.0.20.nupkg.sha512",
-    "C:\\Users\\thiago.cruz\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.20\\microsoft.aspnetcore.app.ref.6.0.20.nupkg.sha512",
-    "C:\\Users\\thiago.cruz\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.20\\microsoft.netcore.app.host.win-x64.6.0.20.nupkg.sha512"
+    "C:\\Users\\thiago.cruz\\.nuget\\packages\\zstdsharp.port\\0.6.2\\zstdsharp.port.0.6.2.nupkg.sha512"
   ],
   "logs": [
     {
