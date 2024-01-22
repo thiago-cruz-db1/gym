@@ -59,7 +59,7 @@ public class RedisRepositoryCache : IBaseRepositoryCache
 		collection.Add(newItem);
 
 		var serializedCollection = JsonConvert.SerializeObject(collection);
-		await _distributedCache.SetStringAsync(collectionKey, serializedCollection, _distributedCacheEntryOptions);
+		await _distributedCache.SetStringAsync(collectionKey, serializedCollection);
 
 		return true;
 	}
